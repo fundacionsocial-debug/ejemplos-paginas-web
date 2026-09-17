@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maderas del Roble — Carpintería (ejemplo nivel 2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--brown:#8a5a2b;--brown-d:#3d2715;--cream:#fdfaf6;--ink:#2a1f16;--muted:#7d6d5d;
+  --line:#e8ddd2;--gold:#c79a4f;--ff-d:"Fraunces",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.68}
+img{max-width:100%;display:block}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+
+.demobar{position:sticky;top:0;z-index:200;background:#100e0c;color:#f6f1ea;display:flex;
+  align-items:center;gap:14px;padding:9px 16px;font-size:.86rem;flex-wrap:wrap}
+.demobar a,.demobar button{color:#f0b271;background:none;border:1px solid #332b24;font:inherit;
+  padding:5px 12px;border-radius:7px;cursor:pointer;text-decoration:none}
+.demobar a:hover,.demobar button:hover{background:#241f1a}
+.demobar .lvl{margin-right:auto;color:#a89b8d}
+.demobar .lvl b{color:#f6f1ea}
+body.nobar .demobar{display:none}
+
+nav{position:sticky;top:41px;z-index:150;background:rgba(253,250,246,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line)}
+body.nobar nav{top:0}
+nav .wrap{display:flex;align-items:center;gap:26px;padding-top:15px;padding-bottom:15px}
+.logo{display:flex;align-items:center;gap:11px;font-family:var(--ff-d);font-weight:600;
+  font-size:1.2rem;color:var(--brown-d);margin-right:auto}
+.logo span{width:38px;height:38px;border-radius:10px;background:var(--brown);color:#fff;
+  display:grid;place-items:center;font-size:1.1rem}
+nav a.link{color:var(--muted);text-decoration:none;font-size:.94rem;font-weight:500}
+nav a.link:hover{color:var(--brown)}
+nav .btn-nav{background:var(--brown);color:#fff;padding:10px 18px;border-radius:9px;
+  text-decoration:none;font-size:.92rem;font-weight:600}
+nav .btn-nav:hover{background:var(--brown-d)}
+@media(max-width:820px){nav a.link{display:none}}
+
+.hero{position:relative;min-height:600px;display:flex;align-items:center;color:#fff;
+  background:linear-gradient(105deg,rgba(35,22,12,.88) 0%,rgba(35,22,12,.55) 60%,rgba(35,22,12,.35) 100%),
+    url("https://images.unsplash.com/photo-1503602642458-232111445657?w=1700&q=80") center/cover}
+.hero-in{max-width:620px;padding:70px 0}
+.kicker{display:inline-block;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(199,154,79,.45);padding:7px 14px;border-radius:999px;margin-bottom:22px}
+.hero h1{font-family:var(--ff-d);font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.1;font-weight:600;margin-bottom:18px}
+.hero p{font-size:1.1rem;opacity:.92;margin-bottom:30px}
+.hero-btns{display:flex;gap:13px;flex-wrap:wrap}
+.b1{background:var(--gold);color:#2a1a06;font-weight:600;padding:14px 26px;border-radius:10px;text-decoration:none}
+.b2{border:1px solid rgba(255,255,255,.4);color:#fff;padding:14px 26px;border-radius:10px;text-decoration:none}
+.b1:hover{filter:brightness(1.08)} .b2:hover{background:rgba(255,255,255,.1)}
+
+.stats{background:var(--brown-d);color:#fff}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:20px;padding-top:34px;padding-bottom:34px;text-align:center}
+.stat b{display:block;font-family:var(--ff-d);font-size:2.1rem;color:var(--gold);line-height:1.2}
+.stat span{font-size:.88rem;opacity:.78}
+
+section{padding:82px 0}
+.head{max-width:640px;margin-bottom:44px}
+.head .kick{color:var(--brown);font-size:.79rem;letter-spacing:.15em;text-transform:uppercase;
+  font-weight:600;margin-bottom:12px;display:block}
+h2{font-family:var(--ff-d);font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:600;color:var(--brown-d);line-height:1.2}
+.head p{color:var(--muted);margin-top:13px;font-size:1.03rem}
+
+.svcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px}
+.svc{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;
+  transition:transform .25s,box-shadow .25s}
+.svc:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(61,39,21,.13)}
+.svc img{aspect-ratio:16/11;object-fit:cover}
+.svc .in{padding:24px}
+.svc h3{font-family:var(--ff-d);font-size:1.28rem;font-weight:600;margin-bottom:8px;color:var(--brown-d)}
+.svc p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+.svc .from{color:var(--brown);font-weight:600;font-size:.92rem}
+
+/* galería con filtros */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.filters button{background:#fff;border:1px solid var(--line);color:var(--muted);font:inherit;
+  font-size:.91rem;padding:9px 18px;border-radius:999px;cursor:pointer;transition:all .2s}
+.filters button:hover{border-color:var(--brown);color:var(--brown)}
+.filters button.on{background:var(--brown);border-color:var(--brown);color:#fff}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.gal figure{position:relative;border-radius:13px;overflow:hidden;cursor:pointer;background:#eee}
+.gal img{aspect-ratio:4/3;object-fit:cover;transition:transform .45s}
+.gal figure:hover img{transform:scale(1.06)}
+.gal figcaption{position:absolute;inset:auto 0 0 0;background:linear-gradient(transparent,rgba(30,18,8,.88));
+  color:#fff;padding:36px 16px 14px;font-size:.93rem;font-weight:500}
+.gal figure.hide{display:none}
+
+/* proceso */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:26px;counter-reset:s}
+.step{position:relative;padding-top:8px}
+.step::before{counter-increment:s;content:counter(s);font-family:var(--ff-d);font-size:2.6rem;
+  color:var(--gold);opacity:.42;line-height:1;display:block;margin-bottom:10px}
+.step h4{font-size:1.06rem;margin-bottom:6px;color:var(--brown-d)}
+.step p{color:var(--muted);font-size:.93rem}
+
+/* testimonios */
+.tsec{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tests{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:22px}
+.test{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:26px}
+.stars{color:var(--gold);font-size:1rem;margin-bottom:12px;letter-spacing:2px}
+.test p{font-style:italic;color:#4a3c2e;margin-bottom:16px;font-size:.97rem}
+.who{display:flex;align-items:center;gap:11px}
+.av{width:42px;height:42px;border-radius:50%;background:var(--brown);color:#fff;
+  display:grid;place-items:center;font-weight:600;font-size:.95rem}
+.who b{display:block;font-size:.94rem} .who span{color:var(--muted);font-size:.84rem}
+
+/* contacto */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+@media(max-width:860px){.cgrid{grid-template-columns:1fr;gap:34px}}
+form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px}
+label{display:block;font-size:.89rem;font-weight:600;margin-bottom:6px;color:var(--brown-d)}
+input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:9px;
+  font:inherit;font-size:.95rem;margin-bottom:17px;background:var(--cream);color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--brown);outline-offset:-1px;background:#fff}
+textarea{resize:vertical;min-height:92px}
+button.send{width:100%;background:var(--brown);color:#fff;border:none;font:inherit;font-weight:600;
+  font-size:1rem;padding:14px;border-radius:10px;cursor:pointer}
+button.send:hover{background:var(--brown-d)}
+.ok{display:none;background:#e9f7ea;border:1px solid #b9e0bc;color:#1f6b28;padding:15px;
+  border-radius:10px;margin-bottom:17px;font-size:.94rem}
+.ok.show{display:block}
+.cinfo li{list-style:none;display:flex;gap:14px;margin-bottom:22px;align-items:flex-start}
+.cinfo .ic{width:44px;height:44px;flex-shrink:0;border-radius:11px;background:#f4e9db;
+  display:grid;place-items:center;font-size:1.2rem}
+.cinfo b{display:block;margin-bottom:2px} .cinfo span{color:var(--muted);font-size:.94rem}
+
+footer{background:var(--brown-d);color:#fff;padding:50px 0 30px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;margin-bottom:32px}
+footer h5{font-size:.83rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:13px}
+footer p,footer li{opacity:.76;font-size:.93rem;list-style:none;margin-bottom:7px}
+.fbot{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;opacity:.6;font-size:.86rem}
+
+.float{position:fixed;right:18px;bottom:18px;width:57px;height:57px;border-radius:50%;background:#25d366;
+  display:grid;place-items:center;box-shadow:0 6px 22px rgba(0,0,0,.3);z-index:120}
+.float svg{width:30px;height:30px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<div class="demobar">
+  <a href="../index.html">← Volver al catálogo</a>
+  <span class="lvl"><b>Nivel 2 · Completa</b> — $1.200.000 · varias secciones, galería y formulario</span>
+  <button onclick="document.body.classList.toggle('nobar')">Ocultar esta barra</button>
+</div>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span>🪵</span> Maderas del Roble</div>
+    <a class="link" href="#servicios">Servicios</a>
+    <a class="link" href="#trabajos">Trabajos</a>
+    <a class="link" href="#proceso">Cómo trabajamos</a>
+    <a class="link" href="#opiniones">Opiniones</a>
+    <a class="btn-nav" href="#contacto">Pedir presupuesto</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-in">
+      <span class="kicker">Carpintería artesanal · desde 2009</span>
+      <h1>La madera bien trabajada dura toda la vida</h1>
+      <p>Closets, cocinas integrales y muebles a la medida. Cada pieza sale de nuestro taller
+         en Bogotá, hecha a mano y ajustada a su espacio.</p>
+      <div class="hero-btns">
+        <a class="b1" href="#contacto">Pedir presupuesto gratis</a>
+        <a class="b2" href="#trabajos">Ver nuestros trabajos</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>15+</b><span>años de experiencia</span></div>
+    <div class="stat"><b>640</b><span>muebles entregados</span></div>
+    <div class="stat"><b>4.9</b><span>calificación promedio</span></div>
+    <div class="stat"><b>2</b><span>años de garantía</span></div>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="kick">Lo que hacemos</span>
+      <h2>Tres especialidades, un mismo oficio</h2>
+      <p>Trabajamos madera maciza, aglomerado y melamina. Medimos en su casa, diseñamos con usted
+         y entregamos instalado.</p>
+    </div>
+    <div class="svcs">
+      <article class="svc reveal">
+        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&q=80" alt="Closet de madera" loading="lazy">
+        <div class="in">
+          <h3>Closets y vestieres</h3>
+          <p>Aprovechamos cada centímetro: entrepaños, cajones, zapatera y barras a la altura que usted necesita.</p>
+          <div class="from">Desde $1.800.000</div>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Cocina integral" loading="lazy">
+        <div class="in">
+          <h3>Cocinas integrales</h3>
+          <p>Muebles altos y bajos, mesón, cajonería con rieles suaves y herrajes que aguantan el uso diario.</p>
+          <div class="from">Desde $3.200.000</div>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80" alt="Mesa de madera" loading="lazy">
+        <div class="in">
+          <h3>Muebles a pedido</h3>
+          <p>Mesas de comedor, camas, bibliotecas, escritorios y barras. Si lo dibuja, lo hacemos.</p>
+          <div class="from">Desde $650.000</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="trabajos" style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="kick">Galería</span>
+      <h2>Trabajos que hemos entregado</h2>
+      <p>Use los botones para ver solo lo que le interesa.</p>
+    </div>
+
+    <div class="filters">
+      <button class="on" data-f="todos">Todos</button>
+      <button data-f="closet">Closets</button>
+      <button data-f="cocina">Cocinas</button>
+      <button data-f="mueble">Muebles</button>
+    </div>
+
+    <div class="gal" id="gal">
+      <figure data-c="cocina"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="" loading="lazy"><figcaption>Cocina en roble · Chapinero</figcaption></figure>
+      <figure data-c="closet"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=700&q=80" alt="" loading="lazy"><figcaption>Vestier a la medida · Usaquén</figcaption></figure>
+      <figure data-c="mueble"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80" alt="" loading="lazy"><figcaption>Mesa de comedor para 8 · Suba</figcaption></figure>
+      <figure data-c="mueble"><img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=700&q=80" alt="" loading="lazy"><figcaption>Biblioteca en pino · Teusaquillo</figcaption></figure>
+      <figure data-c="cocina"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80" alt="" loading="lazy"><figcaption>Isla central con mesón · Cedritos</figcaption></figure>
+      <figure data-c="closet"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80" alt="" loading="lazy"><figcaption>Closet de puertas corredizas · Modelia</figcaption></figure>
+      <figure data-c="mueble"><img src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=700&q=80" alt="" loading="lazy"><figcaption>Escritorio en nogal · Chicó</figcaption></figure>
+      <figure data-c="cocina"><img src="https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=700&q=80" alt="" loading="lazy"><figcaption>Cocina blanca con madera · Salitre</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="proceso" style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="kick">Cómo trabajamos</span>
+      <h2>De la idea al mueble instalado</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h4>Visita y medidas</h4><p>Vamos a su casa, medimos el espacio y escuchamos qué necesita. Sin costo.</p></div>
+      <div class="step reveal"><h4>Diseño y presupuesto</h4><p>Le mostramos cómo quedaría y le pasamos el precio por escrito. Usted decide con calma.</p></div>
+      <div class="step reveal"><h4>Fabricación</h4><p>Su mueble se hace en nuestro taller. Entre 15 y 25 días según el tamaño.</p></div>
+      <div class="step reveal"><h4>Instalación</h4><p>Lo llevamos e instalamos nosotros mismos. Dejamos todo limpio y funcionando.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tsec" id="opiniones">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="kick">Opiniones</span>
+      <h2>Lo que dicen nuestros clientes</h2>
+    </div>
+    <div class="tests">
+      <div class="test reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Nos hicieron la cocina completa. Llegaron el día que dijeron, trabajaron limpio y el
+           acabado quedó mejor de lo que esperábamos."</p>
+        <div class="who"><div class="av">MR</div><div><b>Marcela Rodríguez</b><span>Cocina integral · Chapinero</span></div></div>
+      </div>
+      <div class="test reveal">
+        <div class="stars">★★★★★</div>
+        <p>"El closet aprovechó un rincón que creíamos perdido. Don Jairo midió con una paciencia
+           tremenda y quedó perfecto."</p>
+        <div class="who"><div class="av">AG</div><div><b>Andrés Gómez</b><span>Vestier · Usaquén</span></div></div>
+      </div>
+      <div class="test reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Ya les he encargado tres muebles. Cumplen, cobran lo justo y la madera es de verdad
+           buena. No busco en otro lado."</p>
+        <div class="who"><div class="av">LP</div><div><b>Luz Patricia Mena</b><span>Muebles varios · Suba</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="cgrid">
+      <div>
+        <div class="head">
+          <span class="kick">Contacto</span>
+          <h2>Pida su presupuesto</h2>
+          <p>Déjenos sus datos y lo llamamos el mismo día. La visita y el presupuesto no tienen costo.</p>
+        </div>
+        <ul class="cinfo">
+          <li><div class="ic">📍</div><div><b>El taller</b><span>Carrera 00 #00-00, Bogotá</span></div></li>
+          <li><div class="ic">📞</div><div><b>Teléfono y WhatsApp</b><span>300 000 0000</span></div></li>
+          <li><div class="ic">🕗</div><div><b>Horario</b><span>Lunes a sábado, 8:00 a.m. – 6:00 p.m.</span></div></li>
+        </ul>
+      </div>
+
+      <form onsubmit="event.preventDefault();document.getElementById('ok').classList.add('show');this.reset();">
+        <div class="ok" id="ok">✓ ¡Listo! Su mensaje fue enviado. Lo contactamos hoy mismo.</div>
+        <label for="n">Su nombre</label>
+        <input id="n" required placeholder="Nombre y apellido">
+        <label for="t">Teléfono</label>
+        <input id="t" required placeholder="300 000 0000">
+        <label for="s">¿Qué necesita?</label>
+        <select id="s">
+          <option>Closet o vestier</option>
+          <option>Cocina integral</option>
+          <option>Mueble a pedido</option>
+          <option>Todavía no estoy seguro</option>
+        </select>
+        <label for="m">Cuéntenos un poco más</label>
+        <textarea id="m" placeholder="Por ejemplo: quiero un closet de 2 metros para la habitación principal"></textarea>
+        <button class="send" type="submit">Enviar y que me contacten</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="logo" style="color:#fff;margin-bottom:12px"><span>🪵</span> Maderas del Roble</div>
+        <p>Carpintería artesanal en Bogotá desde 2009. Muebles que duran, hechos a la medida.</p>
+      </div>
+      <div><h5>Servicios</h5><ul><li>Closets y vestieres</li><li>Cocinas integrales</li><li>Muebles a pedido</li><li>Reparaciones</li></ul></div>
+      <div><h5>Contacto</h5><ul><li>Carrera 00 #00-00</li><li>300 000 0000</li><li>hola@maderasdelroble.co</li></ul></div>
+      <div><h5>Horario</h5><ul><li>Lunes a viernes: 8 a.m. – 6 p.m.</li><li>Sábado: 8 a.m. – 2 p.m.</li><li>Domingo: cerrado</li></ul></div>
+    </div>
+    <div class="fbot">© 2026 Maderas del Roble · Ejemplo de demostración, negocio ficticio</div>
+  </div>
+</footer>
+
+<a class="float" href="#contacto" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2"/></svg>
+</a>
+
+<script>
+// Filtros de la galería
+document.querySelectorAll(".filters button").forEach(function(b){
+  b.addEventListener("click",function(){
+    document.querySelectorAll(".filters button").forEach(function(x){x.classList.remove("on")});
+    b.classList.add("on");
+    var f=b.dataset.f;
+    document.querySelectorAll("#gal figure").forEach(function(fig){
+      fig.classList.toggle("hide", f!=="todos" && fig.dataset.c!==f);
+    });
+  });
+});
+// Aparecer al bajar
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+</script>
+
+</body>
+</html>

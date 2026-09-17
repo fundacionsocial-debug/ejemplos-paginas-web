@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maderas del Roble — Carpintería (ejemplo nivel 1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--brown:#6b4423;--brown-d:#4a2f18;--cream:#faf6f0;--ink:#2a1f16;--muted:#7a6a5a;--line:#e5dad0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.65}
+img{max-width:100%;display:block}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* barra de demostración */
+.demobar{position:sticky;top:0;z-index:99;background:#100e0c;color:#f6f1ea;display:flex;
+  align-items:center;gap:14px;padding:9px 16px;font-size:.86rem;flex-wrap:wrap}
+.demobar a,.demobar button{color:#f0b271;background:none;border:1px solid #332b24;font:inherit;
+  padding:5px 12px;border-radius:7px;cursor:pointer;text-decoration:none}
+.demobar a:hover,.demobar button:hover{background:#241f1a}
+.demobar .lvl{margin-right:auto;color:#a89b8d}
+.demobar .lvl b{color:#f6f1ea}
+body.nobar .demobar{display:none}
+
+header.top{background:#fff;border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.12rem;color:var(--brown-d)}
+.logo span{width:34px;height:34px;border-radius:9px;background:var(--brown);color:#fff;
+  display:grid;place-items:center;font-size:1.05rem}
+header.top .tel{color:var(--muted);font-size:.93rem}
+
+.hero{position:relative;min-height:440px;display:grid;place-items:center;text-align:center;color:#fff;
+  background:linear-gradient(rgba(42,31,22,.62),rgba(42,31,22,.72)),
+    url("https://images.unsplash.com/photo-1503602642458-232111445657?w=1500&q=80") center/cover}
+.hero h1{font-size:clamp(1.9rem,5.5vw,3rem);line-height:1.15;font-weight:700;margin-bottom:14px}
+.hero p{font-size:1.08rem;opacity:.93;max-width:520px;margin:0 auto 26px}
+.cta{display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#08320f;font-weight:600;
+  padding:14px 26px;border-radius:10px;text-decoration:none;font-size:1rem}
+.cta:hover{filter:brightness(1.08)}
+
+section{padding:60px 0}
+h2{font-size:1.7rem;font-weight:700;margin-bottom:10px;color:var(--brown-d)}
+.sub{color:var(--muted);margin-bottom:34px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px}
+.item .ic{width:46px;height:46px;border-radius:11px;background:#f3e9dd;color:var(--brown);
+  display:grid;place-items:center;font-size:1.4rem;margin-bottom:14px}
+.item h3{font-size:1.1rem;margin-bottom:7px}
+.item p{color:var(--muted);font-size:.94rem}
+
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.gal img{aspect-ratio:1;object-fit:cover;border-radius:11px}
+
+.band{background:var(--brown-d);color:#fff;text-align:center;padding:56px 20px}
+.band h2{color:#fff}
+.band p{opacity:.85;margin-bottom:24px}
+
+footer{background:#fff;border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.float{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:#25d366;
+  display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.28);z-index:50}
+.float svg{width:29px;height:29px;fill:#fff}
+</style>
+</head>
+<body>
+
+<div class="demobar">
+  <a href="../index.html">← Volver al catálogo</a>
+  <span class="lvl"><b>Nivel 1 · Sencilla</b> — $600.000 · una sola página</span>
+  <button onclick="document.body.classList.toggle('nobar')">Ocultar esta barra</button>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo"><span>🪵</span> Maderas del Roble</div>
+    <div class="tel">📞 300 000 0000</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Muebles de madera<br>hechos a la medida</h1>
+    <p>Más de 15 años haciendo closets, cocinas y muebles para las casas del barrio.</p>
+    <a class="cta" href="#contacto">💬 Escríbenos por WhatsApp</a>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Qué hacemos</h2>
+    <p class="sub">Trabajamos madera maciza y aglomerado, a la medida de su espacio.</p>
+    <div class="cols">
+      <div class="item">
+        <div class="ic">🚪</div>
+        <h3>Closets y armarios</h3>
+        <p>Diseñados para el espacio que tenga, con puertas corredizas o abatibles.</p>
+      </div>
+      <div class="item">
+        <div class="ic">🍳</div>
+        <h3>Cocinas integrales</h3>
+        <p>Muebles altos y bajos, mesones y cajonería, con acabados que duran.</p>
+      </div>
+      <div class="item">
+        <div class="ic">🪑</div>
+        <h3>Muebles a pedido</h3>
+        <p>Mesas, camas, bibliotecas y escritorios. Usted lo imagina, nosotros lo hacemos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Algunos trabajos</h2>
+    <p class="sub">Una muestra de lo que hemos entregado.</p>
+    <div class="gal">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Cocina de madera" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&q=80" alt="Mueble de madera" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Sala con muebles" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80" alt="Mesa de madera" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<div class="band" id="contacto">
+  <h2>¿Tiene un proyecto en mente?</h2>
+  <p>Cuéntenos qué necesita y le damos un presupuesto sin compromiso.</p>
+  <a class="cta" href="#contacto">💬 Hablar por WhatsApp</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Maderas del Roble</strong> · Carrera 00 #00-00, Bogotá</div>
+    <div>Lunes a sábado, 8:00 a.m. – 6:00 p.m.</div>
+  </div>
+</footer>
+
+<a class="float" href="#contacto" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2"/></svg>
+</a>
+
+</body>
+</html>
