@@ -181,6 +181,19 @@ table{width:100%;border-collapse:collapse;min-width:720px}
 footer{background:var(--brown-d);color:#fff;padding:40px 0;text-align:center;opacity:.9;font-size:.9rem}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
+
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,160%);z-index:400;
+  background:#1c2429;color:#e6ebef;border:1px solid #33404a;border-radius:15px;padding:20px 24px;
+  max-width:470px;width:calc(100% - 36px);box-shadow:0 20px 55px rgba(0,0,0,.45);
+  transition:transform .5s cubic-bezier(.2,1.2,.4,1)}
+.toast.on{transform:translate(-50%,0)}
+.toast b{display:block;color:#7dc47f;margin-bottom:6px;font-size:1.02rem}
+.toast p{font-size:.92rem;color:#9fb0bd;line-height:1.55}
+.toast .acts{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
+.toast button{background:var(--gold);color:#2a1a06;border:none;font:inherit;font-weight:600;
+  font-size:.9rem;padding:11px 18px;border-radius:9px;cursor:pointer}
+.toast button.sec{background:none;border:1px solid #33404a;color:#9fb0bd}
+.toast button:hover{filter:brightness(1.08)}
 </style>
 </head>
 <body>
@@ -317,6 +330,15 @@ footer{background:var(--brown-d);color:#fff;padding:40px 0;text-align:center;opa
   <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2"/></svg>
 </a>
 
+<div class="toast" id="toast">
+  <b id="tt"></b>
+  <p id="tm"></p>
+  <div class="acts">
+    <button onclick="hideToast();openAdmin()">🔐 Ver el panel del dueño</button>
+    <button class="sec" onclick="hideToast()">Seguir viendo</button>
+  </div>
+</div>
+
 <!-- ================= PANEL DEL DUEÑO ================= -->
 <div class="adminwrap adm" id="adminwrap">
   <div class="adm-top">
@@ -438,9 +460,18 @@ function enviarCot(){
   COTS.unshift({c:"Cliente de la demostración", t:d.tipo, m:d.metros+" m", mat:d.material,
                 v:d.total, s:"new", mio:true});
   pintar();
-  alert("✓ Cotización enviada.\n\nAhora oprima arriba «Ver el panel del dueño»:\nsu cotización por "
-        + pesos(d.total) + " ya quedó registrada allá.");
+  toast("✓ Cotización enviada",
+        "Su solicitud por <b style='color:#e0b56a'>"+pesos(d.total)+"</b> ya entró al sistema. "+
+        "El dueño la ve al instante, con el mueble, la medida y el material — sin que nadie "+
+        "tuviera que contestar el teléfono.");
 }
+function toast(t,m){
+  document.getElementById("tt").textContent=t;
+  document.getElementById("tm").innerHTML=m;
+  document.getElementById("toast").classList.add("on");
+  clearTimeout(window._tt); window._tt=setTimeout(hideToast,12000);
+}
+function hideToast(){ document.getElementById("toast").classList.remove("on"); }
 
 /* ---------- AGENDA ---------- */
 var DIAS=[{n:18,d:"Jue"},{n:19,d:"Vie"},{n:20,d:"Sáb"},{n:22,d:"Lun"}];
@@ -497,6 +528,7 @@ var io=new IntersectionObserver(function(es){
   es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
 },{threshold:.1});
 document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+setTimeout(function(){document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in")})},1600);
 </script>
 
 </body>
