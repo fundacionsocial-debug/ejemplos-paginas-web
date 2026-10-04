@@ -10,10 +10,10 @@
 <script>(function(){var e;try{e=window.self!==window.top}catch(x){e=true}if(e)document.documentElement.className+=" en-catalogo"})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Big+Shoulders+Stencil+Display:wght@800&family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="../assets/img/casa-anochecer-1600.webp" imagesrcset="../assets/img/casa-anochecer-800.webp 800w, ../assets/img/casa-anochecer-1600.webp 1600w" imagesizes="100vw">
-<link rel="stylesheet" href="nivel-3/estilo.css?v=7">
-<link rel="stylesheet" href="nivel-3/panel.css?v=7">
+<link rel="stylesheet" href="nivel-3/estilo.css?v=10">
+<link rel="stylesheet" href="nivel-3/panel.css?v=10">
 </head>
 <body class="intro-activa">
 
@@ -33,7 +33,7 @@
       <path d="M210 70V48H228V82" />
     </svg>
     <div class="intro-marca"><span>G</span><span>U</span><span>A</span><span>Y</span><span>A</span><span>C</span><span>Á</span><span>N</span></div>
-    <div class="intro-sub">Madera y obra</div>
+    <div class="intro-sub">Madera y obra · Chía</div>
     <div class="intro-cuenta"><span id="intro-n">0</span>%</div>
   </div>
 </div>
@@ -51,7 +51,7 @@
 <header class="nav" id="nav">
   <a class="logo" href="#inicio" aria-label="Guayacán, inicio">
     <svg viewBox="-20 -20 40 40" class="anillos-logo"><circle r="3.4" cx=".5" cy="-.4"/><circle r="7.4" cx=".2" cy="-.1"/><circle r="11.6" cx="-.2" cy=".3"/><circle r="15.6" cx="0" cy="0" class="tenue"/></svg>
-    <span>GUAYACÁN</span>
+    <span class="marca-plantilla">GUAYACÁN</span>
   </a>
   <nav>
     <a href="#disenar">Diseñar un mueble</a>
@@ -66,8 +66,7 @@
 <section class="portada" id="inicio">
   <div class="portada-foto"><img src="../assets/img/casa-anochecer-1600.webp" srcset="../assets/img/casa-anochecer-800.webp 800w, ../assets/img/casa-anochecer-1600.webp 1600w" sizes="100vw" alt="Casa en madera iluminada al anochecer"></div>
   <div class="portada-contenido">
-    <span class="kicker"><i></i> Carpintería · Construcción · Diseño</span>
-    <h1 class="titular-grande"><span class="ln"><span>Del plano</span></span><span class="ln"><span><em>a su casa.</em></span></span></h1>
+    <h1 class="titular-grande"><span class="ln"><span>Del plano</span></span><span class="ln"><span>a su casa.</span></span></h1>
     <p class="portada-lema">Diseñe su mueble y vea el precio al instante. Calcule su obra. Agende la visita.
        Y cuando estemos construyendo, siga el avance desde su celular.</p>
     <div class="portada-botones">
@@ -85,13 +84,12 @@
 <section class="plano-obra" id="plano">
   <div class="plano-pegado">
     <div class="plano-textos">
-      <span class="etiqueta">Cómo trabajamos</span>
-      <div class="plano-paso on" data-paso="0"><span class="num">01</span><h2>Lo dibujamos <em>con usted.</em></h2><p>Cada proyecto empieza en papel. Usted ve medidas, materiales y precio antes de que se corte una sola tabla.</p></div>
-      <div class="plano-paso" data-paso="1"><span class="num">02</span><h2>Lo calculamos <em>al centavo.</em></h2><p>El precio sale de la página misma: el cliente lo arma y lo ve, sin esperar a que alguien conteste.</p></div>
-      <div class="plano-paso" data-paso="2"><span class="num">03</span><h2>Lo construimos <em>y lo ve crecer.</em></h2><p>Fotos y avance de cada etapa, en el celular del cliente, todos los días.</p></div>
+      <div class="plano-paso on" data-paso="0"><span class="num">01</span><h2>Lo dibujamos con usted.</h2><p>Cada proyecto empieza en papel. Usted ve medidas, materiales y precio antes de que se corte una sola tabla.</p></div>
+      <div class="plano-paso" data-paso="1"><span class="num">02</span><h2>Lo calculamos al centavo.</h2><p>El precio sale de la página misma: el cliente lo arma y lo ve, sin esperar a que alguien conteste.</p></div>
+      <div class="plano-paso" data-paso="2"><span class="num">03</span><h2>Lo construimos y usted lo ve crecer.</h2><p>Fotos y avance de cada etapa, en el celular del cliente, todos los días.</p></div>
     </div>
     <div class="plano-lienzo">
-      <img src="../assets/img/casa-montana-1600.webp" alt="Casa en madera terminada" class="plano-foto" id="plano-foto" loading="lazy">
+      <img src="../assets/img/casa-sabana-1600.webp" alt="Casa en madera terminada" class="plano-foto" id="plano-foto" loading="lazy">
       <svg class="plano-svg" id="plano-svg" viewBox="0 0 800 520" preserveAspectRatio="xMidYMid slice"></svg>
       <div class="plano-medidor"><span id="plano-pct">0</span>% construido</div>
     </div>
@@ -102,15 +100,14 @@
 <section class="seccion" id="disenar">
   <div class="envoltura">
     <div class="cabeza-seccion rev">
-      <span class="etiqueta">Diseñador en vivo</span>
-      <h2>Diseñe su mueble. <em>Vea el precio mientras lo arma.</em></h2>
+      <h2>Diseñe su mueble y vea el precio mientras lo arma.</h2>
       <p>Escoja la pieza, la madera y la medida. El dibujo y el precio cambian solos, a cualquier hora, sin llamar a nadie.</p>
     </div>
     <div class="disenador rev">
       <div class="escenario" id="escenario">
         <div class="escenario-ficha" id="ficha">Cama doble · Nogal · Aceite natural</div>
         <svg id="mueble-svg" viewBox="0 0 900 560" role="img" aria-label="Dibujo del mueble"></svg>
-        <div class="escenario-precio"><span class="etiqueta">Precio estimado</span><b id="precio-escenario">$0</b><small id="semanas-escenario">Listo en 3 semanas</small></div>
+        <div class="escenario-precio"><span class="rotulo">Precio estimado</span><b id="precio-escenario">$0</b><small id="semanas-escenario">Listo en 3 semanas</small></div>
       </div>
       <div class="controles" id="controles">
         <div class="control">
@@ -134,7 +131,7 @@
           <div class="extras" id="extras"></div>
         </div>
         <div class="resumen">
-          <div><span class="etiqueta">Total estimado</span><b class="total" id="total">$0</b><small id="total-nota">Se confirma en la visita de medición</small></div>
+          <div><span class="rotulo">Total estimado</span><b class="total" id="total">$0</b><small id="total-nota">Se confirma en la visita de medición</small></div>
           <button class="boton-oro" id="enviar-cotizacion"><span>Enviar esta cotización</span><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
         </div>
       </div>
@@ -146,8 +143,7 @@
 <section class="seccion seccion-obra" id="obra">
   <div class="envoltura">
     <div class="cabeza-seccion rev">
-      <span class="etiqueta">Calculadora de obra</span>
-      <h2>¿Cuánto cuesta construir? <em>Véalo antes de preguntar.</em></h2>
+      <h2>¿Cuánto cuesta construir? Véalo antes de preguntar.</h2>
       <p>Una idea clara de precio y tiempo, con el cronograma por etapas. Después lo afinamos en la visita.</p>
     </div>
     <div class="calculadora rev">
@@ -179,8 +175,8 @@
           <div class="casa-etapa" id="casa-etapa"></div>
         </div>
         <div class="calc-cifras">
-          <div><span class="etiqueta">Precio aproximado</span><b id="obra-precio">$0</b><small id="obra-rango"></small></div>
-          <div><span class="etiqueta">Tiempo de obra</span><b id="obra-semanas">0</b><small id="obra-meses"></small></div>
+          <div><span class="rotulo">Precio aproximado</span><b id="obra-precio">$0</b><small id="obra-rango"></small></div>
+          <div><span class="rotulo">Tiempo de obra</span><b id="obra-semanas">0</b><small id="obra-meses"></small></div>
         </div>
         <div class="cronograma" id="cronograma"></div>
         <a class="boton-oro" href="#agenda" id="quiero-obra"><span>Quiero una visita para esta obra</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -193,8 +189,7 @@
 <section class="seccion" id="agenda">
   <div class="envoltura">
     <div class="cabeza-seccion rev">
-      <span class="etiqueta">Agenda en línea</span>
-      <h2>Aparte su visita. <em>Le confirmamos por WhatsApp.</em></h2>
+      <h2>Aparte su visita. Le confirmamos por WhatsApp.</h2>
       <p>Las horas ocupadas ya aparecen bloqueadas. La visita de medición no tiene costo.</p>
     </div>
     <div class="agenda rev" id="agenda-caja">
@@ -226,8 +221,8 @@
 <section class="seccion seccion-mi-obra" id="mi-obra">
   <div class="envoltura mi-obra">
     <div class="mi-obra-texto rev">
-      <span class="etiqueta">Para quien ya es cliente</span>
-      <h2>Siga su obra <em>desde el celular.</em></h2>
+      <p class="para-quien">Para quien ya es cliente</p>
+      <h2>Siga su obra desde el celular.</h2>
       <p>Cada cliente recibe un código. Con él ve en qué etapa va su casa, las fotos de cada día y cuándo es la próxima visita.
          Nadie tiene que llamar a preguntar.</p>
       <form class="codigo" id="codigo-form">
@@ -248,7 +243,7 @@
 <section class="seccion" id="proyectos">
   <div class="envoltura">
     <div class="cabeza-seccion fila rev">
-      <div><span class="etiqueta">Proyectos</span><h2>Hecho por nosotros, <em>de principio a fin.</em></h2></div>
+      <div><h2>Hecho por nosotros, de principio a fin.</h2></div>
       <div class="flechas"><button id="pf-izq" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button><button id="pf-der" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button></div>
     </div>
   </div>
@@ -271,7 +266,7 @@
 
 <footer class="pie">
   <div class="envoltura pie-fila">
-    <a class="logo" href="#inicio"><svg viewBox="-20 -20 40 40" class="anillos-logo"><circle r="3.4" cx=".5" cy="-.4"/><circle r="7.4" cx=".2" cy="-.1"/><circle r="11.6" cx="-.2" cy=".3"/><circle r="15.6" class="tenue"/></svg><span>GUAYACÁN</span></a>
+    <a class="logo" href="#inicio"><svg viewBox="-20 -20 40 40" class="anillos-logo"><circle r="3.4" cx=".5" cy="-.4"/><circle r="7.4" cx=".2" cy="-.1"/><circle r="11.6" cx="-.2" cy=".3"/><circle r="15.6" class="tenue"/></svg><span class="marca-plantilla">GUAYACÁN</span></a>
     <span>Taller en Chía · Carrera 00 # 00-00 · 300 000 0000</span>
     <span>© 2026 · Ejemplo de demostración, negocio ficticio</span>
   </div>
@@ -283,7 +278,6 @@
 <div class="velo" id="velo-cotizar">
   <form class="ventana" id="form-cotizar" novalidate>
     <button type="button" class="ventana-cerrar" data-cerrar aria-label="Cerrar">×</button>
-    <span class="etiqueta">Enviar cotización</span>
     <h3 id="vc-titulo">Cama doble en nogal</h3>
     <p class="vc-precio" id="vc-precio">$0</p>
     <div class="campo"><input id="c-nombre" placeholder=" " autocomplete="off"><label for="c-nombre">Su nombre</label></div>
@@ -346,8 +340,8 @@
   </div>
 </div>
 
-<script src="nivel-3/dibujos.js?v=7"></script>
-<script src="nivel-3/panel.js?v=7"></script>
-<script src="nivel-3/app.js?v=7"></script>
+<script src="nivel-3/dibujos.js?v=10"></script>
+<script src="nivel-3/panel.js?v=10"></script>
+<script src="nivel-3/app.js?v=10"></script>
 </body>
 </html>

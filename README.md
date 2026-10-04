@@ -42,6 +42,20 @@ construcción en madera) hecho a tres presupuestos distintos, para que la difere
      acaba de hacer, resaltado en oro con la etiqueta «Usted»
 6. Cerrar con la pastelería, para dejar claro que no es una plantilla repetida.
 
+## La identidad de Guayacán (ajuste del 4 oct 2026)
+
+Los tres niveles comparten la marca del negocio, como pasaría en la vida real; lo que cambia
+es cuánto trabajo hace la página.
+- **Letras:** Big Shoulders Display (letrero de obra) para títulos, su versión de plantilla
+  (Big Shoulders Stencil) solo para el nombre GUAYACÁN, y Schibsted Grotesk para leer.
+  El nivel 1 conserva Barlow Condensed, como plantilla económica que es.
+- **Colores:** grafito `#1c1b19`, gris cal `#f3f2ee` (nivel 2), nogal oscuro `#15110d`
+  (nivel 3) y un solo acento: el amarillo de la cinta métrica `#f2b41b`.
+- **Fuera a propósito:** crema con terracota, cursivas doradas de adorno, etiquetas en
+  mayúsculas espaciadas, texto con degradado, grano y vidrio de más, cifras que cuentan,
+  esquinas de app, fotos de atardecer y rayos de luz.
+- El catálogo conserva la marca de GEMB (League Spartan, Glacial y oro), sin esas muletillas.
+
 ## Notas técnicas
 
 - HTML, CSS y JavaScript puros. Sin dependencias, sin compilación, sin servidor.

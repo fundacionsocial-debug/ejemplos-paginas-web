@@ -9,12 +9,12 @@
 <script>(function(){var e;try{e=window.self!==window.top}catch(x){e=true}if(e)document.documentElement.className+=" en-catalogo"})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Stencil+Display:wght@800&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --papel:#f5f0e6;--papel-2:#ebe3d3;--blanco:#fffdf8;--tinta:#22180f;--tinta-2:#4b3d30;--gris:#7c6e60;--linea:#ddd1bd;
-  --madera:#6b4425;--tierra:#a8552a;--tierra-2:#c26a3a;--bosque:#2e4638;--wa:#25d366;
-  --serif:"Young Serif",Georgia,serif;--sans:"Instrument Sans",system-ui,sans-serif;
+  --papel:#f3f2ee;--papel-2:#e7e5df;--blanco:#ffffff;--tinta:#1c1b19;--tinta-2:#3c3a36;--gris:#5d5850;--linea:#d9d6ce;
+  --madera:#6b4425;--tierra:#f2b41b;--tierra-2:#f6c447;--bosque:#1c1b19;--grafito:#1c1b19;--wa:#25d366;
+  --serif:"Big Shoulders Display","Arial Narrow",sans-serif;--sans:"Schibsted Grotesk",system-ui,sans-serif;--plantilla:"Big Shoulders Stencil Display","Big Shoulders Display",sans-serif;
   --suave:cubic-bezier(.22,1,.36,1)
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -24,7 +24,7 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .env{max-width:1200px;margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--serif);font-weight:800;line-height:.98;letter-spacing:0}
 .antetitulo{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--tierra)}
 .antetitulo::before{content:"";width:26px;height:1.5px;background:currentColor}
 
@@ -38,20 +38,20 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacin
 .menu{position:fixed;left:0;right:0;top:0;z-index:100;transition:background .4s,box-shadow .4s,padding .4s,color .4s;color:#fff;padding:20px 0}
 body:not(.sin-barra) .menu{top:var(--alto-barra,0px)}
 .en-catalogo .menu{top:0!important}
-.menu.solido{background:rgba(245,240,230,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--linea);color:var(--tinta);padding:12px 0}
+.menu.solido{background:rgba(243,242,238,.95);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--linea);color:var(--tinta);padding:12px 0}
 .menu .env{display:flex;align-items:center;gap:28px}
 .marca{display:flex;align-items:center;gap:11px;margin-right:auto}
 .marca svg{width:40px;height:40px;transition:transform .8s var(--suave)}
 .marca:hover svg{transform:rotate(-30deg)}
-.marca b{display:block;font-family:var(--serif);font-size:1.45rem;line-height:1}
+.marca b{display:block;font-family:var(--plantilla);font-weight:800;font-size:1.3rem;letter-spacing:.1em;line-height:1}
 .marca small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
 .menu nav{display:flex;gap:26px}
 .menu nav a{font-size:.95rem;font-weight:500;position:relative;padding:4px 0;opacity:.9}
 .menu nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .4s var(--suave)}
 .menu nav a:hover::after,.menu nav a.aqui::after{transform:scaleX(1);transform-origin:left}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:.97rem;transition:transform .3s var(--suave),background .3s,box-shadow .3s,color .3s}
-.btn-tierra{background:var(--tierra);color:#fff;box-shadow:0 10px 24px -12px rgba(168,85,42,.8)}
-.btn-tierra:hover{background:var(--tierra-2);transform:translateY(-2px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 22px;border-radius:6px;font-weight:600;font-size:.97rem;transition:transform .3s var(--suave),background .3s,box-shadow .3s,color .3s}
+.btn-tierra{background:var(--tierra);color:var(--grafito);box-shadow:none}
+.btn-tierra:hover{background:var(--tierra-2)}
 .btn-borde{border:1.5px solid currentColor}
 .btn-borde:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
 .btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -64,7 +64,7 @@ body:not(.sin-barra) .menu{top:var(--alto-barra,0px)}
 .menu-abierto .hamburguesa span::after{transform:translateY(-7px) rotate(-45deg)}
 .cajon{position:fixed;inset:0;z-index:90;background:var(--bosque);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 34px;clip-path:circle(0 at calc(100% - 46px) 46px);transition:clip-path .7s var(--suave)}
 .menu-abierto .cajon{clip-path:circle(150% at calc(100% - 46px) 46px)}
-.cajon a{font-family:var(--serif);font-size:2.3rem;padding:8px 0;opacity:0;transform:translateY(18px);transition:opacity .5s,transform .6s var(--suave)}
+.cajon a{font-family:var(--serif);font-weight:800;font-size:2.6rem;padding:8px 0;opacity:0;transform:translateY(18px);transition:opacity .5s,transform .6s var(--suave)}
 .menu-abierto .cajon a{opacity:1;transform:none}
 .menu-abierto .cajon a:nth-child(2){transition-delay:.06s}.menu-abierto .cajon a:nth-child(3){transition-delay:.12s}.menu-abierto .cajon a:nth-child(4){transition-delay:.18s}.menu-abierto .cajon a:nth-child(5){transition-delay:.24s}
 .menu-abierto .menu{color:#fff;background:transparent;box-shadow:none}
@@ -72,13 +72,13 @@ body:not(.sin-barra) .menu{top:var(--alto-barra,0px)}
 
 /* ─── Portada ─── */
 .portada{position:relative;min-height:92vh;min-height:92svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;isolation:isolate}
-.portada .foto{position:absolute;inset:0;z-index:-2;background:url("../assets/img/casa-montana-1600.webp") center 60%/cover;animation:acercar 22s ease-out both}
+.portada .foto{position:absolute;inset:0;z-index:-2;background:url("../assets/img/casa-sabana-1600.webp") center 55%/cover;animation:acercar 22s ease-out both}
 @keyframes acercar{from{transform:scale(1.14)}to{transform:scale(1)}}
 .portada::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,12,6,.45) 0%,rgba(18,12,6,.05) 35%,rgba(18,12,6,.25) 60%,rgba(18,12,6,.82) 100%)}
 .portada .env{width:100%;padding-bottom:40px;padding-top:140px}
 .portada .antetitulo{color:#f6d3ad;text-shadow:0 1px 12px rgba(0,0,0,.55)}
 .portada h1,.portada p.lema{text-shadow:0 2px 24px rgba(0,0,0,.35)}
-.portada h1{font-size:clamp(2.6rem,7vw,5.4rem);max-width:13ch;margin:18px 0 18px}
+.portada h1{font-size:clamp(3rem,7vw,5.8rem);max-width:15ch;margin:0 0 18px}
 .palabra{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
 .palabra>span{display:inline-block;transform:translateY(110%);animation:emerge 1s var(--suave) forwards}
 @keyframes emerge{to{transform:none}}
@@ -86,54 +86,55 @@ body:not(.sin-barra) .menu{top:var(--alto-barra,0px)}
 .portada .acciones{display:flex;flex-wrap:wrap;gap:12px}
 .cifras{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.28)}
 .cifra{padding:22px 18px 4px 0}
-.cifra b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1}
+.cifra b{display:block;font-family:var(--serif);font-weight:800;font-size:clamp(2.2rem,4.4vw,3.2rem);line-height:1}
 .cifra span{font-size:.9rem;opacity:.8}
 @media(max-width:700px){.cifras{grid-template-columns:repeat(2,1fr)}}
 
 section{padding:96px 0}
 .cabeza{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:44px}
-.cabeza h2{font-size:clamp(2.1rem,4.6vw,3.4rem);margin-top:12px;max-width:16ch}
+.cabeza h2{font-size:clamp(2.7rem,5.6vw,4.4rem);margin-top:12px;max-width:16ch}
 .cabeza p{max-width:430px;color:var(--gris)}
 
 /* Aparecer al bajar */
 .rev{opacity:0;transform:translateY(28px);transition:opacity .9s var(--suave),transform .9s var(--suave)}
 .rev.in{opacity:1;transform:none}
+section:not(.portada) .rev,.franja .rev{opacity:1;transform:none;transition:none}
 
 /* ─── Servicios ─── */
 .servicios{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 @media(max-width:960px){.servicios{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.servicios{grid-template-columns:1fr}}
-.servicio{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;color:#fff;isolation:isolate;cursor:default}
+.servicio{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5;color:#fff;isolation:isolate;cursor:default}
 .servicio img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--suave)}
 .servicio::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 35%,rgba(20,13,7,.88));transition:background .6s}
 .servicio:hover img{transform:scale(1.07)}
 .servicio:hover::after{background:linear-gradient(180deg,rgba(20,13,7,.25) 0%,rgba(20,13,7,.92) 75%)}
 .servicio .dentro{position:absolute;left:24px;right:24px;bottom:22px}
 .servicio .n{font-size:.78rem;letter-spacing:.16em;opacity:.75}
-.servicio h3{font-size:1.75rem;margin:6px 0 6px}
+.servicio h3{font-size:2.15rem;margin:6px 0 6px}
 .servicio ul{list-style:none;max-height:0;overflow:hidden;opacity:0;transition:max-height .7s var(--suave),opacity .5s}
 .servicio:hover ul{max-height:160px;opacity:1}
 .servicio li{font-size:.94rem;padding:4px 0;border-top:1px solid rgba(255,255,255,.18);opacity:.9}
 @media(hover:none){.servicio ul{max-height:160px;opacity:1}}
 
 /* ─── Proyectos (galería que se filtra) ─── */
-.oscuro{background:#1b140d;color:#f3ebdf}
+.oscuro{background:#1c1b19;color:#f1efe9}
 .oscuro .cabeza p{color:#b9a993}
 .oscuro .antetitulo{color:#e09a64}
 .filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
-.filtro{padding:10px 18px;border-radius:999px;border:1px solid rgba(243,235,223,.22);font-size:.93rem;font-weight:500;transition:all .35s var(--suave);color:#d9cbb8}
+.filtro{padding:10px 18px;border-radius:6px;border:1px solid rgba(243,235,223,.22);font-size:.93rem;font-weight:500;transition:all .35s var(--suave);color:#d9cbb8}
 .filtro:hover{border-color:rgba(243,235,223,.6)}
-.filtro.on{background:#f3ebdf;color:#1b140d;border-color:#f3ebdf}
+.filtro.on{background:var(--tierra);color:var(--grafito);border-color:var(--tierra)}
 .filtro sup{font-size:.7rem;opacity:.6;margin-left:3px}
 .galeria{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;grid-auto-flow:dense;gap:14px}
 @media(max-width:960px){.galeria{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}}
-.obra{position:relative;border-radius:16px;overflow:hidden;cursor:zoom-in;background:#2a2118}
+.obra{position:relative;border-radius:4px;overflow:hidden;cursor:zoom-in;background:#2a2118}
 .obra.ancha{grid-column:span 2}.obra.alta{grid-row:span 2}
 .obra img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--suave),filter .6s}
 .obra:hover img{transform:scale(1.06)}
 .obra .pie{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(12,8,4,.85));transform:translateY(30%);opacity:0;transition:all .5s var(--suave)}
 .obra:hover .pie{transform:none;opacity:1}
-.obra .pie b{display:block;font-family:var(--serif);font-weight:400;font-size:1.15rem}
+.obra .pie b{display:block;font-family:var(--serif);font-weight:800;font-size:1.35rem}
 .obra .pie span{font-size:.82rem;opacity:.75}
 .obra.fuera{display:none}
 @media(hover:none){.obra .pie{transform:none;opacity:1}}
@@ -144,7 +145,7 @@ section{padding:96px 0}
 .caja-luz .marco-foto{position:relative;display:grid;place-items:center;padding:60px 70px 10px;min-height:0}
 .caja-luz img{max-width:100%;max-height:calc(100vh - 190px);object-fit:contain;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
 .caja-luz .texto{color:#f3ebdf;text-align:center;padding:16px 20px 28px}
-.caja-luz .texto b{font-family:var(--serif);font-weight:400;font-size:1.4rem;display:block}
+.caja-luz .texto b{font-family:var(--serif);font-weight:800;font-size:1.7rem;display:block}
 .caja-luz .texto span{color:#b9a993;font-size:.93rem}
 .caja-luz .cerrar,.caja-luz .flecha{position:absolute;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center;transition:background .3s}
 .caja-luz .cerrar:hover,.caja-luz .flecha:hover{background:rgba(255,255,255,.18)}
@@ -152,14 +153,14 @@ section{padding:96px 0}
 .caja-luz .flecha{top:50%;margin-top:-25px}
 .caja-luz .izq{left:12px}.caja-luz .der{right:12px}
 .caja-luz svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
-.volando{position:fixed;z-index:450;object-fit:cover;border-radius:16px;transition:all .55s var(--suave);pointer-events:none}
+.volando{position:fixed;z-index:450;object-fit:cover;border-radius:4px;transition:all .55s var(--suave);pointer-events:none}
 
 /* ─── Del boceto a la obra ─── */
 .boceto-zona{display:grid;grid-template-columns:1fr 1.35fr;gap:56px;align-items:center}
 @media(max-width:900px){.boceto-zona{grid-template-columns:1fr}}
-.boceto-zona h2{font-size:clamp(2rem,4.2vw,3.1rem);margin:12px 0 16px}
+.boceto-zona h2{font-size:clamp(2.6rem,5vw,4rem);margin:12px 0 16px}
 .boceto-zona p{color:var(--gris);margin-bottom:14px}
-.comparar{position:relative;aspect-ratio:3/2;border-radius:22px;overflow:hidden;user-select:none;touch-action:pan-y;cursor:ew-resize;box-shadow:0 30px 60px -30px rgba(40,25,10,.55);--x:50%}
+.comparar{position:relative;aspect-ratio:3/2;border-radius:6px;overflow:hidden;user-select:none;touch-action:pan-y;cursor:ew-resize;box-shadow:0 30px 60px -30px rgba(40,25,10,.55);--x:50%}
 .comparar .capa{position:absolute;inset:0}
 .comparar .capa img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 /* El boceto se hace con la misma foto: gris + su negativo desenfocado en «sobreexponer» = trazo de lápiz */
@@ -170,8 +171,8 @@ section{padding:96px 0}
 .comparar .obra-real{clip-path:inset(0 0 0 var(--x))}
 .comparar .raya{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.35)}
 .comparar .tirador{position:absolute;top:50%;left:var(--x);width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.comparar .tirador svg{width:26px;height:26px;stroke:var(--tierra);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.comparar .rotulo{position:absolute;top:16px;padding:6px 12px;border-radius:999px;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.85);color:var(--tinta)}
+.comparar .tirador svg{width:26px;height:26px;stroke:var(--grafito);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.comparar .rotulo{position:absolute;top:16px;padding:6px 12px;border-radius:4px;font-size:.85rem;font-weight:600;background:rgba(255,255,255,.85);color:var(--tinta)}
 .comparar .r-izq{left:16px}.comparar .r-der{right:16px;background:rgba(20,13,7,.7);color:#fff}
 .comparar .mano{position:absolute;left:var(--x);top:50%;margin:40px 0 0 -14px;font-size:.8rem;color:#fff;background:rgba(20,13,7,.7);padding:5px 10px;border-radius:999px;white-space:nowrap;transform:translateX(-35%);transition:opacity .5s}
 .comparar.tocado .mano{opacity:0}
@@ -182,8 +183,8 @@ section{padding:96px 0}
 .pasos .riel i{position:absolute;left:0;top:0;bottom:0;width:var(--avance,0%);background:var(--tierra);transition:width .2s linear}
 .paso{position:relative}
 .paso .bola{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;background:var(--papel);border:2px solid var(--linea);display:grid;place-items:center;font-family:var(--serif);font-size:1.3rem;color:var(--gris);transition:all .6s var(--suave)}
-.paso.hecho .bola{background:var(--tierra);border-color:var(--tierra);color:#fff;transform:scale(1.06)}
-.paso h3{font-size:1.4rem;margin:20px 0 8px}
+.paso.hecho .bola{background:var(--tierra);border-color:var(--tierra);color:var(--grafito)}
+.paso h3{font-size:1.8rem;margin:20px 0 8px}
 .paso p{color:var(--gris);font-size:.97rem}
 @media(max-width:860px){.pasos{grid-template-columns:1fr 1fr}.pasos .riel{display:none}}
 @media(max-width:520px){.pasos{grid-template-columns:1fr}}
@@ -192,32 +193,33 @@ section{padding:96px 0}
 .franja{position:relative;min-height:440px;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;isolation:isolate;padding:80px 24px}
 .franja .fondo{position:absolute;inset:-12% 0;z-index:-2;background:url("../assets/img/taller-noche-1600.webp") center/cover;will-change:transform}
 .franja::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(15,10,5,.55)}
-.franja blockquote{font-family:var(--serif);font-size:clamp(2rem,5vw,3.6rem);line-height:1.12;max-width:16ch}
+.franja blockquote{font-family:var(--serif);font-weight:800;font-size:clamp(2.6rem,6vw,4.6rem);line-height:1;max-width:14ch}
 .franja cite{display:block;margin-top:18px;font-style:normal;opacity:.8;font-size:.95rem;letter-spacing:.08em}
 
 /* ─── Opiniones ─── */
 .opiniones{position:relative;overflow:hidden}
 .carril{display:flex;transition:transform .8s var(--suave)}
 .opinion{flex:0 0 100%;padding:0 4px}
-.opinion .tarjeta{background:var(--blanco);border:1px solid var(--linea);border-radius:26px;padding:44px clamp(24px,5vw,64px);display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center}
+.opinion .tarjeta{background:var(--blanco);border:1px solid var(--linea);border-radius:8px;padding:44px clamp(24px,5vw,64px);display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center}
 @media(max-width:700px){.opinion .tarjeta{grid-template-columns:1fr;gap:18px}}
-.opinion .ini{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:2.1rem;color:#fff}
-.opinion q{display:block;font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.85rem);line-height:1.3;quotes:"“" "”"}
+.opinion .ini{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:800;font-size:2.3rem;color:#fff}
+.opinion q{display:block;font-family:var(--sans);font-weight:500;font-size:clamp(1.2rem,2.3vw,1.6rem);line-height:1.4;quotes:"“" "”"}
 .opinion .quien{margin-top:16px;color:var(--gris);font-size:.95rem}
 .opinion .quien b{color:var(--tinta)}
-.estrellas{color:#d79a3d;letter-spacing:2px;margin-bottom:10px}
+.estrellas{color:#b07f00;letter-spacing:2px;margin-bottom:10px}
 .puntos{display:flex;gap:8px;justify-content:center;margin-top:22px}
 .puntos button{width:9px;height:9px;border-radius:999px;background:var(--linea);transition:all .45s var(--suave)}
-.puntos button.on{width:30px;background:var(--tierra)}
+.puntos button.on{width:30px;background:var(--grafito)}
 
 /* ─── Preguntas ─── */
 .preguntas{max-width:820px}
 .pregunta{border-bottom:1px solid var(--linea)}
-.pregunta button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding:22px 0;font-family:var(--serif);font-size:1.3rem}
+.pregunta button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding:22px 0;font-family:var(--sans);font-weight:600;font-size:1.3rem}
 .pregunta button i{width:34px;height:34px;flex-shrink:0;border-radius:50%;border:1.5px solid var(--linea);position:relative;transition:transform .5s var(--suave),background .3s}
 .pregunta button i::before,.pregunta button i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;margin:-.75px 0 0 -6px;background:var(--tinta)}
 .pregunta button i::after{transform:rotate(90deg);transition:transform .5s var(--suave)}
 .pregunta.on button i{background:var(--tierra);border-color:var(--tierra)}
+.pregunta.on button i::before,.pregunta.on button i::after{background:var(--grafito)!important}
 .pregunta.on button i::before,.pregunta.on button i::after{background:#fff}
 .pregunta.on button i::after{transform:rotate(0)}
 .pregunta .resp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--suave)}
@@ -228,17 +230,17 @@ section{padding:96px 0}
 /* ─── Contacto ─── */
 .contacto{display:grid;grid-template-columns:1fr 1.1fr;gap:56px}
 @media(max-width:900px){.contacto{grid-template-columns:1fr}}
-.contacto h2{font-size:clamp(2.1rem,4.4vw,3.2rem);margin:12px 0 16px}
+.contacto h2{font-size:clamp(2.7rem,5.4vw,4.2rem);margin:12px 0 16px}
 .contacto .datos{list-style:none;margin-top:26px;display:grid;gap:14px}
 .contacto .datos li{display:flex;gap:14px;align-items:flex-start}
-.contacto .datos svg{width:22px;height:22px;stroke:var(--tierra);fill:none;stroke-width:1.8;flex-shrink:0;margin-top:2px}
-.formulario{background:var(--blanco);border:1px solid var(--linea);border-radius:26px;padding:34px;position:relative;overflow:hidden;min-height:560px}
+.contacto .datos svg{width:22px;height:22px;stroke:var(--grafito);fill:none;stroke-width:1.8;flex-shrink:0;margin-top:2px}
+.formulario{background:var(--blanco);border:1px solid var(--linea);border-radius:8px;padding:34px;position:relative;overflow:hidden;min-height:560px}
 .campo{position:relative;margin-bottom:18px}
 .campo input,.campo select,.campo textarea{width:100%;font:inherit;font-size:1rem;color:var(--tinta);background:var(--papel);border:1.5px solid transparent;border-radius:14px;padding:22px 16px 8px;outline:none;transition:border-color .3s,background .3s;appearance:none}
 .campo textarea{min-height:110px;resize:vertical}
 .campo label{position:absolute;left:17px;top:15px;color:var(--gris);font-size:1rem;pointer-events:none;transition:all .25s var(--suave)}
-.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--tierra);background:#fff}
-.campo input:focus+label,.campo input:not(:placeholder-shown)+label,.campo textarea:focus+label,.campo textarea:not(:placeholder-shown)+label,.campo select+label{top:7px;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tierra)}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--grafito);background:#fff}
+.campo input:focus+label,.campo input:not(:placeholder-shown)+label,.campo textarea:focus+label,.campo textarea:not(:placeholder-shown)+label,.campo select+label{top:7px;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
 .campo .flechita{position:absolute;right:16px;top:22px;width:12px;height:12px;pointer-events:none;stroke:var(--gris);fill:none;stroke-width:2}
 .enviar{width:100%;padding:16px;font-size:1.02rem}
 .enviar .girando{width:18px;height:18px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:gira .8s linear infinite;display:none}
@@ -251,9 +253,9 @@ section{padding:96px 0}
 .exito .ok svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2.6;stroke-dasharray:30;stroke-dashoffset:30}
 .exito.on .ok svg{animation:traza .6s .3s forwards}
 @keyframes traza{to{stroke-dashoffset:0}}
-.exito h3{font-size:1.8rem;margin-bottom:6px}
+.exito h3{font-size:2.2rem;margin-bottom:6px}
 .exito>p{color:var(--gris);margin-bottom:18px}
-.correo{border:1px solid var(--linea);border-radius:16px;overflow:hidden;font-size:.92rem;box-shadow:0 18px 40px -26px rgba(40,25,10,.5)}
+.correo{border:1px solid var(--linea);border-radius:6px;overflow:hidden;font-size:.92rem;box-shadow:0 18px 40px -26px rgba(40,25,10,.5)}
 .correo .barra{background:#f1ece3;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--gris)}
 .correo .barra b{color:var(--tinta)}
 .correo .cuerpo{padding:14px 16px;display:grid;gap:5px}
@@ -264,7 +266,7 @@ section{padding:96px 0}
 footer{background:#140f09;color:#b9a993;padding:60px 0 36px;font-size:.93rem}
 footer .arriba{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:40px}
 @media(max-width:760px){footer .arriba{grid-template-columns:1fr}}
-footer h4{color:#f3ebdf;font-family:var(--serif);font-weight:400;font-size:1.2rem;margin-bottom:12px}
+footer h4{color:#f1efe9;font-family:var(--serif);font-weight:800;font-size:1.4rem;margin-bottom:12px}
 footer a{display:block;padding:3px 0}
 footer a:hover{color:#f3ebdf}
 footer .redes{display:flex;gap:10px;margin-top:14px}
@@ -306,8 +308,8 @@ footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify
 <header class="menu" id="menu">
   <div class="env">
     <a class="marca" href="#inicio">
-      <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#a8552a"/><g fill="none" stroke="#fbe3c7" stroke-width="1.3"><circle cx="20.6" cy="19.4" r="3.6"/><circle cx="20.2" cy="19.8" r="7.6"/><circle cx="19.8" cy="20.2" r="11.6"/><circle cx="20" cy="20" r="15.4" opacity=".6"/></g></svg>
-      <span><b>Guayacán</b><small>Madera y obra</small></span>
+      <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#1c1b19"/><g fill="none" stroke="#f2b41b" stroke-width="1.3"><circle cx="20.6" cy="19.4" r="3.6"/><circle cx="20.2" cy="19.8" r="7.6"/><circle cx="19.8" cy="20.2" r="11.6"/><circle cx="20" cy="20" r="15.4" opacity=".6"/></g></svg>
+      <span><b>GUAYACÁN</b><small>Madera y obra</small></span>
     </a>
     <nav>
       <a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#como">Cómo trabajamos</a><a href="#opiniones">Opiniones</a><a href="#contacto">Contacto</a>
@@ -323,7 +325,6 @@ footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify
 <section class="portada" id="inicio">
   <div class="foto"></div>
   <div class="env">
-    <span class="antetitulo">Carpintería y construcción en madera · desde 2010</span>
     <h1 id="titular">Hacemos en madera lo que usted se imagina.</h1>
     <p class="lema rev">Muebles a la medida, alcobas, cocinas y casas completas. Lo diseñamos con usted, lo fabricamos en nuestro taller y lo instalamos.</p>
     <div class="acciones rev">
@@ -331,10 +332,10 @@ footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify
       <a class="btn btn-borde" href="#contacto">Pedir presupuesto</a>
     </div>
     <div class="cifras rev">
-      <div class="cifra"><b data-cuenta="15">0</b><span>años de taller</span></div>
-      <div class="cifra"><b data-cuenta="420">0</b><span>trabajos entregados</span></div>
-      <div class="cifra"><b data-cuenta="38">0</b><span>casas construidas</span></div>
-      <div class="cifra"><b data-cuenta="4.9" data-dec="1">0</b><span>de calificación</span></div>
+      <div class="cifra"><b>15</b><span>años de taller</span></div>
+      <div class="cifra"><b>420</b><span>trabajos entregados</span></div>
+      <div class="cifra"><b>38</b><span>casas construidas</span></div>
+      <div class="cifra"><b>4,9</b><span>de calificación</span></div>
     </div>
   </div>
 </section>
@@ -342,16 +343,16 @@ footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify
 <section id="servicios">
   <div class="env">
     <div class="cabeza rev">
-      <div><span class="antetitulo">Servicios</span><h2>Del mueble pequeño a la casa entera</h2></div>
+      <div><h2>Del mueble pequeño a la casa entera</h2></div>
       <p>Todo sale de nuestro taller en Chía. Trabajamos pino, cedro, roble, nogal y guayacán.</p>
     </div>
     <div class="servicios">
-      <article class="servicio rev"><img src="../assets/img/cama-madera-800.webp" alt="Cama en madera maciza" loading="lazy"><div class="dentro"><span class="n">01</span><h3>Camas y alcobas</h3><ul><li>Camas de todos los tamaños</li><li>Mesas de noche y cabeceros</li><li>Cajones bajo la cama</li></ul></div></article>
-      <article class="servicio rev"><img src="../assets/img/cocina-800.webp" alt="Cocina en madera" loading="lazy"><div class="dentro"><span class="n">02</span><h3>Cocinas integrales</h3><ul><li>Muebles altos y bajos</li><li>Mesones en piedra o cuarzo</li><li>Cajones con cierre lento</li></ul></div></article>
-      <article class="servicio rev"><img src="../assets/img/closet-800.webp" alt="Closet en madera" loading="lazy"><div class="dentro"><span class="n">03</span><h3>Closets y vestiers</h3><ul><li>Puertas corredizas o batientes</li><li>Luz por dentro</li><li>Hasta el techo</li></ul></div></article>
-      <article class="servicio rev"><img src="../assets/img/comedor-800.webp" alt="Comedor en madera" loading="lazy"><div class="dentro"><span class="n">04</span><h3>Muebles a la medida</h3><ul><li>Comedores y salas</li><li>Bibliotecas y escritorios</li><li>Restauración de muebles</li></ul></div></article>
-      <article class="servicio rev"><img src="../assets/img/escalera-800.webp" alt="Escalera en madera" loading="lazy"><div class="dentro"><span class="n">05</span><h3>Puertas y escaleras</h3><ul><li>Puertas principales</li><li>Escaleras y pasamanos</li><li>Pisos y decks</li></ul></div></article>
-      <article class="servicio rev"><img src="../assets/img/cabana-800.webp" alt="Cabaña de madera" loading="lazy"><div class="dentro"><span class="n">06</span><h3>Casas y cabañas</h3><ul><li>Diseño y licencias</li><li>Estructura y techos</li><li>Llave en mano</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/cama-madera-800.webp" alt="Cama en madera maciza" loading="lazy"><div class="dentro"><h3>Camas y alcobas</h3><ul><li>Camas de todos los tamaños</li><li>Mesas de noche y cabeceros</li><li>Cajones bajo la cama</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/cocina-800.webp" alt="Cocina en madera" loading="lazy"><div class="dentro"><h3>Cocinas integrales</h3><ul><li>Muebles altos y bajos</li><li>Mesones en piedra o cuarzo</li><li>Cajones con cierre lento</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/closet-800.webp" alt="Closet en madera" loading="lazy"><div class="dentro"><h3>Closets y vestiers</h3><ul><li>Puertas corredizas o batientes</li><li>Luz por dentro</li><li>Hasta el techo</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/comedor-800.webp" alt="Comedor en madera" loading="lazy"><div class="dentro"><h3>Muebles a la medida</h3><ul><li>Comedores y salas</li><li>Bibliotecas y escritorios</li><li>Restauración de muebles</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/escalera-800.webp" alt="Escalera en madera" loading="lazy"><div class="dentro"><h3>Puertas y escaleras</h3><ul><li>Puertas principales</li><li>Escaleras y pasamanos</li><li>Pisos y decks</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/cabana-800.webp" alt="Cabaña de madera" loading="lazy"><div class="dentro"><h3>Casas y cabañas</h3><ul><li>Diseño y licencias</li><li>Estructura y techos</li><li>Llave en mano</li></ul></div></article>
     </div>
   </div>
 </section>
@@ -359,7 +360,7 @@ footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify
 <section class="oscuro" id="proyectos">
   <div class="env">
     <div class="cabeza rev">
-      <div><span class="antetitulo">Proyectos</span><h2>Algunos trabajos entregados</h2></div>
+      <div><h2>Algunos trabajos entregados</h2></div>
       <p>Toque una categoría para filtrar, y una foto para verla en grande.</p>
     </div>
     <div class="filtros rev" id="filtros"></div>
@@ -370,7 +371,6 @@ footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify
 <section id="boceto">
   <div class="env boceto-zona">
     <div class="rev">
-      <span class="antetitulo">Así trabajamos</span>
       <h2>Primero lo dibujamos con usted. Después lo construimos.</h2>
       <p>Antes de cortar la primera tabla usted ve su proyecto dibujado. Lo ajustamos juntos hasta
          que quede como lo quiere — y así mismo se lo entregamos.</p>
@@ -390,7 +390,7 @@ footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify
 <section id="como" style="padding-top:20px">
   <div class="env">
     <div class="cabeza rev">
-      <div><span class="antetitulo">Cómo trabajamos</span><h2>Cuatro pasos, sin sorpresas</h2></div>
+      <div><h2>Cuatro pasos, sin sorpresas</h2></div>
       <p>Usted sabe en todo momento qué sigue y cuánto cuesta.</p>
     </div>
     <div class="pasos" id="pasos">
@@ -411,7 +411,7 @@ footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify
 <section id="opiniones">
   <div class="env">
     <div class="cabeza rev">
-      <div><span class="antetitulo">Opiniones</span><h2>Lo que dicen nuestros clientes</h2></div>
+      <div><h2>Lo que dicen nuestros clientes</h2></div>
       <p>Clientes de Chía, Cajicá, Sopó y Bogotá.</p>
     </div>
     <div class="opiniones rev" id="opiniones-carril">
@@ -423,7 +423,7 @@ footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify
 
 <section id="preguntas" style="padding-top:10px">
   <div class="env">
-    <div class="cabeza rev"><div><span class="antetitulo">Preguntas frecuentes</span><h2>Lo que más nos preguntan</h2></div></div>
+    <div class="cabeza rev"><div><h2>Lo que más nos preguntan</h2></div></div>
     <div class="preguntas rev" id="lista-preguntas"></div>
   </div>
 </section>
@@ -431,7 +431,6 @@ footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify
 <section id="contacto" style="padding-top:20px">
   <div class="env contacto">
     <div class="rev">
-      <span class="antetitulo">Contacto</span>
       <h2>Cuéntenos su proyecto</h2>
       <p style="color:var(--gris)">Le respondemos el mismo día con una idea de precio y una fecha para la visita.</p>
       <ul class="datos">
@@ -541,16 +540,10 @@ $$(".rev").forEach(function(el){
 setTimeout(function(){$$(".rev").forEach(function(el){el.classList.add("in")})},9000);
 $$(".portada .rev").forEach(function(el,i){el.style.transitionDelay=(.7+i*.15)+"s";setTimeout(function(){el.classList.add("in")},50)});
 
-/* Cifras que cuentan */
-$$("[data-cuenta]").forEach(function(el){
-  var fin=parseFloat(el.dataset.cuenta),dec=+(el.dataset.dec||0),ini=null;
-  setTimeout(function(){requestAnimationFrame(function paso(ts){if(!ini)ini=ts;var p=Math.min(1,(ts-ini)/1800),v=fin*(1-Math.pow(1-p,4));
-    el.textContent=dec?v.toFixed(dec).replace(".",","):Math.round(v).toLocaleString("es-CO");if(p<1)requestAnimationFrame(paso)})},1300)});
-
 /* Proyectos */
 var OBRAS=[
   {f:"sala",c:"Muebles",t:"Biblioteca de pared",p:"Apartamento en Chicó · roble · 3 semanas",cl:"ancha"},
-  {f:"casa-montana",c:"Casas",t:"Casa de campo en ladera",p:"Vereda de La Calera · estructura en madera · 7 meses",cl:"ancha alta"},
+  {f:"casa-sabana",c:"Casas",t:"Casa de campo de dos pisos",p:"Tabio · estructura en madera · 7 meses",cl:"ancha alta"},
   {f:"cama-madera",c:"Alcobas",t:"Cama doble con cabecero de listones",p:"Cajicá · pino tratado · 2 semanas"},
   {f:"cocina",c:"Cocinas",t:"Cocina abierta en roble",p:"Casa en Sopó · roble y cuarzo · 5 semanas",cl:"alta"},
   {f:"deck",c:"Exteriores",t:"Deck y pérgola",p:"Finca en Tabio · teca · 4 semanas"},
@@ -626,11 +619,11 @@ window.addEventListener("scroll",function(){var r=franja.getBoundingClientRect()
 
 /* Opiniones */
 var OPS=[
-  {n:"Laura Méndez",l:"Chía",q:"Nos hicieron la cocina y el closet. Llegaron el día que dijeron, dejaron todo limpio y quedó mejor que en el boceto.",c:"#a8552a",i:"LM"},
-  {n:"Andrés Rojas",l:"Sopó",q:"Construyeron nuestra casa de campo. Cada semana nos mandaban fotos del avance, nunca tuvimos que perseguirlos.",c:"#2e4638",i:"AR"},
+  {n:"Laura Méndez",l:"Chía",q:"Nos hicieron la cocina y el closet. Llegaron el día que dijeron, dejaron todo limpio y quedó mejor que en el boceto.",c:"#1c1b19",i:"LM"},
+  {n:"Andrés Rojas",l:"Sopó",q:"Construyeron nuestra casa de campo. Cada semana nos mandaban fotos del avance, nunca tuvimos que perseguirlos.",c:"#6b4425",i:"AR"},
   {n:"Patricia Gómez",l:"Bogotá",q:"La cama en nogal es una obra de arte. Se nota que la madera es buena y que la hicieron con cariño.",c:"#6b4425",i:"PG"},
-  {n:"Carlos Pinilla",l:"Cajicá",q:"Les pedí una escalera difícil y la resolvieron. El precio fue el mismo que nos dijeron al principio.",c:"#8a6b2f",i:"CP"},
-  {n:"Mónica Herrera",l:"Tabio",q:"El deck y la pérgola cambiaron la finca. Ya van tres años y siguen como el primer día.",c:"#4b5f3a",i:"MH"}
+  {n:"Carlos Pinilla",l:"Cajicá",q:"Les pedí una escalera difícil y la resolvieron. El precio fue el mismo que nos dijeron al principio.",c:"#3c3a36",i:"CP"},
+  {n:"Mónica Herrera",l:"Tabio",q:"El deck y la pérgola cambiaron la finca. Ya van tres años y siguen como el primer día.",c:"#5a4a38",i:"MH"}
 ];
 var carril=$("#carril"),puntos=$("#puntos"),op=0,tOp;
 carril.innerHTML=OPS.map(function(o){return'<div class="opinion"><div class="tarjeta"><div class="ini" style="background:'+o.c+'">'+o.i+'</div><div><div class="estrellas">★★★★★</div><q>'+o.q+'</q><div class="quien"><b>'+o.n+'</b> · '+o.l+'</div></div></div></div>'}).join("");

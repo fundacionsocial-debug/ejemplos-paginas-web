@@ -117,7 +117,6 @@
   });
   anillos($("#tronco"), 38, 480, 11, false);
   anillos($("#mini-anillos"), 6, 34, 3, false).forEach(function (p) { p.removeAttribute("class"); });
-  anillos($("#firma-anillos"), 4, 12, 5, false).forEach(function (p) { p.removeAttribute("class"); });
 
   var primeraCarga;
   var listoCarga = new Promise(function (r) { primeraCarga = r; });
@@ -249,8 +248,8 @@
 
   function htmlNivel(n) {
     var d = NIVELES[n];
-    return "<span class=\"cinta" + (d.caliente ? " caliente" : "") + "\">" + d.cinta + "</span>" +
-      "<h3>" + d.nombre + "</h3>" +
+    return "<h3>" + d.nombre + "</h3>" +
+      (d.caliente ? "<p class=\"pedida\">La más pedida</p>" : "") +
       "<div class=\"precio\"><span class=\"texto-oro\">" + d.precio + "</span><small>" + d.nota + "</small></div>" +
       "<div class=\"medidor\"><span class=\"barras\">" + [1, 2, 3].map(function (i) { return "<i class=\"" + (i <= n ? "on" : "") + "\"></i>"; }).join("") +
       "</span> Trabajo que hace la página por usted</div>" +

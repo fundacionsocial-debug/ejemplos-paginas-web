@@ -21,7 +21,7 @@
   --oro-hondo: #e2c17d;
   --crema: #f1e3d5;
   --piedra: #b9ae9f;
-  --niebla: #7d7366;
+  --niebla: #988e80;
   --linea: rgb(212 166 74 / .16);
   --linea-fuerte: rgb(212 166 74 / .38);
   --ok: #9fd8a7;
@@ -411,3 +411,26 @@ footer .firma path { fill: none; stroke: rgb(212 166 74 / .55); stroke-width: 1.
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+
+/* ═══════════ Ajuste fino del 4 oct 2026 (revisión con la skill de diseño) ═══════════
+   La marca (League Spartan, Glacial y el oro de GEMB) se queda; se van las muletillas. */
+.texto-oro { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: var(--oro-hondo); animation: none; }
+.precio .texto-oro { color: var(--oro-hondo); }
+.telon-num { color: var(--oro-hondo); }
+/* Nada de mayúsculas espaciadas de adorno */
+.etiqueta, .carga-cuenta, .bajar, thead th { text-transform: none; letter-spacing: 0; }
+.etiqueta { font-size: .9rem; }
+.carga-cuenta { font-size: .85rem; }
+.bajar { font-size: .95rem; font-family: var(--texto); font-weight: 700; color: var(--piedra); }
+thead th { font-size: .9rem; color: var(--piedra); }
+.prueba .etiqueta { font-size: 1rem; color: var(--crema); }
+.pedida { font-weight: 700; color: var(--oro-hondo); margin: -6px 0 12px; }
+.nivel-texto h3 { margin-top: 0; }
+/* Vidrio solo en lo que se toca (regla de Valeria): lo demás, superficies planas */
+.chip { background: rgb(255 255 255 / .03); backdrop-filter: none; }
+.tabla-zona, .nota { background: #0e0c09; backdrop-filter: none; }
+/* Sin rebotes elásticos */
+.pestanas-indicador { transition: transform .55s var(--suave), width .55s var(--suave); }
+.visor-barra { transition: transform .6s var(--suave); }
+.marco-entrar .boton-oro { transition: transform .4s var(--suave), box-shadow .25s, filter .25s; }

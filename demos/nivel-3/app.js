@@ -70,7 +70,7 @@
 
   /* Cinta de servicios */
   var anillo = '<svg viewBox="-12 -12 24 24"><circle r="3"/><circle r="7"/><circle r="10.5"/></svg>';
-  var cosas = ["Camas", "Closets", "Cocinas", "<em>Escaleras</em>", "Puertas", "Decks", "<em>Cabañas</em>", "Casas completas"];
+  var cosas = ["Camas", "Closets", "Cocinas", "Escaleras", "Puertas", "Decks", "Cabañas", "Casas completas"];
   var tramo = cosas.map(function (c) { return "<span>" + c + anillo + "</span>"; }).join("");
   $("#cinta").innerHTML = tramo + tramo;
 
@@ -444,7 +444,7 @@
       ["Acabados", "", ""],
       ["Entrega", "estimada: " + fechaCorta(P.dia(74)), ""]
     ];
-    seg.innerHTML = '<div class="seg"><svg width="0" height="0" style="position:absolute"><defs><linearGradient id="grad-anillo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2cf8f"/><stop offset="1" stop-color="#c98f3f"/></linearGradient></defs></svg>' +
+    seg.innerHTML = '<div class="seg"><svg width="0" height="0" style="position:absolute"><defs><linearGradient id="grad-anillo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2b41b"/><stop offset="1" stop-color="#f2b41b"/></linearGradient></defs></svg>' +
       '<div class="seg-cab"><span>Mi obra</span><b>GY-2417</b></div>' +
       "<h4>Casa Familia Rojas</h4><span class=\"lugar\">Vereda Meusa, Sopó · 160 m² · 2 pisos</span>" +
       '<div class="anillo-avance"><svg viewBox="0 0 86 86"><circle class="fondo-anillo" cx="43" cy="43" r="36"/><circle class="valor-anillo" cx="43" cy="43" r="36"/></svg><div><span class="num">62%</span><small>Semana 17 de 28<br>Vamos a tiempo</small></div></div>' +
@@ -489,7 +489,7 @@
 
   /* ─────────── Proyectos ─────────── */
   var PROY = [
-    ["casa-montana", "Casa", "Casa de campo en ladera", "La Calera · 180 m² · estructura en madera"],
+    ["casa-sabana", "Casa", "Casa de campo de dos pisos", "Tabio · 180 m² · estructura en madera"],
     ["cocina", "Cocina", "Cocina abierta en roble", "Sopó · roble y cuarzo · 5 semanas"],
     ["cabana", "Cabaña", "Cabaña en el bosque", "San Francisco · pino inmunizado"],
     ["cama-nogal", "Alcoba", "Alcoba principal en nogal", "Bogotá · nogal · 3 semanas"],
