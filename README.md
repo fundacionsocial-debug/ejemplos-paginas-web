@@ -39,7 +39,7 @@ construcción en madera) hecho a tres presupuestos distintos, para que la difere
    - agendar una visita
    - **Siga su obra** se demuestra solo (teclea el código GY-2417)
    - abrir el **Panel del dueño** (botón dorado de la barrita): ahí está todo lo que se
-     acaba de hacer, resaltado en oro con la etiqueta «Usted»
+     acaba de hacer, resaltado en amarillo con la etiqueta «Usted»
 6. Cerrar con la pastelería, para dejar claro que no es una plantilla repetida.
 
 ## La identidad de Guayacán (ajuste del 4 oct 2026)
