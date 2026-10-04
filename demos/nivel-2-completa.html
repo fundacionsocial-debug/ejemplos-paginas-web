@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guayacán · Madera y obra (ejemplo nivel 2)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%235b3a1f%27/%3E%3Cg fill=%27none%27 stroke=%27%23f2d3a8%27 stroke-width=%271.6%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27/%3E%3Ccircle cx=%2716.5%27 cy=%2715.5%27 r=%278%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2712%27/%3E%3C/g%3E%3C/svg%3E">
+<meta name="description" content="Ejemplo de página completa: varias secciones, galería filtrable, formulario y testimonios para un taller de carpintería y construcción.">
+<script>(function(){var e;try{e=window.self!==window.top}catch(x){e=true}if(e)document.documentElement.className+=" en-catalogo"})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#f5f0e6;--papel-2:#ebe3d3;--blanco:#fffdf8;--tinta:#22180f;--tinta-2:#4b3d30;--gris:#7c6e60;--linea:#ddd1bd;
+  --madera:#6b4425;--tierra:#a8552a;--tierra-2:#c26a3a;--bosque:#2e4638;--wa:#25d366;
+  --serif:"Young Serif",Georgia,serif;--sans:"Instrument Sans",system-ui,sans-serif;
+  --suave:cubic-bezier(.22,1,.36,1)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--tinta);background:var(--papel);line-height:1.62;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.env{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em}
+.antetitulo{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--tierra)}
+.antetitulo::before{content:"";width:26px;height:1.5px;background:currentColor}
+
+.demobar{position:sticky;top:0;z-index:300;background:#0d0b08;color:#f1e3d5;display:flex;align-items:center;gap:12px;padding:8px 14px;font-size:.85rem;flex-wrap:wrap}
+.demobar a,.demobar button{color:#f5d58a;border:1px solid #3a2f22;padding:4px 11px;border-radius:7px}
+.demobar span{margin-right:auto;color:#b9ae9f}.demobar b{color:#f1e3d5}
+.en-catalogo .demobar,body.sin-barra .demobar{display:none}
+@media(max-width:600px){.demobar span{display:none}.demobar{gap:8px;padding:7px 10px}.demobar a,.demobar button{font-size:.74rem;padding:4px 8px}}
+
+/* ─── Menú ─── */
+.menu{position:fixed;left:0;right:0;top:0;z-index:100;transition:background .4s,box-shadow .4s,padding .4s,color .4s;color:#fff;padding:20px 0}
+body:not(.sin-barra) .menu{top:var(--alto-barra,0px)}
+.en-catalogo .menu{top:0!important}
+.menu.solido{background:rgba(245,240,230,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--linea);color:var(--tinta);padding:12px 0}
+.menu .env{display:flex;align-items:center;gap:28px}
+.marca{display:flex;align-items:center;gap:11px;margin-right:auto}
+.marca svg{width:40px;height:40px;transition:transform .8s var(--suave)}
+.marca:hover svg{transform:rotate(-30deg)}
+.marca b{display:block;font-family:var(--serif);font-size:1.45rem;line-height:1}
+.marca small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.menu nav{display:flex;gap:26px}
+.menu nav a{font-size:.95rem;font-weight:500;position:relative;padding:4px 0;opacity:.9}
+.menu nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .4s var(--suave)}
+.menu nav a:hover::after,.menu nav a.aqui::after{transform:scaleX(1);transform-origin:left}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:.97rem;transition:transform .3s var(--suave),background .3s,box-shadow .3s,color .3s}
+.btn-tierra{background:var(--tierra);color:#fff;box-shadow:0 10px 24px -12px rgba(168,85,42,.8)}
+.btn-tierra:hover{background:var(--tierra-2);transform:translateY(-2px)}
+.btn-borde{border:1.5px solid currentColor}
+.btn-borde:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hamburguesa{display:none;width:44px;height:44px;border-radius:12px;align-items:center;justify-content:center}
+.hamburguesa span{width:22px;height:2px;background:currentColor;position:relative;display:block;transition:background .3s}
+.hamburguesa span::before,.hamburguesa span::after{content:"";position:absolute;left:0;width:22px;height:2px;background:currentColor;transition:transform .35s var(--suave)}
+.hamburguesa span::before{top:-7px}.hamburguesa span::after{top:7px}
+.menu-abierto .hamburguesa span{background:transparent}
+.menu-abierto .hamburguesa span::before{transform:translateY(7px) rotate(45deg)}
+.menu-abierto .hamburguesa span::after{transform:translateY(-7px) rotate(-45deg)}
+.cajon{position:fixed;inset:0;z-index:90;background:var(--bosque);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 34px;clip-path:circle(0 at calc(100% - 46px) 46px);transition:clip-path .7s var(--suave)}
+.menu-abierto .cajon{clip-path:circle(150% at calc(100% - 46px) 46px)}
+.cajon a{font-family:var(--serif);font-size:2.3rem;padding:8px 0;opacity:0;transform:translateY(18px);transition:opacity .5s,transform .6s var(--suave)}
+.menu-abierto .cajon a{opacity:1;transform:none}
+.menu-abierto .cajon a:nth-child(2){transition-delay:.06s}.menu-abierto .cajon a:nth-child(3){transition-delay:.12s}.menu-abierto .cajon a:nth-child(4){transition-delay:.18s}.menu-abierto .cajon a:nth-child(5){transition-delay:.24s}
+.menu-abierto .menu{color:#fff;background:transparent;box-shadow:none}
+@media(max-width:900px){.menu nav,.menu .btn{display:none}.hamburguesa{display:flex}}
+
+/* ─── Portada ─── */
+.portada{position:relative;min-height:92vh;min-height:92svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;isolation:isolate}
+.portada .foto{position:absolute;inset:0;z-index:-2;background:url("../assets/img/casa-montana-1600.webp") center 60%/cover;animation:acercar 22s ease-out both}
+@keyframes acercar{from{transform:scale(1.14)}to{transform:scale(1)}}
+.portada::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,12,6,.45) 0%,rgba(18,12,6,.05) 35%,rgba(18,12,6,.25) 60%,rgba(18,12,6,.82) 100%)}
+.portada .env{width:100%;padding-bottom:40px;padding-top:140px}
+.portada .antetitulo{color:#f6d3ad;text-shadow:0 1px 12px rgba(0,0,0,.55)}
+.portada h1,.portada p.lema{text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.portada h1{font-size:clamp(2.6rem,7vw,5.4rem);max-width:13ch;margin:18px 0 18px}
+.palabra{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
+.palabra>span{display:inline-block;transform:translateY(110%);animation:emerge 1s var(--suave) forwards}
+@keyframes emerge{to{transform:none}}
+.portada p.lema{font-size:1.15rem;max-width:520px;opacity:.92;margin-bottom:30px}
+.portada .acciones{display:flex;flex-wrap:wrap;gap:12px}
+.cifras{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.28)}
+.cifra{padding:22px 18px 4px 0}
+.cifra b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1}
+.cifra span{font-size:.9rem;opacity:.8}
+@media(max-width:700px){.cifras{grid-template-columns:repeat(2,1fr)}}
+
+section{padding:96px 0}
+.cabeza{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:44px}
+.cabeza h2{font-size:clamp(2.1rem,4.6vw,3.4rem);margin-top:12px;max-width:16ch}
+.cabeza p{max-width:430px;color:var(--gris)}
+
+/* Aparecer al bajar */
+.rev{opacity:0;transform:translateY(28px);transition:opacity .9s var(--suave),transform .9s var(--suave)}
+.rev.in{opacity:1;transform:none}
+
+/* ─── Servicios ─── */
+.servicios{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:960px){.servicios{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.servicios{grid-template-columns:1fr}}
+.servicio{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;color:#fff;isolation:isolate;cursor:default}
+.servicio img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--suave)}
+.servicio::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 35%,rgba(20,13,7,.88));transition:background .6s}
+.servicio:hover img{transform:scale(1.07)}
+.servicio:hover::after{background:linear-gradient(180deg,rgba(20,13,7,.25) 0%,rgba(20,13,7,.92) 75%)}
+.servicio .dentro{position:absolute;left:24px;right:24px;bottom:22px}
+.servicio .n{font-size:.78rem;letter-spacing:.16em;opacity:.75}
+.servicio h3{font-size:1.75rem;margin:6px 0 6px}
+.servicio ul{list-style:none;max-height:0;overflow:hidden;opacity:0;transition:max-height .7s var(--suave),opacity .5s}
+.servicio:hover ul{max-height:160px;opacity:1}
+.servicio li{font-size:.94rem;padding:4px 0;border-top:1px solid rgba(255,255,255,.18);opacity:.9}
+@media(hover:none){.servicio ul{max-height:160px;opacity:1}}
+
+/* ─── Proyectos (galería que se filtra) ─── */
+.oscuro{background:#1b140d;color:#f3ebdf}
+.oscuro .cabeza p{color:#b9a993}
+.oscuro .antetitulo{color:#e09a64}
+.filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.filtro{padding:10px 18px;border-radius:999px;border:1px solid rgba(243,235,223,.22);font-size:.93rem;font-weight:500;transition:all .35s var(--suave);color:#d9cbb8}
+.filtro:hover{border-color:rgba(243,235,223,.6)}
+.filtro.on{background:#f3ebdf;color:#1b140d;border-color:#f3ebdf}
+.filtro sup{font-size:.7rem;opacity:.6;margin-left:3px}
+.galeria{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;grid-auto-flow:dense;gap:14px}
+@media(max-width:960px){.galeria{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}}
+.obra{position:relative;border-radius:16px;overflow:hidden;cursor:zoom-in;background:#2a2118}
+.obra.ancha{grid-column:span 2}.obra.alta{grid-row:span 2}
+.obra img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--suave),filter .6s}
+.obra:hover img{transform:scale(1.06)}
+.obra .pie{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(12,8,4,.85));transform:translateY(30%);opacity:0;transition:all .5s var(--suave)}
+.obra:hover .pie{transform:none;opacity:1}
+.obra .pie b{display:block;font-family:var(--serif);font-weight:400;font-size:1.15rem}
+.obra .pie span{font-size:.82rem;opacity:.75}
+.obra.fuera{display:none}
+@media(hover:none){.obra .pie{transform:none;opacity:1}}
+
+/* Foto en grande */
+.caja-luz{position:fixed;inset:0;z-index:400;background:rgba(12,8,4,.94);display:grid;grid-template-rows:1fr auto;opacity:0;visibility:hidden;transition:opacity .45s,visibility 0s .45s}
+.caja-luz.on{opacity:1;visibility:visible;transition:opacity .45s,visibility 0s}
+.caja-luz .marco-foto{position:relative;display:grid;place-items:center;padding:60px 70px 10px;min-height:0}
+.caja-luz img{max-width:100%;max-height:calc(100vh - 190px);object-fit:contain;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.caja-luz .texto{color:#f3ebdf;text-align:center;padding:16px 20px 28px}
+.caja-luz .texto b{font-family:var(--serif);font-weight:400;font-size:1.4rem;display:block}
+.caja-luz .texto span{color:#b9a993;font-size:.93rem}
+.caja-luz .cerrar,.caja-luz .flecha{position:absolute;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center;transition:background .3s}
+.caja-luz .cerrar:hover,.caja-luz .flecha:hover{background:rgba(255,255,255,.18)}
+.caja-luz .cerrar{top:16px;right:16px}
+.caja-luz .flecha{top:50%;margin-top:-25px}
+.caja-luz .izq{left:12px}.caja-luz .der{right:12px}
+.caja-luz svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.volando{position:fixed;z-index:450;object-fit:cover;border-radius:16px;transition:all .55s var(--suave);pointer-events:none}
+
+/* ─── Del boceto a la obra ─── */
+.boceto-zona{display:grid;grid-template-columns:1fr 1.35fr;gap:56px;align-items:center}
+@media(max-width:900px){.boceto-zona{grid-template-columns:1fr}}
+.boceto-zona h2{font-size:clamp(2rem,4.2vw,3.1rem);margin:12px 0 16px}
+.boceto-zona p{color:var(--gris);margin-bottom:14px}
+.comparar{position:relative;aspect-ratio:3/2;border-radius:22px;overflow:hidden;user-select:none;touch-action:pan-y;cursor:ew-resize;box-shadow:0 30px 60px -30px rgba(40,25,10,.55);--x:50%}
+.comparar .capa{position:absolute;inset:0}
+.comparar .capa img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* El boceto se hace con la misma foto: gris + su negativo desenfocado en «sobreexponer» = trazo de lápiz */
+.lapiz{background:#f7f2e8;isolation:isolate}
+.lapiz img:nth-child(1){filter:grayscale(1) contrast(1.1)}
+.lapiz img:nth-child(2){filter:grayscale(1) invert(1) blur(2.5px);mix-blend-mode:color-dodge}
+.lapiz::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 23px,rgba(70,110,170,.10) 23px 24px),repeating-linear-gradient(90deg,transparent 0 23px,rgba(70,110,170,.10) 23px 24px);mix-blend-mode:multiply}
+.comparar .obra-real{clip-path:inset(0 0 0 var(--x))}
+.comparar .raya{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.35)}
+.comparar .tirador{position:absolute;top:50%;left:var(--x);width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.comparar .tirador svg{width:26px;height:26px;stroke:var(--tierra);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.comparar .rotulo{position:absolute;top:16px;padding:6px 12px;border-radius:999px;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.85);color:var(--tinta)}
+.comparar .r-izq{left:16px}.comparar .r-der{right:16px;background:rgba(20,13,7,.7);color:#fff}
+.comparar .mano{position:absolute;left:var(--x);top:50%;margin:40px 0 0 -14px;font-size:.8rem;color:#fff;background:rgba(20,13,7,.7);padding:5px 10px;border-radius:999px;white-space:nowrap;transform:translateX(-35%);transition:opacity .5s}
+.comparar.tocado .mano{opacity:0}
+
+/* ─── Cómo trabajamos ─── */
+.pasos{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.pasos .riel{position:absolute;left:0;right:0;top:27px;height:2px;background:var(--linea)}
+.pasos .riel i{position:absolute;left:0;top:0;bottom:0;width:var(--avance,0%);background:var(--tierra);transition:width .2s linear}
+.paso{position:relative}
+.paso .bola{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;background:var(--papel);border:2px solid var(--linea);display:grid;place-items:center;font-family:var(--serif);font-size:1.3rem;color:var(--gris);transition:all .6s var(--suave)}
+.paso.hecho .bola{background:var(--tierra);border-color:var(--tierra);color:#fff;transform:scale(1.06)}
+.paso h3{font-size:1.4rem;margin:20px 0 8px}
+.paso p{color:var(--gris);font-size:.97rem}
+@media(max-width:860px){.pasos{grid-template-columns:1fr 1fr}.pasos .riel{display:none}}
+@media(max-width:520px){.pasos{grid-template-columns:1fr}}
+
+/* ─── Franja con frase ─── */
+.franja{position:relative;min-height:440px;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;isolation:isolate;padding:80px 24px}
+.franja .fondo{position:absolute;inset:-12% 0;z-index:-2;background:url("../assets/img/taller-noche-1600.webp") center/cover;will-change:transform}
+.franja::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(15,10,5,.55)}
+.franja blockquote{font-family:var(--serif);font-size:clamp(2rem,5vw,3.6rem);line-height:1.12;max-width:16ch}
+.franja cite{display:block;margin-top:18px;font-style:normal;opacity:.8;font-size:.95rem;letter-spacing:.08em}
+
+/* ─── Opiniones ─── */
+.opiniones{position:relative;overflow:hidden}
+.carril{display:flex;transition:transform .8s var(--suave)}
+.opinion{flex:0 0 100%;padding:0 4px}
+.opinion .tarjeta{background:var(--blanco);border:1px solid var(--linea);border-radius:26px;padding:44px clamp(24px,5vw,64px);display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center}
+@media(max-width:700px){.opinion .tarjeta{grid-template-columns:1fr;gap:18px}}
+.opinion .ini{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:2.1rem;color:#fff}
+.opinion q{display:block;font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.85rem);line-height:1.3;quotes:"“" "”"}
+.opinion .quien{margin-top:16px;color:var(--gris);font-size:.95rem}
+.opinion .quien b{color:var(--tinta)}
+.estrellas{color:#d79a3d;letter-spacing:2px;margin-bottom:10px}
+.puntos{display:flex;gap:8px;justify-content:center;margin-top:22px}
+.puntos button{width:9px;height:9px;border-radius:999px;background:var(--linea);transition:all .45s var(--suave)}
+.puntos button.on{width:30px;background:var(--tierra)}
+
+/* ─── Preguntas ─── */
+.preguntas{max-width:820px}
+.pregunta{border-bottom:1px solid var(--linea)}
+.pregunta button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding:22px 0;font-family:var(--serif);font-size:1.3rem}
+.pregunta button i{width:34px;height:34px;flex-shrink:0;border-radius:50%;border:1.5px solid var(--linea);position:relative;transition:transform .5s var(--suave),background .3s}
+.pregunta button i::before,.pregunta button i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;margin:-.75px 0 0 -6px;background:var(--tinta)}
+.pregunta button i::after{transform:rotate(90deg);transition:transform .5s var(--suave)}
+.pregunta.on button i{background:var(--tierra);border-color:var(--tierra)}
+.pregunta.on button i::before,.pregunta.on button i::after{background:#fff}
+.pregunta.on button i::after{transform:rotate(0)}
+.pregunta .resp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--suave)}
+.pregunta.on .resp{grid-template-rows:1fr}
+.pregunta .resp>div{overflow:hidden}
+.pregunta .resp p{padding:0 50px 22px 0;color:var(--gris)}
+
+/* ─── Contacto ─── */
+.contacto{display:grid;grid-template-columns:1fr 1.1fr;gap:56px}
+@media(max-width:900px){.contacto{grid-template-columns:1fr}}
+.contacto h2{font-size:clamp(2.1rem,4.4vw,3.2rem);margin:12px 0 16px}
+.contacto .datos{list-style:none;margin-top:26px;display:grid;gap:14px}
+.contacto .datos li{display:flex;gap:14px;align-items:flex-start}
+.contacto .datos svg{width:22px;height:22px;stroke:var(--tierra);fill:none;stroke-width:1.8;flex-shrink:0;margin-top:2px}
+.formulario{background:var(--blanco);border:1px solid var(--linea);border-radius:26px;padding:34px;position:relative;overflow:hidden;min-height:560px}
+.campo{position:relative;margin-bottom:18px}
+.campo input,.campo select,.campo textarea{width:100%;font:inherit;font-size:1rem;color:var(--tinta);background:var(--papel);border:1.5px solid transparent;border-radius:14px;padding:22px 16px 8px;outline:none;transition:border-color .3s,background .3s;appearance:none}
+.campo textarea{min-height:110px;resize:vertical}
+.campo label{position:absolute;left:17px;top:15px;color:var(--gris);font-size:1rem;pointer-events:none;transition:all .25s var(--suave)}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--tierra);background:#fff}
+.campo input:focus+label,.campo input:not(:placeholder-shown)+label,.campo textarea:focus+label,.campo textarea:not(:placeholder-shown)+label,.campo select+label{top:7px;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tierra)}
+.campo .flechita{position:absolute;right:16px;top:22px;width:12px;height:12px;pointer-events:none;stroke:var(--gris);fill:none;stroke-width:2}
+.enviar{width:100%;padding:16px;font-size:1.02rem}
+.enviar .girando{width:18px;height:18px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:gira .8s linear infinite;display:none}
+.enviar.mandando .girando{display:block}.enviar.mandando .t{display:none}
+@keyframes gira{to{transform:rotate(360deg)}}
+.exito{position:absolute;inset:0;background:var(--blanco);padding:34px;display:flex;flex-direction:column;justify-content:center;opacity:0;visibility:hidden;transform:translateY(20px);transition:all .6s var(--suave)}
+.exito.on{opacity:1;visibility:visible;transform:none}
+.exito>*{flex-shrink:0}.exito{overflow-y:auto}
+.exito .ok{width:62px;height:62px;border-radius:50%;background:var(--bosque);display:grid;place-items:center;margin-bottom:16px}
+.exito .ok svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2.6;stroke-dasharray:30;stroke-dashoffset:30}
+.exito.on .ok svg{animation:traza .6s .3s forwards}
+@keyframes traza{to{stroke-dashoffset:0}}
+.exito h3{font-size:1.8rem;margin-bottom:6px}
+.exito>p{color:var(--gris);margin-bottom:18px}
+.correo{border:1px solid var(--linea);border-radius:16px;overflow:hidden;font-size:.92rem;box-shadow:0 18px 40px -26px rgba(40,25,10,.5)}
+.correo .barra{background:#f1ece3;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--gris)}
+.correo .barra b{color:var(--tinta)}
+.correo .cuerpo{padding:14px 16px;display:grid;gap:5px}
+.correo .cuerpo div{display:grid;grid-template-columns:110px 1fr;gap:10px}
+.correo .cuerpo span{color:var(--gris)}
+.correo .asunto{font-weight:600;color:var(--tinta);padding:12px 16px 0}
+
+footer{background:#140f09;color:#b9a993;padding:60px 0 36px;font-size:.93rem}
+footer .arriba{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:40px}
+@media(max-width:760px){footer .arriba{grid-template-columns:1fr}}
+footer h4{color:#f3ebdf;font-family:var(--serif);font-weight:400;font-size:1.2rem;margin-bottom:12px}
+footer a{display:block;padding:3px 0}
+footer a:hover{color:#f3ebdf}
+footer .redes{display:flex;gap:10px;margin-top:14px}
+footer .redes a{width:40px;height:40px;border-radius:50%;border:1px solid #3a2f22;display:grid;place-items:center}
+footer .redes svg{width:18px;height:18px;stroke:#d9cbb8;fill:none;stroke-width:1.8}
+footer .abajo{border-top:1px solid #2a2118;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* WhatsApp */
+.flotante{position:fixed;right:20px;bottom:20px;z-index:80;display:flex;align-items:center;gap:10px}
+.flotante .globo{background:#fff;color:var(--tinta);padding:10px 14px;border-radius:14px 14px 4px 14px;font-size:.9rem;box-shadow:0 10px 30px rgba(0,0,0,.18);opacity:0;transform:translateX(10px) scale(.9);transition:all .5s var(--suave);pointer-events:none}
+.flotante.saluda .globo{opacity:1;transform:none}
+.flotante button{width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.25);transition:transform .3s var(--suave)}
+.flotante button:hover{transform:scale(1.08)}
+.flotante svg{width:31px;height:31px;fill:#fff}
+.wa-velo{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;display:none;align-items:flex-end;justify-content:center}
+.wa-velo.on{display:flex}
+.wa-hoja{width:min(420px,100%);background:#efeae2;border-radius:18px 18px 0 0;overflow:hidden;animation:sube .4s var(--suave)}
+@keyframes sube{from{transform:translateY(100%)}to{transform:none}}
+.wa-cab{background:#075e54;color:#fff;display:flex;align-items:center;gap:10px;padding:12px 14px}
+.wa-cab i{width:36px;height:36px;border-radius:50%;background:var(--madera);display:grid;place-items:center;font-style:normal;font-family:var(--serif)}
+.wa-cab small{display:block;opacity:.8;font-size:.78rem}
+.wa-cuerpo{padding:18px 14px 8px;min-height:120px}
+.wa-nota{background:#fff8c6;color:#5b5326;font-size:.82rem;border-radius:8px;padding:8px 10px;text-align:center}
+.wa-pie{display:flex;gap:8px;padding:10px;align-items:flex-end}
+.wa-pie div{flex:1;background:#fff;border-radius:20px;padding:10px 14px;font-size:.95rem}
+.wa-pie button{width:44px;height:44px;border-radius:50%;background:#00a884;color:#fff}
+.wa-cerrar{display:block;width:100%;padding:12px;background:#fff;border-top:1px solid #ddd!important;color:#075e54;font-weight:600}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<div class="demobar" id="demobar">
+  <a href="../index.html#nivel-2">← Ver los tres niveles</a>
+  <span><b>Nivel 2 · Completa</b> — $1.200.000 · varias secciones, galería y formulario</span>
+  <button onclick="document.body.classList.add('sin-barra')">Ocultar barra</button>
+</div>
+
+<header class="menu" id="menu">
+  <div class="env">
+    <a class="marca" href="#inicio">
+      <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#a8552a"/><g fill="none" stroke="#fbe3c7" stroke-width="1.3"><circle cx="20.6" cy="19.4" r="3.6"/><circle cx="20.2" cy="19.8" r="7.6"/><circle cx="19.8" cy="20.2" r="11.6"/><circle cx="20" cy="20" r="15.4" opacity=".6"/></g></svg>
+      <span><b>Guayacán</b><small>Madera y obra</small></span>
+    </a>
+    <nav>
+      <a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#como">Cómo trabajamos</a><a href="#opiniones">Opiniones</a><a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-tierra" href="#contacto">Pedir presupuesto</a>
+    <button class="hamburguesa" id="hamburguesa" aria-label="Abrir el menú"><span></span></button>
+  </div>
+</header>
+<div class="cajon" id="cajon">
+  <a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#como">Cómo trabajamos</a><a href="#opiniones">Opiniones</a><a href="#contacto">Contacto</a>
+</div>
+
+<section class="portada" id="inicio">
+  <div class="foto"></div>
+  <div class="env">
+    <span class="antetitulo">Carpintería y construcción en madera · desde 2010</span>
+    <h1 id="titular">Hacemos en madera lo que usted se imagina.</h1>
+    <p class="lema rev">Muebles a la medida, alcobas, cocinas y casas completas. Lo diseñamos con usted, lo fabricamos en nuestro taller y lo instalamos.</p>
+    <div class="acciones rev">
+      <a class="btn btn-tierra" href="#proyectos">Ver proyectos <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-borde" href="#contacto">Pedir presupuesto</a>
+    </div>
+    <div class="cifras rev">
+      <div class="cifra"><b data-cuenta="15">0</b><span>años de taller</span></div>
+      <div class="cifra"><b data-cuenta="420">0</b><span>trabajos entregados</span></div>
+      <div class="cifra"><b data-cuenta="38">0</b><span>casas construidas</span></div>
+      <div class="cifra"><b data-cuenta="4.9" data-dec="1">0</b><span>de calificación</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="env">
+    <div class="cabeza rev">
+      <div><span class="antetitulo">Servicios</span><h2>Del mueble pequeño a la casa entera</h2></div>
+      <p>Todo sale de nuestro taller en Chía. Trabajamos pino, cedro, roble, nogal y guayacán.</p>
+    </div>
+    <div class="servicios">
+      <article class="servicio rev"><img src="../assets/img/cama-madera-800.webp" alt="Cama en madera maciza" loading="lazy"><div class="dentro"><span class="n">01</span><h3>Camas y alcobas</h3><ul><li>Camas de todos los tamaños</li><li>Mesas de noche y cabeceros</li><li>Cajones bajo la cama</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/cocina-800.webp" alt="Cocina en madera" loading="lazy"><div class="dentro"><span class="n">02</span><h3>Cocinas integrales</h3><ul><li>Muebles altos y bajos</li><li>Mesones en piedra o cuarzo</li><li>Cajones con cierre lento</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/closet-800.webp" alt="Closet en madera" loading="lazy"><div class="dentro"><span class="n">03</span><h3>Closets y vestiers</h3><ul><li>Puertas corredizas o batientes</li><li>Luz por dentro</li><li>Hasta el techo</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/comedor-800.webp" alt="Comedor en madera" loading="lazy"><div class="dentro"><span class="n">04</span><h3>Muebles a la medida</h3><ul><li>Comedores y salas</li><li>Bibliotecas y escritorios</li><li>Restauración de muebles</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/escalera-800.webp" alt="Escalera en madera" loading="lazy"><div class="dentro"><span class="n">05</span><h3>Puertas y escaleras</h3><ul><li>Puertas principales</li><li>Escaleras y pasamanos</li><li>Pisos y decks</li></ul></div></article>
+      <article class="servicio rev"><img src="../assets/img/cabana-800.webp" alt="Cabaña de madera" loading="lazy"><div class="dentro"><span class="n">06</span><h3>Casas y cabañas</h3><ul><li>Diseño y licencias</li><li>Estructura y techos</li><li>Llave en mano</li></ul></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="oscuro" id="proyectos">
+  <div class="env">
+    <div class="cabeza rev">
+      <div><span class="antetitulo">Proyectos</span><h2>Algunos trabajos entregados</h2></div>
+      <p>Toque una categoría para filtrar, y una foto para verla en grande.</p>
+    </div>
+    <div class="filtros rev" id="filtros"></div>
+    <div class="galeria" id="galeria"></div>
+  </div>
+</section>
+
+<section id="boceto">
+  <div class="env boceto-zona">
+    <div class="rev">
+      <span class="antetitulo">Así trabajamos</span>
+      <h2>Primero lo dibujamos con usted. Después lo construimos.</h2>
+      <p>Antes de cortar la primera tabla usted ve su proyecto dibujado. Lo ajustamos juntos hasta
+         que quede como lo quiere — y así mismo se lo entregamos.</p>
+      <p><b>Arrastre la raya</b> para pasar del boceto a la obra terminada.</p>
+    </div>
+    <div class="comparar rev" id="comparar" role="slider" aria-label="Del boceto a la obra" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <div class="capa lapiz"><img src="../assets/img/cocina-1600.webp" alt=""><img src="../assets/img/cocina-1600.webp" alt=""></div>
+      <div class="capa obra-real"><img src="../assets/img/cocina-1600.webp" alt="Cocina terminada en madera"></div>
+      <span class="rotulo r-izq">Boceto</span><span class="rotulo r-der">Obra terminada</span>
+      <div class="raya"></div>
+      <div class="tirador"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div>
+      <span class="mano">Arrastre</span>
+    </div>
+  </div>
+</section>
+
+<section id="como" style="padding-top:20px">
+  <div class="env">
+    <div class="cabeza rev">
+      <div><span class="antetitulo">Cómo trabajamos</span><h2>Cuatro pasos, sin sorpresas</h2></div>
+      <p>Usted sabe en todo momento qué sigue y cuánto cuesta.</p>
+    </div>
+    <div class="pasos" id="pasos">
+      <div class="riel"><i></i></div>
+      <div class="paso"><div class="bola">1</div><h3>Visita y medidas</h3><p>Vamos a su casa, tomamos medidas y escuchamos lo que necesita. Sin costo.</p></div>
+      <div class="paso"><div class="bola">2</div><h3>Diseño y precio</h3><p>Le mostramos el boceto y el presupuesto por escrito, con fechas.</p></div>
+      <div class="paso"><div class="bola">3</div><h3>Taller</h3><p>Lo fabricamos en nuestro taller y le enviamos fotos del avance.</p></div>
+      <div class="paso"><div class="bola">4</div><h3>Instalación</h3><p>Lo instalamos, dejamos todo limpio y le damos un año de garantía.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="franja" id="franja">
+  <div class="fondo"></div>
+  <div class="rev"><blockquote>La madera buena no se apura. Nosotros tampoco.</blockquote><cite>— Don Jairo, maestro carpintero</cite></div>
+</div>
+
+<section id="opiniones">
+  <div class="env">
+    <div class="cabeza rev">
+      <div><span class="antetitulo">Opiniones</span><h2>Lo que dicen nuestros clientes</h2></div>
+      <p>Clientes de Chía, Cajicá, Sopó y Bogotá.</p>
+    </div>
+    <div class="opiniones rev" id="opiniones-carril">
+      <div class="carril" id="carril"></div>
+    </div>
+    <div class="puntos" id="puntos"></div>
+  </div>
+</section>
+
+<section id="preguntas" style="padding-top:10px">
+  <div class="env">
+    <div class="cabeza rev"><div><span class="antetitulo">Preguntas frecuentes</span><h2>Lo que más nos preguntan</h2></div></div>
+    <div class="preguntas rev" id="lista-preguntas"></div>
+  </div>
+</section>
+
+<section id="contacto" style="padding-top:20px">
+  <div class="env contacto">
+    <div class="rev">
+      <span class="antetitulo">Contacto</span>
+      <h2>Cuéntenos su proyecto</h2>
+      <p style="color:var(--gris)">Le respondemos el mismo día con una idea de precio y una fecha para la visita.</p>
+      <ul class="datos">
+        <li><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Taller: Carrera 00 # 00-00, Chía, Cundinamarca</span></li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Lunes a sábado, 7:00 a. m. a 5:00 p. m.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.7 2.7-1.8 3.4a16 16 0 0 0 6 6l3.4-1.8 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>300 000 0000</span></li>
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>contacto@guayacan.com.co</span></li>
+      </ul>
+    </div>
+    <form class="formulario rev" id="formulario" novalidate>
+      <div class="campo"><input id="f-nombre" placeholder=" " autocomplete="off"><label for="f-nombre">Su nombre</label></div>
+      <div class="campo"><input id="f-cel" placeholder=" " inputmode="tel" autocomplete="off"><label for="f-cel">Celular</label></div>
+      <div class="campo">
+        <select id="f-que"><option>Una cama o alcoba</option><option>Una cocina</option><option>Un closet</option><option>Un mueble a la medida</option><option>Una casa o cabaña</option><option>Otra cosa</option></select>
+        <label for="f-que">¿Qué necesita?</label>
+        <svg class="flechita" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>
+      </div>
+      <div class="campo"><textarea id="f-msj" placeholder=" "></textarea><label for="f-msj">Cuéntenos un poco más (medidas, ideas, fecha)</label></div>
+      <button class="btn btn-tierra enviar" type="submit"><span class="t">Enviar mensaje</span><span class="girando"></span></button>
+      <div class="exito" id="exito">
+        <div class="ok"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="exito-titulo">¡Listo! Su mensaje llegó.</h3>
+        <p>Le escribimos hoy mismo. Así le llegó al dueño del taller, a su correo:</p>
+        <div class="correo">
+          <div class="barra"><b>Página web Guayacán</b> · para: jairo@guayacan.com.co · <span id="c-hora">ahora</span></div>
+          <div class="asunto" id="c-asunto">Nueva solicitud desde la página</div>
+          <div class="cuerpo">
+            <div><span>Nombre</span><b id="c-nombre">—</b></div>
+            <div><span>Celular</span><b id="c-cel">—</b></div>
+            <div><span>Necesita</span><b id="c-que">—</b></div>
+            <div><span>Mensaje</span><b id="c-msj" style="font-weight:400">—</b></div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-borde" style="margin-top:18px;align-self:flex-start;color:var(--tinta)" id="otra">Enviar otro mensaje</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="env">
+    <div class="arriba">
+      <div>
+        <h4>Guayacán · Madera y obra</h4>
+        <p>Taller familiar de carpintería y construcción en madera. Chía, Cundinamarca.</p>
+        <div class="redes">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5.5v3.5H8V21h3.5v-7.5H14l.5-3.5h-3V8a1 1 0 0 1 1-1H15z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3a5 5 0 0 0 5 5"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Servicios</h4><a href="#servicios">Camas y alcobas</a><a href="#servicios">Cocinas</a><a href="#servicios">Closets</a><a href="#servicios">Casas y cabañas</a></div>
+      <div><h4>La página</h4><a href="#proyectos">Proyectos</a><a href="#como">Cómo trabajamos</a><a href="#opiniones">Opiniones</a><a href="#contacto">Contacto</a></div>
+    </div>
+    <div class="abajo"><span>© 2026 Guayacán · Ejemplo de demostración, negocio ficticio</span><span>Fotos de muestra</span></div>
+  </div>
+</footer>
+
+<div class="flotante" id="flotante"><span class="globo">¿Le ayudamos con su proyecto?</span><button data-wa aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5c0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2"/></svg></button></div>
+
+<div class="wa-velo" id="wa">
+  <div class="wa-hoja">
+    <div class="wa-cab"><i>G</i><div><b>Guayacán · Madera y obra</b><small>en línea</small></div></div>
+    <div class="wa-cuerpo"><div class="wa-nota">En la página real, este botón abre WhatsApp en el celular con este mensaje ya escrito.</div></div>
+    <div class="wa-pie"><div>Hola, vi su página y quiero cotizar un trabajo en madera.</div><button aria-label="Enviar">➤</button></div>
+    <button class="wa-cerrar" id="wa-cerrar">Volver a la página</button>
+  </div>
+</div>
+
+<div class="caja-luz" id="caja-luz" role="dialog" aria-label="Foto en grande">
+  <div class="marco-foto"><img id="cl-img" alt=""></div>
+  <div class="texto"><b id="cl-tit"></b><span id="cl-pie"></span></div>
+  <button class="cerrar" id="cl-cerrar" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <button class="flecha izq" id="cl-izq" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button class="flecha der" id="cl-der" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var IMG="../assets/img/";
+
+/* La barra de demostración empuja el menú cuando la página se abre suelta */
+function altoBarra(){var b=$("#demobar");document.documentElement.style.setProperty("--alto-barra",(b&&getComputedStyle(b).display!=="none"?b.offsetHeight:0)+"px")}
+altoBarra();window.addEventListener("resize",altoBarra);
+
+/* Titular palabra por palabra */
+var t=$("#titular");t.innerHTML=t.textContent.split(" ").map(function(p,i){return'<span class="palabra"><span style="animation-delay:'+(.25+i*.07)+'s">'+p+'</span></span>'}).join(" ");
+
+/* Menú: se vuelve sólido al bajar y marca la sección donde está */
+var menu=$("#menu");
+function alBajar(){menu.classList.toggle("solido",window.scrollY>60)}
+window.addEventListener("scroll",alBajar,{passive:true});alBajar();
+var enlaces=$$(".menu nav a");
+var ioMenu=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){enlaces.forEach(function(a){a.classList.toggle("aqui",a.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-45% 0px -50% 0px"});
+["servicios","proyectos","como","opiniones","contacto"].forEach(function(id){ioMenu.observe(document.getElementById(id))});
+$("#hamburguesa").addEventListener("click",function(){document.body.classList.toggle("menu-abierto")});
+$$("#cajon a").forEach(function(a){a.addEventListener("click",function(){document.body.classList.remove("menu-abierto")})});
+
+/* Aparecer al bajar */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
+$$(".rev").forEach(function(el){
+  var hermanos=el.parentElement?$$(":scope > .rev",el.parentElement):[];
+  var i=hermanos.indexOf(el);if(i>0)el.style.transitionDelay=Math.min(i*.08,.4)+"s";
+  io.observe(el)});
+setTimeout(function(){$$(".rev").forEach(function(el){el.classList.add("in")})},9000);
+$$(".portada .rev").forEach(function(el,i){el.style.transitionDelay=(.7+i*.15)+"s";setTimeout(function(){el.classList.add("in")},50)});
+
+/* Cifras que cuentan */
+$$("[data-cuenta]").forEach(function(el){
+  var fin=parseFloat(el.dataset.cuenta),dec=+(el.dataset.dec||0),ini=null;
+  setTimeout(function(){requestAnimationFrame(function paso(ts){if(!ini)ini=ts;var p=Math.min(1,(ts-ini)/1800),v=fin*(1-Math.pow(1-p,4));
+    el.textContent=dec?v.toFixed(dec).replace(".",","):Math.round(v).toLocaleString("es-CO");if(p<1)requestAnimationFrame(paso)})},1300)});
+
+/* Proyectos */
+var OBRAS=[
+  {f:"sala",c:"Muebles",t:"Biblioteca de pared",p:"Apartamento en Chicó · roble · 3 semanas",cl:"ancha"},
+  {f:"casa-montana",c:"Casas",t:"Casa de campo en ladera",p:"Vereda de La Calera · estructura en madera · 7 meses",cl:"ancha alta"},
+  {f:"cama-madera",c:"Alcobas",t:"Cama doble con cabecero de listones",p:"Cajicá · pino tratado · 2 semanas"},
+  {f:"cocina",c:"Cocinas",t:"Cocina abierta en roble",p:"Casa en Sopó · roble y cuarzo · 5 semanas",cl:"alta"},
+  {f:"deck",c:"Exteriores",t:"Deck y pérgola",p:"Finca en Tabio · teca · 4 semanas"},
+  {f:"cama-nogal",c:"Alcobas",t:"Alcoba principal en nogal",p:"Bogotá · nogal · 3 semanas",cl:"ancha"},
+  {f:"casa-anochecer",c:"Casas",t:"Casa moderna en madera",p:"Chía · madera y vidrio · 9 meses",cl:"ancha"},
+  {f:"puerta",c:"Exteriores",t:"Puerta principal maciza",p:"Cota · guayacán · 2 semanas",cl:"alta"},
+  {f:"comedor",c:"Muebles",t:"Comedor de borde natural",p:"Chía · cedro · 3 semanas"},
+  {f:"closet",c:"Alcobas",t:"Closet hasta el techo",p:"Bogotá · roble claro · 3 semanas"},
+  {f:"cabana",c:"Casas",t:"Cabaña en el bosque",p:"San Francisco · pino inmunizado · 4 meses"},
+  {f:"escalera",c:"Exteriores",t:"Escalera flotante",p:"Casa en Cajicá · roble · 4 semanas",cl:"alta"},
+  {f:"obra-estructura",c:"Casas",t:"Casa de dos pisos, en obra",p:"Sopó · estructura en madera · en curso"}
+];
+var CATS=["Todos","Muebles","Alcobas","Cocinas","Casas","Exteriores"];
+var gal=$("#galeria"),filtros=$("#filtros");
+gal.innerHTML=OBRAS.map(function(o,i){return'<figure class="obra '+(o.cl||"")+'" data-c="'+o.c+'" data-i="'+i+'"><img src="'+IMG+o.f+'-800.webp" alt="'+o.t+'" loading="lazy"><figcaption class="pie"><b>'+o.t+'</b><span>'+o.p+'</span></figcaption></figure>'}).join("");
+filtros.innerHTML=CATS.map(function(c,i){var n=c==="Todos"?OBRAS.length:OBRAS.filter(function(o){return o.c===c}).length;return'<button class="filtro'+(i?"":" on")+'" data-c="'+c+'">'+c+'<sup>'+n+'</sup></button>'}).join("");
+var obras=$$(".obra",gal);
+$$(".filtro",filtros).forEach(function(b){b.addEventListener("click",function(){
+  $$(".filtro",filtros).forEach(function(x){x.classList.toggle("on",x===b)});
+  var c=b.dataset.c;
+  /* FLIP: cada foto viaja de donde estaba a donde queda */
+  var antes=new Map();obras.forEach(function(o){if(!o.classList.contains("fuera"))antes.set(o,o.getBoundingClientRect())});
+  obras.forEach(function(o){o.classList.toggle("fuera",c!=="Todos"&&o.dataset.c!==c)});
+  obras.forEach(function(o){
+    if(o.classList.contains("fuera"))return;
+    var a=antes.get(o),d=o.getBoundingClientRect();
+    if(a){var dx=a.left-d.left,dy=a.top-d.top,sx=a.width/d.width,sy=a.height/d.height;
+      o.animate([{transform:"translate("+dx+"px,"+dy+"px) scale("+sx+","+sy+")",transformOrigin:"0 0"},{transform:"none",transformOrigin:"0 0"}],{duration:650,easing:"cubic-bezier(.22,1,.36,1)"})}
+    else o.animate([{opacity:0,transform:"scale(.85)"},{opacity:1,transform:"none"}],{duration:550,easing:"cubic-bezier(.22,1,.36,1)"});
+  })})});
+
+/* Foto en grande, que sale volando desde la miniatura */
+var cl=$("#caja-luz"),clImg=$("#cl-img"),actual=0;
+function visibles(){return obras.filter(function(o){return!o.classList.contains("fuera")})}
+function mostrar(i){var o=OBRAS[i];actual=i;clImg.src=IMG+o.f+"-1600.webp";clImg.alt=o.t;$("#cl-tit").textContent=o.t;$("#cl-pie").textContent=o.p}
+obras.forEach(function(el){el.addEventListener("click",function(){
+  var i=+el.dataset.i,r=el.getBoundingClientRect(),v=document.createElement("img");
+  v.className="volando";v.src=$("img",el).src;v.style.cssText="left:"+r.left+"px;top:"+r.top+"px;width:"+r.width+"px;height:"+r.height+"px";
+  document.body.appendChild(v);mostrar(i);
+  var W=Math.min(innerWidth-140,1400),H=Math.min(innerHeight-170,W*2/3);W=Math.min(W,H*1.5);
+  requestAnimationFrame(function(){requestAnimationFrame(function(){v.style.cssText="left:"+(innerWidth-W)/2+"px;top:"+Math.max(60,(innerHeight-110-H)/2)+"px;width:"+W+"px;height:"+H+"px;border-radius:10px"})});
+  setTimeout(function(){cl.classList.add("on");setTimeout(function(){v.remove()},450)},420)})});
+function paso(d){var v=visibles().map(function(o){return+o.dataset.i}),k=v.indexOf(actual);mostrar(v[(k+d+v.length)%v.length]);clImg.animate([{opacity:0,transform:"translateX("+(d*30)+"px)"},{opacity:1,transform:"none"}],{duration:420,easing:"ease-out"})}
+$("#cl-cerrar").addEventListener("click",function(){cl.classList.remove("on")});
+$("#cl-izq").addEventListener("click",function(){paso(-1)});$("#cl-der").addEventListener("click",function(){paso(1)});
+cl.addEventListener("click",function(e){if(e.target===cl||e.target.classList.contains("marco-foto"))cl.classList.remove("on")});
+document.addEventListener("keydown",function(e){if(!cl.classList.contains("on"))return;if(e.key==="Escape")cl.classList.remove("on");if(e.key==="ArrowRight")paso(1);if(e.key==="ArrowLeft")paso(-1)});
+var x0=null;cl.addEventListener("touchstart",function(e){x0=e.touches[0].clientX},{passive:true});
+cl.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)paso(dx<0?1:-1);x0=null});
+
+/* Del boceto a la obra */
+var cmp=$("#comparar"),arrastrando=false;
+function poner(x){var r=cmp.getBoundingClientRect(),p=Math.max(0,Math.min(100,(x-r.left)/r.width*100));cmp.style.setProperty("--x",p+"%");cmp.setAttribute("aria-valuenow",Math.round(p))}
+cmp.addEventListener("pointerdown",function(e){arrastrando=true;cmp.classList.add("tocado");cmp.setPointerCapture(e.pointerId);poner(e.clientX)});
+cmp.addEventListener("pointermove",function(e){if(arrastrando)poner(e.clientX)});
+cmp.addEventListener("pointerup",function(){arrastrando=false});
+cmp.addEventListener("keydown",function(e){var v=parseFloat(cmp.style.getPropertyValue("--x"))||50;if(e.key==="ArrowLeft")v-=5;else if(e.key==="ArrowRight")v+=5;else return;v=Math.max(0,Math.min(100,v));cmp.style.setProperty("--x",v+"%");cmp.classList.add("tocado")});
+/* Pequeño vaivén para que se entienda que se mueve */
+var ioC=new IntersectionObserver(function(es){if(!es[0].isIntersecting||cmp.classList.contains("tocado"))return;ioC.disconnect();
+  var t0=null;requestAnimationFrame(function vai(ts){if(cmp.classList.contains("tocado"))return;if(!t0)t0=ts;var p=(ts-t0)/2600;if(p>1){cmp.style.setProperty("--x","50%");return}
+    cmp.style.setProperty("--x",(50+Math.sin(p*Math.PI*2)*28*(1-p*.4))+"%");requestAnimationFrame(vai)})},{threshold:.6});
+ioC.observe(cmp);
+
+/* Cómo trabajamos: la línea se llena al bajar */
+var pasos=$("#pasos"),bolas=$$(".paso",pasos);
+function avance(){var r=pasos.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.75-r.top)/(r.height+innerHeight*.15)));
+  pasos.style.setProperty("--avance",(p*100)+"%");bolas.forEach(function(b,i){b.classList.toggle("hecho",p>=i/(bolas.length-1)-.02&&p>0.02)})}
+window.addEventListener("scroll",avance,{passive:true});avance();
+
+/* Franja con movimiento de fondo */
+var franja=$("#franja"),fondo=$(".fondo",franja);
+window.addEventListener("scroll",function(){var r=franja.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;fondo.style.transform="translateY("+((r.top+r.height/2-innerHeight/2)*-.18)+"px)"},{passive:true});
+
+/* Opiniones */
+var OPS=[
+  {n:"Laura Méndez",l:"Chía",q:"Nos hicieron la cocina y el closet. Llegaron el día que dijeron, dejaron todo limpio y quedó mejor que en el boceto.",c:"#a8552a",i:"LM"},
+  {n:"Andrés Rojas",l:"Sopó",q:"Construyeron nuestra casa de campo. Cada semana nos mandaban fotos del avance, nunca tuvimos que perseguirlos.",c:"#2e4638",i:"AR"},
+  {n:"Patricia Gómez",l:"Bogotá",q:"La cama en nogal es una obra de arte. Se nota que la madera es buena y que la hicieron con cariño.",c:"#6b4425",i:"PG"},
+  {n:"Carlos Pinilla",l:"Cajicá",q:"Les pedí una escalera difícil y la resolvieron. El precio fue el mismo que nos dijeron al principio.",c:"#8a6b2f",i:"CP"},
+  {n:"Mónica Herrera",l:"Tabio",q:"El deck y la pérgola cambiaron la finca. Ya van tres años y siguen como el primer día.",c:"#4b5f3a",i:"MH"}
+];
+var carril=$("#carril"),puntos=$("#puntos"),op=0,tOp;
+carril.innerHTML=OPS.map(function(o){return'<div class="opinion"><div class="tarjeta"><div class="ini" style="background:'+o.c+'">'+o.i+'</div><div><div class="estrellas">★★★★★</div><q>'+o.q+'</q><div class="quien"><b>'+o.n+'</b> · '+o.l+'</div></div></div></div>'}).join("");
+puntos.innerHTML=OPS.map(function(_,i){return'<button aria-label="Opinión '+(i+1)+'"></button>'}).join("");
+function irOp(i){op=(i+OPS.length)%OPS.length;carril.style.transform="translateX("+(-op*100)+"%)";$$("button",puntos).forEach(function(b,k){b.classList.toggle("on",k===op)});clearTimeout(tOp);tOp=setTimeout(function(){irOp(op+1)},6500)}
+$$("button",puntos).forEach(function(b,i){b.addEventListener("click",function(){irOp(i)})});irOp(0);
+var ox=null;carril.addEventListener("touchstart",function(e){ox=e.touches[0].clientX},{passive:true});
+carril.addEventListener("touchend",function(e){if(ox===null)return;var d=e.changedTouches[0].clientX-ox;if(Math.abs(d)>40)irOp(op+(d<0?1:-1));ox=null});
+
+/* Preguntas */
+var PRE=[
+  ["¿Cuánto se demoran?","Un mueble, entre dos y cinco semanas según el tamaño y la madera. Una casa, entre cuatro y nueve meses. Siempre le damos la fecha por escrito."],
+  ["¿La visita para tomar medidas tiene costo?","No. En Chía, Cajicá, Sopó, Cota y el norte de Bogotá la visita es gratis."],
+  ["¿Qué maderas trabajan?","Pino, cedro, roble, nogal y guayacán. Le explicamos las diferencias de precio y duración para que escoja."],
+  ["¿Cómo se paga?","La mitad al aprobar el diseño y la otra mitad al entregar. En las casas, por etapas terminadas."],
+  ["¿Tienen garantía?","Sí: un año en muebles y cinco años en la estructura de las casas."]
+];
+$("#lista-preguntas").innerHTML=PRE.map(function(p){return'<div class="pregunta"><button aria-expanded="false">'+p[0]+'<i></i></button><div class="resp"><div><p>'+p[1]+'</p></div></div></div>'}).join("");
+$$(".pregunta").forEach(function(q,i){var b=$("button",q);if(i===0){q.classList.add("on");b.setAttribute("aria-expanded","true")}
+  b.addEventListener("click",function(){var on=!q.classList.contains("on");$$(".pregunta").forEach(function(x){x.classList.remove("on");$("button",x).setAttribute("aria-expanded","false")});if(on){q.classList.add("on");b.setAttribute("aria-expanded","true")}})});
+
+/* Formulario: se ve cómo le llega al dueño */
+var form=$("#formulario"),exito=$("#exito");
+form.addEventListener("submit",function(e){e.preventDefault();
+  var b=$(".enviar",form);b.classList.add("mandando");
+  var nombre=$("#f-nombre").value.trim()||"Cliente de la demostración",cel=$("#f-cel").value.trim()||"300 000 0000",que=$("#f-que").value,msj=$("#f-msj").value.trim()||"Quisiera una visita para tomar medidas.";
+  setTimeout(function(){
+    b.classList.remove("mandando");
+    $("#exito-titulo").textContent="¡Listo, "+nombre.split(" ")[0]+"! Su mensaje llegó.";
+    $("#c-nombre").textContent=nombre;$("#c-cel").textContent=cel;$("#c-que").textContent=que;$("#c-msj").textContent=msj;
+    $("#c-asunto").textContent="Nueva solicitud: "+que.replace(/^(Una|Un) /,"")+" — "+nombre.split(" ")[0];
+    $("#c-hora").textContent=new Date().toLocaleTimeString("es-CO",{hour:"numeric",minute:"2-digit"});
+    exito.classList.add("on")},1100)});
+$("#otra").addEventListener("click",function(){exito.classList.remove("on");form.reset()});
+
+/* WhatsApp */
+$$("[data-wa]").forEach(function(b){b.addEventListener("click",function(){$("#wa").classList.add("on")})});
+$("#wa-cerrar").addEventListener("click",function(){$("#wa").classList.remove("on")});
+$("#wa").addEventListener("click",function(e){if(e.target.id==="wa")e.target.classList.remove("on")});
+setTimeout(function(){$("#flotante").classList.add("saluda");setTimeout(function(){$("#flotante").classList.remove("saluda")},5000)},7000);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guayacán · Del plano a su casa (ejemplo nivel 3)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%235b3a1f%27/%3E%3Cg fill=%27none%27 stroke=%27%23f2d3a8%27 stroke-width=%271.6%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27/%3E%3Ccircle cx=%2716.5%27 cy=%2715.5%27 r=%278%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2712%27/%3E%3C/g%3E%3C/svg%3E">
+<meta name="description" content="Ejemplo de página con sistema: diseñador de muebles, calculadora de obra, agenda de visitas, seguimiento de obra y panel del dueño.">
+<meta name="theme-color" content="#0a0806">
+<script>(function(){var e;try{e=window.self!==window.top}catch(x){e=true}if(e)document.documentElement.className+=" en-catalogo"})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/img/casa-anochecer-1600.webp" imagesrcset="../assets/img/casa-anochecer-800.webp 800w, ../assets/img/casa-anochecer-1600.webp 1600w" imagesizes="100vw">
+<link rel="stylesheet" href="nivel-3/estilo.css?v=7">
+<link rel="stylesheet" href="nivel-3/panel.css?v=7">
+</head>
+<body class="intro-activa">
+
+<!-- Entrada: el plano de una casa se dibuja en oro y se abre como un telón -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-mitad arriba"></div><div class="intro-mitad abajo"></div>
+  <div class="intro-centro">
+    <svg class="intro-plano" viewBox="0 0 320 220">
+      <path d="M20 190H300"/>
+      <path d="M60 190V100L160 40L260 100V190"/>
+      <path d="M60 100H260"/>
+      <path d="M140 190V140H180V190"/>
+      <path d="M82 118H122V158H82Z M102 118V158 M82 138H122"/>
+      <path d="M198 118H238V158H198Z M218 118V158 M198 138H238"/>
+      <path d="M60 205H260 M60 200V210 M260 200V210" class="cota"/>
+      <path d="M278 190V40 M273 190H283 M273 40H283" class="cota"/>
+      <path d="M210 70V48H228V82" />
+    </svg>
+    <div class="intro-marca"><span>G</span><span>U</span><span>A</span><span>Y</span><span>A</span><span>C</span><span>Á</span><span>N</span></div>
+    <div class="intro-sub">Madera y obra</div>
+    <div class="intro-cuenta"><span id="intro-n">0</span>%</div>
+  </div>
+</div>
+
+<div class="demobar" id="demobar">
+  <a href="../index.html#nivel-3">← Ver los tres niveles</a>
+  <span><b>Nivel 3 · Con sistema</b> — desde $2.000.000 · cotiza, agenda y guarda todo</span>
+  <button class="dorado" data-abrir-panel>Ver el panel del dueño</button>
+  <button onclick="document.body.classList.add('sin-barra');window.dispatchEvent(new Event('resize'))">Ocultar barra</button>
+</div>
+
+<div class="luz-cursor" id="luz-cursor" aria-hidden="true"></div>
+<div class="grano" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#inicio" aria-label="Guayacán, inicio">
+    <svg viewBox="-20 -20 40 40" class="anillos-logo"><circle r="3.4" cx=".5" cy="-.4"/><circle r="7.4" cx=".2" cy="-.1"/><circle r="11.6" cx="-.2" cy=".3"/><circle r="15.6" cx="0" cy="0" class="tenue"/></svg>
+    <span>GUAYACÁN</span>
+  </a>
+  <nav>
+    <a href="#disenar">Diseñar un mueble</a>
+    <a href="#obra">Calcular una obra</a>
+    <a href="#agenda">Agendar visita</a>
+    <a href="#mi-obra">Mi obra</a>
+  </nav>
+  <button class="nav-panel" data-abrir-panel><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Acceso del dueño</span></button>
+</header>
+
+<!-- ─────────────── Portada ─────────────── -->
+<section class="portada" id="inicio">
+  <div class="portada-foto"><img src="../assets/img/casa-anochecer-1600.webp" srcset="../assets/img/casa-anochecer-800.webp 800w, ../assets/img/casa-anochecer-1600.webp 1600w" sizes="100vw" alt="Casa en madera iluminada al anochecer"></div>
+  <div class="portada-contenido">
+    <span class="kicker"><i></i> Carpintería · Construcción · Diseño</span>
+    <h1 class="titular-grande"><span class="ln"><span>Del plano</span></span><span class="ln"><span><em>a su casa.</em></span></span></h1>
+    <p class="portada-lema">Diseñe su mueble y vea el precio al instante. Calcule su obra. Agende la visita.
+       Y cuando estemos construyendo, siga el avance desde su celular.</p>
+    <div class="portada-botones">
+      <a class="boton-oro magnetico" href="#disenar"><span>Diseñar mi mueble</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="boton-vidrio magnetico" href="#obra">Calcular mi obra</a>
+    </div>
+  </div>
+  <div class="portada-vivo"><i></i><span id="vivo-texto">3 obras en curso · 7 visitas esta semana</span></div>
+  <a class="portada-bajar" href="#plano" aria-label="Bajar"><span></span></a>
+</section>
+
+<div class="cinta-servicios" aria-hidden="true"><div class="cinta-pista" id="cinta"></div></div>
+
+<!-- ─────────────── Del plano a la obra (se dibuja al bajar) ─────────────── -->
+<section class="plano-obra" id="plano">
+  <div class="plano-pegado">
+    <div class="plano-textos">
+      <span class="etiqueta">Cómo trabajamos</span>
+      <div class="plano-paso on" data-paso="0"><span class="num">01</span><h2>Lo dibujamos <em>con usted.</em></h2><p>Cada proyecto empieza en papel. Usted ve medidas, materiales y precio antes de que se corte una sola tabla.</p></div>
+      <div class="plano-paso" data-paso="1"><span class="num">02</span><h2>Lo calculamos <em>al centavo.</em></h2><p>El precio sale de la página misma: el cliente lo arma y lo ve, sin esperar a que alguien conteste.</p></div>
+      <div class="plano-paso" data-paso="2"><span class="num">03</span><h2>Lo construimos <em>y lo ve crecer.</em></h2><p>Fotos y avance de cada etapa, en el celular del cliente, todos los días.</p></div>
+    </div>
+    <div class="plano-lienzo">
+      <img src="../assets/img/casa-montana-1600.webp" alt="Casa en madera terminada" class="plano-foto" id="plano-foto" loading="lazy">
+      <svg class="plano-svg" id="plano-svg" viewBox="0 0 800 520" preserveAspectRatio="xMidYMid slice"></svg>
+      <div class="plano-medidor"><span id="plano-pct">0</span>% construido</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── Diseñador de muebles ─────────────── -->
+<section class="seccion" id="disenar">
+  <div class="envoltura">
+    <div class="cabeza-seccion rev">
+      <span class="etiqueta">Diseñador en vivo</span>
+      <h2>Diseñe su mueble. <em>Vea el precio mientras lo arma.</em></h2>
+      <p>Escoja la pieza, la madera y la medida. El dibujo y el precio cambian solos, a cualquier hora, sin llamar a nadie.</p>
+    </div>
+    <div class="disenador rev">
+      <div class="escenario" id="escenario">
+        <div class="escenario-ficha" id="ficha">Cama doble · Nogal · Aceite natural</div>
+        <svg id="mueble-svg" viewBox="0 0 900 560" role="img" aria-label="Dibujo del mueble"></svg>
+        <div class="escenario-precio"><span class="etiqueta">Precio estimado</span><b id="precio-escenario">$0</b><small id="semanas-escenario">Listo en 3 semanas</small></div>
+      </div>
+      <div class="controles" id="controles">
+        <div class="control">
+          <span class="control-titulo">1 · La pieza</span>
+          <div class="piezas" id="piezas"></div>
+        </div>
+        <div class="control">
+          <span class="control-titulo">2 · La madera <small id="madera-nota"></small></span>
+          <div class="maderas" id="maderas"></div>
+        </div>
+        <div class="control">
+          <span class="control-titulo">3 · La medida <small id="medida-valor"></small></span>
+          <div id="medida"></div>
+        </div>
+        <div class="control">
+          <span class="control-titulo">4 · El acabado</span>
+          <div class="acabados" id="acabados"></div>
+        </div>
+        <div class="control">
+          <span class="control-titulo">5 · Detalles</span>
+          <div class="extras" id="extras"></div>
+        </div>
+        <div class="resumen">
+          <div><span class="etiqueta">Total estimado</span><b class="total" id="total">$0</b><small id="total-nota">Se confirma en la visita de medición</small></div>
+          <button class="boton-oro" id="enviar-cotizacion"><span>Enviar esta cotización</span><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── Calculadora de obra ─────────────── -->
+<section class="seccion seccion-obra" id="obra">
+  <div class="envoltura">
+    <div class="cabeza-seccion rev">
+      <span class="etiqueta">Calculadora de obra</span>
+      <h2>¿Cuánto cuesta construir? <em>Véalo antes de preguntar.</em></h2>
+      <p>Una idea clara de precio y tiempo, con el cronograma por etapas. Después lo afinamos en la visita.</p>
+    </div>
+    <div class="calculadora rev">
+      <div class="calc-controles">
+        <div class="control">
+          <span class="control-titulo">Qué quiere construir</span>
+          <div class="tipos" id="tipos"></div>
+        </div>
+        <div class="control">
+          <span class="control-titulo">Área total <small id="area-valor">120 m²</small></span>
+          <input type="range" id="area" min="20" max="300" step="5" value="120" class="deslizador">
+          <div class="deslizador-marcas"><span>20 m²</span><span>300 m²</span></div>
+        </div>
+        <div class="control dos-col">
+          <div>
+            <span class="control-titulo">Pisos</span>
+            <div class="segmentos" id="pisos"><button data-v="1">1</button><button data-v="2" class="on">2</button><button data-v="3">3</button></div>
+          </div>
+          <div>
+            <span class="control-titulo">Acabados</span>
+            <div class="segmentos" id="nivel-acabado"><button data-v="basico">Básico</button><button data-v="estandar" class="on">Estándar</button><button data-v="premium">Premium</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-resultado">
+        <div class="casa-escena">
+          <svg id="casa-svg" viewBox="0 0 900 470" role="img" aria-label="Dibujo de la obra"></svg>
+          <button class="boton-vidrio ver-construir" id="ver-construir"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg> Ver cómo se construye</button>
+          <div class="casa-etapa" id="casa-etapa"></div>
+        </div>
+        <div class="calc-cifras">
+          <div><span class="etiqueta">Precio aproximado</span><b id="obra-precio">$0</b><small id="obra-rango"></small></div>
+          <div><span class="etiqueta">Tiempo de obra</span><b id="obra-semanas">0</b><small id="obra-meses"></small></div>
+        </div>
+        <div class="cronograma" id="cronograma"></div>
+        <a class="boton-oro" href="#agenda" id="quiero-obra"><span>Quiero una visita para esta obra</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── Agenda ─────────────── -->
+<section class="seccion" id="agenda">
+  <div class="envoltura">
+    <div class="cabeza-seccion rev">
+      <span class="etiqueta">Agenda en línea</span>
+      <h2>Aparte su visita. <em>Le confirmamos por WhatsApp.</em></h2>
+      <p>Las horas ocupadas ya aparecen bloqueadas. La visita de medición no tiene costo.</p>
+    </div>
+    <div class="agenda rev" id="agenda-caja">
+      <div class="agenda-cal">
+        <div class="agenda-mes" id="agenda-mes"></div>
+        <div class="agenda-dias" id="agenda-dias"></div>
+        <span class="control-titulo" style="margin-top:22px">Horas disponibles</span>
+        <div class="agenda-horas" id="agenda-horas"><p class="vacio">Escoja un día</p></div>
+      </div>
+      <form class="agenda-form" id="agenda-form" novalidate>
+        <div class="campo"><input id="a-nombre" placeholder=" " autocomplete="off"><label for="a-nombre">Su nombre</label></div>
+        <div class="campo"><input id="a-cel" placeholder=" " inputmode="tel" autocomplete="off"><label for="a-cel">Celular (WhatsApp)</label></div>
+        <div class="campo"><input id="a-dir" placeholder=" " autocomplete="off"><label for="a-dir">Dirección de la visita</label></div>
+        <div class="segmentos tipo-visita" id="tipo-visita"><button type="button" data-v="Medición de mueble" class="on">Medir un mueble</button><button type="button" data-v="Visita de obra">Visita de obra</button></div>
+        <button class="boton-oro" id="agendar" type="submit" disabled><span id="agendar-texto">Escoja día y hora</span></button>
+        <div class="agenda-listo" id="agenda-listo">
+          <div class="cal-hoja"><span id="al-mes">OCT</span><b id="al-dia">9</b><small id="al-hora">10:00 a. m.</small></div>
+          <h3>¡Visita agendada!</h3>
+          <p>Esto le llegó a su WhatsApp, sin que nadie tuviera que escribirlo:</p>
+          <div class="burbuja" id="al-burbuja"></div>
+          <button type="button" class="boton-vidrio" id="al-ver-panel" data-abrir-panel>Ver cómo le llegó al dueño</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── Siga su obra ─────────────── -->
+<section class="seccion seccion-mi-obra" id="mi-obra">
+  <div class="envoltura mi-obra">
+    <div class="mi-obra-texto rev">
+      <span class="etiqueta">Para quien ya es cliente</span>
+      <h2>Siga su obra <em>desde el celular.</em></h2>
+      <p>Cada cliente recibe un código. Con él ve en qué etapa va su casa, las fotos de cada día y cuándo es la próxima visita.
+         Nadie tiene que llamar a preguntar.</p>
+      <form class="codigo" id="codigo-form">
+        <input id="codigo" value="" placeholder="Código de obra" aria-label="Código de obra" autocomplete="off">
+        <button class="boton-oro" type="submit"><span>Ver mi obra</span></button>
+      </form>
+      <small class="pista">Pruebe con el código <b>GY-2417</b></small>
+    </div>
+    <div class="telefono rev">
+      <div class="telefono-pantalla" id="seguimiento">
+        <div class="seg-vacio" id="seg-vacio"><svg viewBox="-40 -40 80 80" class="anillos-logo"><circle r="6"/><circle r="14"/><circle r="22"/><circle r="30" class="tenue"/></svg><p>Escriba su código para ver su obra</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── Proyectos ─────────────── -->
+<section class="seccion" id="proyectos">
+  <div class="envoltura">
+    <div class="cabeza-seccion fila rev">
+      <div><span class="etiqueta">Proyectos</span><h2>Hecho por nosotros, <em>de principio a fin.</em></h2></div>
+      <div class="flechas"><button id="pf-izq" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button><button id="pf-der" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button></div>
+    </div>
+  </div>
+  <div class="portafolio" id="portafolio"></div>
+  <div class="envoltura"><div class="portafolio-barra"><i id="pf-avance"></i></div></div>
+</section>
+
+<!-- ─────────────── Cierre ─────────────── -->
+<section class="cierre" id="cierre">
+  <div class="cierre-foto"><img src="../assets/img/taller-noche-1600.webp" alt="" loading="lazy"></div>
+  <div class="envoltura cierre-contenido rev">
+    <blockquote>«Cotizamos la cocina un domingo a las once de la noche. El lunes a las ocho ya nos estaban llamando para la visita.»</blockquote>
+    <cite>Laura Méndez · Chía</cite>
+    <div class="portada-botones" style="justify-content:center">
+      <a class="boton-oro magnetico" href="#agenda"><span>Agendar mi visita</span></a>
+      <button class="boton-vidrio magnetico" data-wa>Escribir por WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="envoltura pie-fila">
+    <a class="logo" href="#inicio"><svg viewBox="-20 -20 40 40" class="anillos-logo"><circle r="3.4" cx=".5" cy="-.4"/><circle r="7.4" cx=".2" cy="-.1"/><circle r="11.6" cx="-.2" cy=".3"/><circle r="15.6" class="tenue"/></svg><span>GUAYACÁN</span></a>
+    <span>Taller en Chía · Carrera 00 # 00-00 · 300 000 0000</span>
+    <span>© 2026 · Ejemplo de demostración, negocio ficticio</span>
+  </div>
+</footer>
+
+<button class="wa-flotante" data-wa aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5c0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2"/></svg></button>
+
+<!-- Ventanitas -->
+<div class="velo" id="velo-cotizar">
+  <form class="ventana" id="form-cotizar" novalidate>
+    <button type="button" class="ventana-cerrar" data-cerrar aria-label="Cerrar">×</button>
+    <span class="etiqueta">Enviar cotización</span>
+    <h3 id="vc-titulo">Cama doble en nogal</h3>
+    <p class="vc-precio" id="vc-precio">$0</p>
+    <div class="campo"><input id="c-nombre" placeholder=" " autocomplete="off"><label for="c-nombre">Su nombre</label></div>
+    <div class="campo"><input id="c-cel" placeholder=" " inputmode="tel" autocomplete="off"><label for="c-cel">Celular (WhatsApp)</label></div>
+    <button class="boton-oro" type="submit" style="width:100%"><span>Enviar al taller</span></button>
+    <small class="nota-suave">Si lo deja en blanco, la demostración usa un nombre de ejemplo.</small>
+  </form>
+</div>
+
+<div class="velo" id="wa">
+  <div class="wa-hoja">
+    <div class="wa-cab"><i>G</i><div><b>Guayacán · Madera y obra</b><small>en línea</small></div></div>
+    <div class="wa-cuerpo"><div class="wa-nota">En la página real, este botón abre WhatsApp en el celular con este mensaje ya escrito.</div></div>
+    <div class="wa-pie"><div>Hola, vi su página y quiero cotizar un trabajo en madera.</div><button aria-label="Enviar">➤</button></div>
+    <button class="wa-cerrar" data-cerrar>Volver a la página</button>
+  </div>
+</div>
+
+<div class="avisos" id="avisos" aria-live="polite"></div>
+
+<!-- ═══════════════ Panel del dueño ═══════════════ -->
+<div class="panel" id="panel" aria-hidden="true">
+  <div class="candado" id="candado">
+    <div class="candado-caja">
+      <div class="candado-icono"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path class="arco" d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+      <b>Panel privado de Guayacán</b>
+      <span class="candado-quien">Don Jairo · dueño</span>
+      <div class="candado-clave" id="candado-clave"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <small id="candado-estado">Verificando…</small>
+    </div>
+  </div>
+  <div class="app">
+    <aside class="lado">
+      <div class="lado-logo"><svg viewBox="-20 -20 40 40" class="anillos-logo"><circle r="3.4" cx=".5" cy="-.4"/><circle r="7.4" cx=".2" cy="-.1"/><circle r="11.6" cx="-.2" cy=".3"/><circle r="15.6" class="tenue"/></svg><span>Guayacán<small>Panel del dueño</small></span></div>
+      <nav class="lado-nav" id="lado-nav">
+        <button data-vista="resumen" class="on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Resumen</span></button>
+        <button data-vista="cotizaciones"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span>Cotizaciones</span><i class="cuenta" id="cuenta-cot"></i></button>
+        <button data-vista="agenda"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Agenda</span><i class="cuenta" id="cuenta-age"></i></button>
+        <button data-vista="obras"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg><span>Obras</span></button>
+        <button data-vista="clientes"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M16 4a4 4 0 0 1 0 8M22 21a7 7 0 0 0-5-6.7"/></svg><span>Clientes</span></button>
+      </nav>
+      <div class="lado-usuario"><i>J</i><span>Don Jairo<small>Dueño</small></span></div>
+    </aside>
+    <main class="principal">
+      <header class="p-cab">
+        <div><h2 id="p-saludo">Buenos días, Don Jairo</h2><p id="p-fecha"></p></div>
+        <div class="p-acciones">
+          <label class="p-buscar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="p-buscar" placeholder="Buscar cliente…" autocomplete="off"></label>
+          <button class="p-campana" id="p-campana" aria-label="Novedades"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg><i id="p-campana-n"></i></button>
+          <button class="p-salir" id="p-cerrar"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Volver a la página</span></button>
+        </div>
+      </header>
+      <div class="p-aviso">Esto lo ve solo el dueño, con su usuario y contraseña. Lo que está resaltado en oro es lo que usted acaba de hacer en la página.</div>
+      <div class="vista on" data-vista="resumen" id="v-resumen"></div>
+      <div class="vista" data-vista="cotizaciones" id="v-cotizaciones"></div>
+      <div class="vista" data-vista="agenda" id="v-agenda"></div>
+      <div class="vista" data-vista="obras" id="v-obras"></div>
+      <div class="vista" data-vista="clientes" id="v-clientes"></div>
+    </main>
+  </div>
+</div>
+
+<script src="nivel-3/dibujos.js?v=7"></script>
+<script src="nivel-3/panel.js?v=7"></script>
+<script src="nivel-3/app.js?v=7"></script>
+</body>
+</html>
