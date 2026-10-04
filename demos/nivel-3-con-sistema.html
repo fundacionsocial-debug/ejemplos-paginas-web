@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Guayacán · Del plano a su casa (ejemplo nivel 3)</title>
+<title>Guayacán · Interiores a la medida (ejemplo nivel 3)</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%235b3a1f%27/%3E%3Cg fill=%27none%27 stroke=%27%23f2d3a8%27 stroke-width=%271.6%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%274%27/%3E%3Ccircle cx=%2716.5%27 cy=%2715.5%27 r=%278%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2712%27/%3E%3C/g%3E%3C/svg%3E">
-<meta name="description" content="Ejemplo de página con sistema: diseñador de muebles, calculadora de obra, agenda de visitas, seguimiento de obra y panel del dueño.">
+<meta name="description" content="Ejemplo de página con sistema: diseñador de muebles, calculadora de remodelación, agenda de visitas, seguimiento de obra y panel del dueño.">
 <meta name="theme-color" content="#0a0806">
 <script>(function(){var e;try{e=window.self!==window.top}catch(x){e=true}if(e)document.documentElement.className+=" en-catalogo"})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Big+Shoulders+Stencil+Display:wght@800&family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="../assets/img/casa-anochecer-1600.webp" imagesrcset="../assets/img/casa-anochecer-800.webp 800w, ../assets/img/casa-anochecer-1600.webp 1600w" imagesizes="100vw">
-<link rel="stylesheet" href="nivel-3/estilo.css?v=10">
-<link rel="stylesheet" href="nivel-3/panel.css?v=10">
+<link rel="preload" as="image" href="../assets/img/cocina-noche-1600.webp" imagesrcset="../assets/img/cocina-noche-800.webp 800w, ../assets/img/cocina-noche-1600.webp 1600w" imagesizes="100vw">
+<link rel="stylesheet" href="nivel-3/estilo.css?v=13">
+<link rel="stylesheet" href="nivel-3/panel.css?v=13">
 </head>
 <body class="intro-activa">
 
@@ -23,17 +23,17 @@
   <div class="intro-centro">
     <svg class="intro-plano" viewBox="0 0 320 220">
       <path d="M20 190H300"/>
-      <path d="M60 190V100L160 40L260 100V190"/>
-      <path d="M60 100H260"/>
-      <path d="M140 190V140H180V190"/>
-      <path d="M82 118H122V158H82Z M102 118V158 M82 138H122"/>
-      <path d="M198 118H238V158H198Z M218 118V158 M198 138H238"/>
-      <path d="M60 205H260 M60 200V210 M260 200V210" class="cota"/>
-      <path d="M278 190V40 M273 190H283 M273 40H283" class="cota"/>
-      <path d="M210 70V48H228V82" />
+      <path d="M50 190V132H214V190 M105 132V190 M160 132V190"/>
+      <path d="M46 132H218 M46 126H218"/>
+      <path d="M50 92V48H100V92Z M164 92V48H214V92Z"/>
+      <path d="M112 92L120 70H146L154 92Z M126 70V30H140V70"/>
+      <path d="M226 190V48H270V190 M248 48V190"/>
+      <path d="M50 205H270 M50 200V210 M270 200V210" class="cota"/>
+      <path d="M284 190V48 M279 190H289 M279 48H289" class="cota"/>
+      <path d="M70 126V112Q70 106 76 106H84" />
     </svg>
     <div class="intro-marca"><span>G</span><span>U</span><span>A</span><span>Y</span><span>A</span><span>C</span><span>Á</span><span>N</span></div>
-    <div class="intro-sub">Madera y obra · Chía</div>
+    <div class="intro-sub">Interiores a la medida</div>
     <div class="intro-cuenta"><span id="intro-n">0</span>%</div>
   </div>
 </div>
@@ -55,7 +55,7 @@
   </a>
   <nav>
     <a href="#disenar">Diseñar un mueble</a>
-    <a href="#obra">Calcular una obra</a>
+    <a href="#obra">Calcular remodelación</a>
     <a href="#agenda">Agendar visita</a>
     <a href="#mi-obra">Mi obra</a>
   </nav>
@@ -64,14 +64,14 @@
 
 <!-- ─────────────── Portada ─────────────── -->
 <section class="portada" id="inicio">
-  <div class="portada-foto"><img src="../assets/img/casa-anochecer-1600.webp" srcset="../assets/img/casa-anochecer-800.webp 800w, ../assets/img/casa-anochecer-1600.webp 1600w" sizes="100vw" alt="Casa en madera iluminada al anochecer"></div>
+  <div class="portada-foto"><img src="../assets/img/cocina-noche-1600.webp" srcset="../assets/img/cocina-noche-800.webp 800w, ../assets/img/cocina-noche-1600.webp 1600w" sizes="100vw" alt="Cocina remodelada en madera, de noche"></div>
   <div class="portada-contenido">
-    <h1 class="titular-grande"><span class="ln"><span>Del plano</span></span><span class="ln"><span>a su casa.</span></span></h1>
-    <p class="portada-lema">Diseñe su mueble y vea el precio al instante. Calcule su obra. Agende la visita.
-       Y cuando estemos construyendo, siga el avance desde su celular.</p>
+    <h1 class="titular-grande"><span class="ln"><span>Su casa,</span></span><span class="ln"><span>por dentro.</span></span></h1>
+    <p class="portada-lema">Cocinas, baños, closets, puertas y muebles a la medida. Diseñe y vea el precio al instante, calcule su remodelación, agende la visita.
+       Y mientras trabajamos en su casa, siga el avance desde su celular.</p>
     <div class="portada-botones">
       <a class="boton-oro magnetico" href="#disenar"><span>Diseñar mi mueble</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="boton-vidrio magnetico" href="#obra">Calcular mi obra</a>
+      <a class="boton-vidrio magnetico" href="#obra">Calcular mi remodelación</a>
     </div>
   </div>
   <div class="portada-vivo"><i></i><span id="vivo-texto">3 obras en curso · 7 visitas esta semana</span></div>
@@ -84,12 +84,12 @@
 <section class="plano-obra" id="plano">
   <div class="plano-pegado">
     <div class="plano-textos">
-      <div class="plano-paso on" data-paso="0"><span class="num">01</span><h2>Lo dibujamos con usted.</h2><p>Cada proyecto empieza en papel. Usted ve medidas, materiales y precio antes de que se corte una sola tabla.</p></div>
+      <div class="plano-paso on" data-paso="0"><span class="num">01</span><h2>Lo dibujamos con usted.</h2><p>Cada proyecto empieza en papel. Usted ve medidas, materiales y precio antes de romper una baldosa o cortar una tabla.</p></div>
       <div class="plano-paso" data-paso="1"><span class="num">02</span><h2>Lo calculamos al centavo.</h2><p>El precio sale de la página misma: el cliente lo arma y lo ve, sin esperar a que alguien conteste.</p></div>
-      <div class="plano-paso" data-paso="2"><span class="num">03</span><h2>Lo construimos y usted lo ve crecer.</h2><p>Fotos y avance de cada etapa, en el celular del cliente, todos los días.</p></div>
+      <div class="plano-paso" data-paso="2"><span class="num">03</span><h2>Lo instalamos y usted lo ve avanzar.</h2><p>Fotos y avance de cada etapa, en el celular del cliente, todos los días.</p></div>
     </div>
     <div class="plano-lienzo">
-      <img src="../assets/img/casa-sabana-1600.webp" alt="Casa en madera terminada" class="plano-foto" id="plano-foto" loading="lazy">
+      <img src="../assets/img/cocina-2-1600.webp" alt="Cocina terminada" class="plano-foto" id="plano-foto" loading="lazy">
       <svg class="plano-svg" id="plano-svg" viewBox="0 0 800 520" preserveAspectRatio="xMidYMid slice"></svg>
       <div class="plano-medidor"><span id="plano-pct">0</span>% construido</div>
     </div>
@@ -143,24 +143,24 @@
 <section class="seccion seccion-obra" id="obra">
   <div class="envoltura">
     <div class="cabeza-seccion rev">
-      <h2>¿Cuánto cuesta construir? Véalo antes de preguntar.</h2>
+      <h2>¿Cuánto cuesta remodelar? Véalo antes de preguntar.</h2>
       <p>Una idea clara de precio y tiempo, con el cronograma por etapas. Después lo afinamos en la visita.</p>
     </div>
     <div class="calculadora rev">
       <div class="calc-controles">
         <div class="control">
-          <span class="control-titulo">Qué quiere construir</span>
+          <span class="control-titulo">Qué quiere remodelar</span>
           <div class="tipos" id="tipos"></div>
         </div>
         <div class="control">
-          <span class="control-titulo">Área total <small id="area-valor">120 m²</small></span>
-          <input type="range" id="area" min="20" max="300" step="5" value="120" class="deslizador">
-          <div class="deslizador-marcas"><span>20 m²</span><span>300 m²</span></div>
+          <span class="control-titulo">Área del espacio <small id="area-valor">12 m²</small></span>
+          <input type="range" id="area" min="5" max="30" step="1" value="12" class="deslizador">
+          <div class="deslizador-marcas" id="area-marcas"><span>5 m²</span><span>30 m²</span></div>
         </div>
         <div class="control dos-col">
           <div>
-            <span class="control-titulo">Pisos</span>
-            <div class="segmentos" id="pisos"><button data-v="1">1</button><button data-v="2" class="on">2</button><button data-v="3">3</button></div>
+            <span class="control-titulo">Demolición</span>
+            <div class="segmentos" id="demolicion"><button data-v="si" class="on">Incluida</button><button data-v="no">No hace falta</button></div>
           </div>
           <div>
             <span class="control-titulo">Acabados</span>
@@ -170,8 +170,8 @@
       </div>
       <div class="calc-resultado">
         <div class="casa-escena">
-          <svg id="casa-svg" viewBox="0 0 900 470" role="img" aria-label="Dibujo de la obra"></svg>
-          <button class="boton-vidrio ver-construir" id="ver-construir"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg> Ver cómo se construye</button>
+          <svg id="casa-svg" viewBox="0 0 900 470" role="img" aria-label="Dibujo del espacio remodelado"></svg>
+          <button class="boton-vidrio ver-construir" id="ver-construir"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg> Ver cómo se remodela</button>
           <div class="casa-etapa" id="casa-etapa"></div>
         </div>
         <div class="calc-cifras">
@@ -179,7 +179,7 @@
           <div><span class="rotulo">Tiempo de obra</span><b id="obra-semanas">0</b><small id="obra-meses"></small></div>
         </div>
         <div class="cronograma" id="cronograma"></div>
-        <a class="boton-oro" href="#agenda" id="quiero-obra"><span>Quiero una visita para esta obra</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="boton-oro" href="#agenda" id="quiero-obra"><span>Quiero una visita para esta remodelación</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
@@ -203,7 +203,7 @@
         <div class="campo"><input id="a-nombre" placeholder=" " autocomplete="off"><label for="a-nombre">Su nombre</label></div>
         <div class="campo"><input id="a-cel" placeholder=" " inputmode="tel" autocomplete="off"><label for="a-cel">Celular (WhatsApp)</label></div>
         <div class="campo"><input id="a-dir" placeholder=" " autocomplete="off"><label for="a-dir">Dirección de la visita</label></div>
-        <div class="segmentos tipo-visita" id="tipo-visita"><button type="button" data-v="Medición de mueble" class="on">Medir un mueble</button><button type="button" data-v="Visita de obra">Visita de obra</button></div>
+        <div class="segmentos tipo-visita" id="tipo-visita"><button type="button" data-v="Medición en su casa" class="on">Medición en su casa</button><button type="button" data-v="Asesoría de diseño">Asesoría de diseño</button></div>
         <button class="boton-oro" id="agendar" type="submit" disabled><span id="agendar-texto">Escoja día y hora</span></button>
         <div class="agenda-listo" id="agenda-listo">
           <div class="cal-hoja"><span id="al-mes">OCT</span><b id="al-dia">9</b><small id="al-hora">10:00 a. m.</small></div>
@@ -223,7 +223,7 @@
     <div class="mi-obra-texto rev">
       <p class="para-quien">Para quien ya es cliente</p>
       <h2>Siga su obra desde el celular.</h2>
-      <p>Cada cliente recibe un código. Con él ve en qué etapa va su casa, las fotos de cada día y cuándo es la próxima visita.
+      <p>Cada cliente recibe un código. Con él ve en qué etapa va su remodelación, las fotos de cada día y cuándo es la próxima visita.
          Nadie tiene que llamar a preguntar.</p>
       <form class="codigo" id="codigo-form">
         <input id="codigo" value="" placeholder="Código de obra" aria-label="Código de obra" autocomplete="off">
@@ -340,8 +340,8 @@
   </div>
 </div>
 
-<script src="nivel-3/dibujos.js?v=10"></script>
-<script src="nivel-3/panel.js?v=10"></script>
-<script src="nivel-3/app.js?v=10"></script>
+<script src="nivel-3/dibujos.js?v=13"></script>
+<script src="nivel-3/panel.js?v=13"></script>
+<script src="nivel-3/app.js?v=13"></script>
 </body>
 </html>

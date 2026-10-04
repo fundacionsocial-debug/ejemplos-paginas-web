@@ -10,15 +10,15 @@ solo por qué una cuesta $600.000 y otra $2.000.000.
 
 ## Qué contiene
 
-Los tres niveles son **el mismo negocio** (Guayacán, un taller ficticio de carpintería y
-construcción en madera) hecho a tres presupuestos distintos, para que la diferencia se vea sola.
+Los tres niveles son **el mismo negocio** (Guayacán, una empresa ficticia de remodelación
+y carpintería de interiores: cocinas, baños, closets, puertas y muebles) hecho a tres presupuestos distintos, para que la diferencia se vea sola.
 
 | Archivo | Qué muestra |
 |---|---|
 | `index.html` | El catálogo: tres pestañas, la página en vivo en un recuadro, la tabla lado a lado y lo que va aparte |
 | `demos/nivel-1-sencilla.html` | **Nivel 1 · $600.000** — una sola página, botón de WhatsApp |
 | `demos/nivel-2-completa.html` | **Nivel 2 · $1.200.000** — menú, galería filtrable con foto en grande, boceto que se vuelve obra, testimonios, preguntas, formulario que muestra cómo le llega al dueño |
-| `demos/nivel-3-con-sistema.html` | **Nivel 3 · desde $2.000.000** — diseñador de muebles en vivo, calculadora de obra con la casa construyéndose, agenda, seguimiento de obra con código y **panel del dueño** |
+| `demos/nivel-3-con-sistema.html` | **Nivel 3 · desde $2.000.000** — diseñador de muebles en vivo, calculadora de remodelación con la pared del espacio remodelándose por etapas, agenda, seguimiento de obra con código y **panel del dueño** |
 | `demos/pasteleria-*.html` | Los niveles 2 y 3 en otro rubro, para mostrar que no es plantilla repetida |
 | `demos/carpinteria-*.html` | Solo redirigen a los niveles nuevos (eran los ejemplos de septiembre) |
 
@@ -35,9 +35,9 @@ construcción en madera) hecho a tres presupuestos distintos, para que la difere
 5. **Nivel 3** — esto es lo que vende, hacerlo en vivo:
    - diseñar un mueble: cambiar la madera (se pega como una chapa) y ver el precio moverse
    - oprimir **Enviar esta cotización**
-   - calcular una casa y oprimir **Ver cómo se construye**
+   - calcular una remodelación y oprimir **Ver cómo se remodela**
    - agendar una visita
-   - **Siga su obra** se demuestra solo (teclea el código GY-2417)
+   - **Siga su obra** se demuestra solo (teclea el código GY-2417): la remodelación de un apartamento
    - abrir el **Panel del dueño** (botón dorado de la barrita): ahí está todo lo que se
      acaba de hacer, resaltado en amarillo con la etiqueta «Usted»
 6. Cerrar con la pastelería, para dejar claro que no es una plantilla repetida.

@@ -559,3 +559,11 @@ h1, h2, h3 { font-family: var(--titulo); font-weight: 800; letter-spacing: 0; li
 /* Una sola entrada orquestada (la portada); el resto de la página no «aparece subiendo». */
 .rev { opacity: 1; transform: none; transition: none; }
 .portada-lema { color: #d9cfbf; text-shadow: 0 1px 16px rgb(0 0 0 / .75); }
+
+/* Interiores (4 oct 2026): seis piezas en el diseñador y la pared que se remodela por etapas. */
+.piezas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 520px) { .piezas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.casa-escena { background: #2b2622; }
+.casa-escena.noche { background: #171411; }
+.casa-escena.noche #casa-svg .f-enchape, .casa-escena.noche #casa-svg .f-muebles, .casa-escena.noche #casa-svg .f-acabados { filter: brightness(.78); transition: filter .8s; }
+#casa-svg:not(.construyendo) .solo-obra { display: none; }

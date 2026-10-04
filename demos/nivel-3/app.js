@@ -70,7 +70,7 @@
 
   /* Cinta de servicios */
   var anillo = '<svg viewBox="-12 -12 24 24"><circle r="3"/><circle r="7"/><circle r="10.5"/></svg>';
-  var cosas = ["Camas", "Closets", "Cocinas", "Escaleras", "Puertas", "Decks", "Cabañas", "Casas completas"];
+  var cosas = ["Cocinas", "Baños", "Closets", "Puertas", "Pisos", "Muebles a la medida", "Remodelaciones", "Decoración"];
   var tramo = cosas.map(function (c) { return "<span>" + c + anillo + "</span>"; }).join("");
   $("#cinta").innerHTML = tramo + tramo;
 
@@ -106,32 +106,43 @@
 
   /* ─────────── Diseñador de muebles ─────────── */
   var ICONOS = {
-    cama: '<svg viewBox="0 0 40 40"><path d="M5 31V12M35 31V21M5 25h30M5 21h30M8 21v-4a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v4"/></svg>',
+    cocina: '<svg viewBox="0 0 40 40"><rect x="4" y="20" width="32" height="14" rx="1"/><rect x="4" y="5" width="32" height="9" rx="1"/><path d="M15 20v14M25 20v14M3 20h34"/></svg>',
     closet: '<svg viewBox="0 0 40 40"><rect x="8" y="5" width="24" height="30" rx="1.5"/><path d="M20 5v30M17 18v5M23 18v5"/></svg>',
-    comedor: '<svg viewBox="0 0 40 40"><path d="M4 16h32M8 16v17M32 16v17M14 16V8M26 16V8"/></svg>',
-    cocina: '<svg viewBox="0 0 40 40"><rect x="4" y="20" width="32" height="14" rx="1"/><rect x="4" y="5" width="32" height="9" rx="1"/><path d="M15 20v14M25 20v14M3 20h34"/></svg>'
+    bano: '<svg viewBox="0 0 40 40"><rect x="9" y="5" width="22" height="13" rx="2"/><path d="M6 22h28M8 22v8h24v-8M20 22v-3"/><ellipse cx="20" cy="22" rx="7" ry="2"/></svg>',
+    puerta: '<svg viewBox="0 0 40 40"><path d="M10 36V4h20v32M6 36h28"/><path d="M15 9v22M25 9v22"/><circle cx="27" cy="20" r="1.2"/></svg>',
+    cama: '<svg viewBox="0 0 40 40"><path d="M5 31V12M35 31V21M5 25h30M5 21h30M8 21v-4a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v4"/></svg>',
+    comedor: '<svg viewBox="0 0 40 40"><path d="M4 16h32M8 16v17M32 16v17M14 16V8M26 16V8"/></svg>'
   };
+  function m2(v) { return String((+v).toFixed(2)).replace(".", ","); }
   var PIEZAS = {
-    cama: { nombre: "Cama", medida: { tipo: "seg", ops: [["sencilla", "Sencilla", "1,00 m"], ["semidoble", "Semidoble", "1,20 m"], ["doble", "Doble", "1,40 m"], ["queen", "Queen", "1,60 m"], ["king", "King", "2,00 m"]], def: "doble" },
-      extras: [["tapizado", "Cabecero tapizado", 420000], ["cajones", "Cajones bajo la cama", 580000], ["mesitas", "Par de mesas de noche", 690000], ["led", "Luz cálida en el cabecero", 180000]],
-      base: function (c) { return { sencilla: 1150000, semidoble: 1300000, doble: 1450000, queen: 1650000, king: 1950000 }[c.medida]; }, semanas: 3,
-      titulo: function (c) { return "Cama " + c.medida; } },
+    cocina: { nombre: "Cocina", medida: { tipo: "rango", min: 2, max: 6, paso: 0.2, def: 3.6, unidad: "m lineales" },
+      extras: [["cuarzo", "Mesón en cuarzo blanco", function (c) { return Math.round(c.medida * 330000 / 1e4) * 1e4; }], ["techo", "Alacenas hasta el techo", function (c) { return Math.round(c.medida * 160000 / 1e4) * 1e4; }], ["luz", "Luz bajo las alacenas", 240000], ["cajones", "Cajones con cierre lento", 350000]],
+      base: function (c) { return c.medida * 1350000; }, semanas: 5,
+      titulo: function (c) { return "Cocina de " + String(c.medida.toFixed(1)).replace(".", ",") + " m"; } },
     closet: { nombre: "Closet", medida: { tipo: "rango", min: 1, max: 4, paso: 0.1, def: 2.4, unidad: "m de ancho" },
       extras: [["corredizas", "Puertas corredizas", 380000], ["espejo", "Puerta con espejo", 260000], ["altillo", "Maletero arriba", function (c) { return Math.round(c.medida * 160000 / 1e4) * 1e4; }], ["led", "Luz por dentro", 240000]],
       base: function (c) { return c.medida * 1050000; }, semanas: function (c) { return c.medida > 3 ? 4 : 3; },
       titulo: function (c) { return "Closet de " + String(c.medida.toFixed(1)).replace(".", ",") + " m"; } },
+    bano: { nombre: "Baño", medida: { tipo: "rango", min: 0.6, max: 1.6, paso: 0.1, def: 0.9, unidad: "m de mueble" },
+      extras: [["luz", "Espejo con luz", 420000], ["cajones", "Cajones en vez de puertas", 260000], ["cuarzo", "Mesón en cuarzo", function (c) { return Math.round(c.medida * 450000 / 1e4) * 1e4; }], ["repisa", "Repisa flotante", 180000]],
+      base: function (c) { return c.medida * 1150000; }, semanas: 2,
+      titulo: function (c) { return "Mueble de baño de " + m2(c.medida) + " m"; } },
+    puerta: { nombre: "Puerta", medida: { tipo: "seg", ops: [[0.8, "0,80", "0,80 m de ancho"], [0.9, "0,90", "0,90 m de ancho"], [1.4, "Doble", "1,40 m, dos hojas"]], def: 0.9 },
+      extras: [["vidrio", "Con franja de vidrio", 240000], ["chambrana", "Marco con chambrana", 180000], ["digital", "Cerradura digital", 650000], ["instalacion", "Instalación incluida", 150000]],
+      base: function (c) { return { 0.8: 780000, 0.9: 860000, 1.4: 1450000 }[c.medida]; }, semanas: 2,
+      titulo: function (c) { return c.medida >= 1.4 ? "Puerta doble de 1,40 m" : "Puerta de " + m2(c.medida) + " m"; } },
+    cama: { nombre: "Cama", medida: { tipo: "seg", ops: [["sencilla", "Sencilla", "1,00 m"], ["semidoble", "Semidoble", "1,20 m"], ["doble", "Doble", "1,40 m"], ["queen", "Queen", "1,60 m"], ["king", "King", "2,00 m"]], def: "doble" },
+      extras: [["tapizado", "Cabecero tapizado", 420000], ["cajones", "Cajones bajo la cama", 580000], ["mesitas", "Par de mesas de noche", 690000], ["led", "Luz cálida en el cabecero", 180000]],
+      base: function (c) { return { sencilla: 1150000, semidoble: 1300000, doble: 1450000, queen: 1650000, king: 1950000 }[c.medida]; }, semanas: 3,
+      titulo: function (c) { return "Cama " + c.medida; } },
     comedor: { nombre: "Comedor", medida: { tipo: "seg", ops: [[4, "4", "puestos"], [6, "6", "puestos"], [8, "8", "puestos"], [10, "10", "puestos"]], def: 6 },
       extras: [["sillas", "Sillas a juego", function (c) { return 290000 * c.medida; }], ["borde", "Borde natural del árbol", 450000], ["metalica", "Base en hierro negro", 520000], ["vidrio", "Vidrio protector", 310000]],
       base: function (c) { return { 4: 1250000, 6: 1650000, 8: 2100000, 10: 2600000 }[c.medida]; }, semanas: 3,
-      titulo: function (c) { return "Comedor de " + c.medida + " puestos"; } },
-    cocina: { nombre: "Cocina", medida: { tipo: "rango", min: 2, max: 6, paso: 0.2, def: 3.6, unidad: "m lineales" },
-      extras: [["cuarzo", "Mesón en cuarzo blanco", function (c) { return Math.round(c.medida * 330000 / 1e4) * 1e4; }], ["techo", "Alacenas hasta el techo", function (c) { return Math.round(c.medida * 160000 / 1e4) * 1e4; }], ["luz", "Luz bajo las alacenas", 240000], ["cajones", "Cajones con cierre lento", 350000]],
-      base: function (c) { return c.medida * 1350000; }, semanas: 5,
-      titulo: function (c) { return "Cocina de " + String(c.medida.toFixed(1)).replace(".", ",") + " m"; } }
+      titulo: function (c) { return "Comedor de " + c.medida + " puestos"; } }
   };
   var MADERAS = { pino: { n: "Pino", f: 1, nota: "económica, clara" }, cedro: { n: "Cedro", f: 1.25, nota: "rojiza y aromática" }, roble: { n: "Roble", f: 1.55, nota: "resistente, color miel" }, nogal: { n: "Nogal", f: 1.85, nota: "oscura y fina" }, guayacan: { n: "Guayacán", f: 2.15, nota: "la más dura de todas" } };
   var ACABADOS = { natural: { n: "Aceite natural", s: "realza la veta", f: 1 }, mate: { n: "Laca mate", s: "no brilla", f: 1.08 }, laca: { n: "Laca brillante", s: "brillo de espejo", f: 1.16 } };
-  var cfg = { pieza: "cama", madera: "nogal", acabado: "natural", medida: "doble", extras: { led: true } };
+  var cfg = { pieza: "cocina", madera: "roble", acabado: "mate", medida: 3.6, extras: { cuarzo: true, luz: true } };
   var memoria = {};   // lo que la persona había escogido en cada pieza
 
   var svgM = $("#mueble-svg");
@@ -269,83 +280,99 @@
     aviso("Cotización enviada", "Don Jairo ya la tiene en su panel, con el mueble, la madera y el precio. Nadie tuvo que contestar el teléfono.", true);
   });
 
-  /* ─────────── Calculadora de obra ─────────── */
+  /* ─────────── Calculadora de remodelación ─────────── */
   var TIPOS = {
-    casa: { n: "Casa nueva", s: "en madera, llave en mano", m2: { basico: 1650000, estandar: 2100000, premium: 2900000 }, sem: function (a) { return 8 + a / 6; },
-      fases: [["Diseño y licencias", 0.12, ["f-plano"]], ["Cimientos", 0.13, ["f-cimientos"]], ["Estructura", 0.22, ["f-estructura"]], ["Techo", 0.12, ["f-techo"]], ["Cerramiento", 0.14, ["f-muros"]], ["Acabados", 0.21, ["f-ventanas"]], ["Entrega", 0.06, ["f-entrega"]]],
-      icono: '<svg viewBox="0 0 32 32"><path d="M3 15 16 4l13 11M7 12v16h18V12M13 28v-8h6v8"/></svg>' },
-    cabana: { n: "Cabaña", s: "campestre, en madera", m2: { basico: 1400000, estandar: 1800000, premium: 2400000 }, sem: function (a) { return 5 + a / 9; },
-      fases: [["Diseño y licencias", 0.12, ["f-plano"]], ["Cimientos", 0.12, ["f-cimientos"]], ["Estructura", 0.24, ["f-estructura"]], ["Techo", 0.14, ["f-techo"]], ["Cerramiento", 0.13, ["f-muros"]], ["Acabados", 0.19, ["f-ventanas"]], ["Entrega", 0.06, ["f-entrega"]]],
-      icono: '<svg viewBox="0 0 32 32"><path d="M16 3 4 28h24zM12 28v-7h8v7M16 11v4"/></svg>' },
-    segundo: { n: "Segundo piso", s: "sobre la casa que ya tiene", m2: { basico: 1500000, estandar: 1950000, premium: 2600000 }, sem: function (a) { return 6 + a / 8; },
-      fases: [["Diseño y licencias", 0.14, ["f-plano"]], ["Refuerzo de placa", 0.1, ["f-cimientos"]], ["Estructura", 0.24, ["f-estructura"]], ["Techo", 0.12, ["f-techo"]], ["Cerramiento", 0.13, ["f-muros"]], ["Acabados", 0.21, ["f-ventanas"]], ["Entrega", 0.06, ["f-entrega"]]],
-      icono: '<svg viewBox="0 0 32 32"><path d="M5 28V18h22v10M5 18V9l11-6 11 6v9M12 13h8" /></svg>' },
-    remodelacion: { n: "Remodelación", s: "cocinas, baños, pisos", m2: { basico: 650000, estandar: 900000, premium: 1300000 }, sem: function (a) { return 2 + a / 15; },
-      fases: [["Diseño", 0.15, ["f-plano"]], ["Demolición", 0.12, ["f-cimientos", "f-estructura", "f-muros", "f-techo"]], ["Obra gris", 0.25, ["f-ventanas"]], ["Instalaciones", 0.18, []], ["Acabados", 0.24, []], ["Entrega", 0.06, ["f-entrega"]]],
-      icono: '<svg viewBox="0 0 32 32"><path d="M20 4l8 8-14 14H6v-8zM16 8l8 8"/></svg>' }
+    cocina: { n: "Cocina", s: "muebles, mesón y enchape", m2: { basico: 1700000, estandar: 2500000, premium: 3700000 }, area: [5, 30, 12], sem: function (a) { return 2 + a / 5; },
+      icono: '<svg viewBox="0 0 32 32"><rect x="3" y="16" width="26" height="12" rx="1"/><rect x="3" y="4" width="26" height="7" rx="1"/><path d="M12 16v12M20 16v12"/></svg>' },
+    bano: { n: "Baño", s: "enchape, mueble y ducha", m2: { basico: 1900000, estandar: 2800000, premium: 4100000 }, area: [2, 15, 5], sem: function (a) { return 2 + a / 2.5; },
+      icono: '<svg viewBox="0 0 32 32"><rect x="7" y="4" width="18" height="10" rx="2"/><path d="M4 18h24M6 18v7h20v-7M16 18v-3"/></svg>' },
+    alcoba: { n: "Alcoba", s: "closet, piso y pintura", m2: { basico: 550000, estandar: 850000, premium: 1300000 }, area: [8, 40, 14], sem: function (a) { return 1 + a / 8; },
+      icono: '<svg viewBox="0 0 32 32"><path d="M4 26V10M28 26V17M4 21h24M4 17h24M7 17v-3a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v3"/></svg>' },
+    sala: { n: "Sala y comedor", s: "piso, paneles y mueble de TV", m2: { basico: 500000, estandar: 780000, premium: 1200000 }, area: [10, 60, 25], sem: function (a) { return 1 + a / 10; },
+      icono: '<svg viewBox="0 0 32 32"><rect x="6" y="5" width="20" height="12" rx="1"/><path d="M4 22h24v5H4zM9 22v-3h14v3"/></svg>' }
   };
-  var obra = { tipo: "casa", area: 120, pisos: 2, acabado: "estandar" };
+  /* Cada etapa: [nombre, parte del tiempo, lo que aparece, lo que se va] */
+  function fasesDe(t, demo) {
+    var enchapa = t === "cocina" || t === "bano", f = [];
+    f.push(["Diseño y medidas", 0.1, demo ? ["f-viejo", "f-plano"] : ["f-desnudo", "f-plano"], []]);
+    if (demo) f.push(["Demolición", 0.1, ["f-desnudo", "f-escombros"], ["f-viejo", "f-plano"]]);
+    f.push([enchapa ? "Tuberías y cables" : "Instalaciones eléctricas", 0.16, ["f-instalaciones"], demo ? ["f-escombros"] : ["f-plano"]]);
+    f.push([enchapa ? "Enchape y pisos" : "Pisos y pintura", 0.2, ["f-enchape"], ["f-desnudo"]]);
+    f.push(["Muebles a la medida", 0.24, ["f-muebles"], ["f-instalaciones"]]);
+    f.push(["Acabados", 0.14, ["f-acabados"], []]);
+    f.push(["Entrega", 0.06, ["f-entrega"], []]);
+    return f;
+  }
+  var obra = { tipo: "cocina", area: 12, demolicion: true, acabado: "estandar" };
   var casaSvg = $("#casa-svg"), escena = $(".casa-escena"), construyendo = false;
   $("#tipos").innerHTML = Object.keys(TIPOS).map(function (k) { return '<button class="tipo" data-tipo="' + k + '">' + TIPOS[k].icono + "<b>" + TIPOS[k].n + "</b><small>" + TIPOS[k].s + "</small></button>"; }).join("");
-  $$("[data-tipo]").forEach(function (b) { b.addEventListener("click", function () { obra.tipo = b.dataset.tipo; calcular(); }); });
   var area = $("#area");
+  $$("[data-tipo]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (obra.tipo === b.dataset.tipo) return;
+      obra.tipo = b.dataset.tipo; obra.area = TIPOS[obra.tipo].area[2]; calcular();
+    });
+  });
   area.addEventListener("input", function () { obra.area = +area.value; calcular(); });
-  $$("#pisos button").forEach(function (b) { b.addEventListener("click", function () { obra.pisos = +b.dataset.v; calcular(); }); });
+  $$("#demolicion button").forEach(function (b) { b.addEventListener("click", function () { obra.demolicion = b.dataset.v === "si"; calcular(); }); });
   $$("#nivel-acabado button").forEach(function (b) { b.addEventListener("click", function () { obra.acabado = b.dataset.v; calcular(); }); });
 
   function millones(n) { var m = n / 1e6; return "$" + (m >= 100 ? Math.round(m).toLocaleString("es-CO") : m.toFixed(1).replace(".", ",")) + " millones"; }
-  function semanasObra() { var t = TIPOS[obra.tipo]; return Math.round(t.sem(obra.area) * (obra.acabado === "premium" ? 1.15 : obra.acabado === "basico" ? 0.92 : 1)); }
+  function semanasObra() { var t = TIPOS[obra.tipo]; return Math.max(1, Math.round(t.sem(obra.area) * (obra.acabado === "premium" ? 1.15 : obra.acabado === "basico" ? 0.92 : 1) + (obra.demolicion ? 1 : 0))); }
   function calcular() {
     if (construyendo) pararConstruccion();
-    var t = TIPOS[obra.tipo];
+    var t = TIPOS[obra.tipo], r = t.area;
     $$("[data-tipo]").forEach(function (b) { b.classList.toggle("on", b.dataset.tipo === obra.tipo); });
-    $$("#pisos button").forEach(function (b) { b.classList.toggle("on", +b.dataset.v === obra.pisos); b.disabled = obra.tipo === "segundo" && +b.dataset.v === 1; });
-    if (obra.tipo === "segundo" && obra.pisos === 1) { obra.pisos = 2; $$("#pisos button").forEach(function (b) { b.classList.toggle("on", +b.dataset.v === 2); }); }
+    $$("#demolicion button").forEach(function (b) { b.classList.toggle("on", (b.dataset.v === "si") === obra.demolicion); });
     $$("#nivel-acabado button").forEach(function (b) { b.classList.toggle("on", b.dataset.v === obra.acabado); });
+    area.min = r[0]; area.max = r[1]; area.step = 1;
+    obra.area = Math.max(r[0], Math.min(r[1], obra.area)); area.value = obra.area;
     $("#area-valor").textContent = obra.area + " m²";
-    area.style.setProperty("--p", ((obra.area - 20) / 280 * 100) + "%");
-    var total = obra.area * t.m2[obra.acabado], sem = semanasObra();
+    $("#area-marcas").innerHTML = "<span>" + r[0] + " m²</span><span>" + r[1] + " m²</span>";
+    area.style.setProperty("--p", ((obra.area - r[0]) / (r[1] - r[0]) * 100) + "%");
+    var total = obra.area * t.m2[obra.acabado] * (obra.demolicion ? 1.1 : 1), sem = semanasObra();
     $("#obra-precio").textContent = millones(total);
     $("#obra-rango").textContent = "entre " + millones(total * 0.92).replace(" millones", "") + " y " + millones(total * 1.08);
-    $("#obra-semanas").textContent = sem + " semanas";
-    $("#obra-meses").textContent = "unos " + Math.max(1, Math.round(sem / 4.3)) + (Math.round(sem / 4.3) === 1 ? " mes" : " meses") + " de obra";
-    casaSvg.innerHTML = D.casa(obra);
+    $("#obra-semanas").textContent = sem + (sem === 1 ? " semana" : " semanas");
+    $("#obra-meses").textContent = sem < 5 ? "de obra, con todo instalado" : "unos " + Math.round(sem / 4.3) + (Math.round(sem / 4.3) === 1 ? " mes" : " meses") + " de obra";
+    casaSvg.innerHTML = D.espacio(obra);
     escena.classList.remove("noche");
-    var ini = 0;
-    $("#cronograma").innerHTML = t.fases.map(function (f, i) {
-      var w = f[1] * 100, l = ini * 100; ini += f[1] * (i < t.fases.length - 1 ? 0.92 : 1);
-      return '<div class="crono-fila" data-fase="' + i + '"><span>' + f[0] + '</span><span class="crono-pista"><i class="crono-barra" style="left:' + Math.min(l, 100 - w) + "%;width:" + w + '%"></i></span><span>' + Math.max(1, Math.round(sem * f[1])) + " sem</span></div>";
+    var fases = fasesDe(obra.tipo, obra.demolicion), suma = fases.reduce(function (s, f) { return s + f[1]; }, 0), ini = 0;
+    $("#cronograma").innerHTML = fases.map(function (f, i) {
+      var w = f[1] / suma * 100, l = ini * 100; ini += f[1] / suma * (i < fases.length - 1 ? 0.92 : 1);
+      return '<div class="crono-fila" data-fase="' + i + '"><span>' + f[0] + '</span><span class="crono-pista"><i class="crono-barra" style="left:' + Math.min(l, 100 - w) + "%;width:" + w + '%"></i></span><span>' + Math.max(1, Math.round(sem * f[1] / suma * 7)) + " días</span></div>";
     }).join("");
   }
   calcular();
 
   var reloj = [];
+  var TEXTO_VER = '<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg> Ver cómo se remodela';
   function pararConstruccion() {
     reloj.forEach(clearTimeout); reloj = [];
     construyendo = false; casaSvg.classList.remove("construyendo");
     $$(".crono-fila").forEach(function (f) { f.classList.remove("activa"); });
     $("#casa-etapa").classList.remove("on");
-    $("#ver-construir").innerHTML = '<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg> Ver cómo se construye';
+    $("#ver-construir").innerHTML = TEXTO_VER;
   }
+  $("#ver-construir").innerHTML = TEXTO_VER;
   $("#ver-construir").addEventListener("click", function () {
-    if (construyendo) { pararConstruccion(); casaSvg.innerHTML = D.casa(obra); return; }
+    if (construyendo) { pararConstruccion(); casaSvg.innerHTML = D.espacio(obra); return; }
     construyendo = true;
-    casaSvg.innerHTML = D.casa(obra);
+    casaSvg.innerHTML = D.espacio(obra);
     escena.classList.remove("noche");
     casaSvg.classList.add("construyendo");
     $("#ver-construir").innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> Detener';
-    var fases = TIPOS[obra.tipo].fases, et = $("#casa-etapa"), paso = POCO ? 300 : 1050;
+    var fases = fasesDe(obra.tipo, obra.demolicion), et = $("#casa-etapa"), paso = POCO ? 300 : 1150;
     fases.forEach(function (f, i) {
       reloj.push(setTimeout(function () {
         $$(".crono-fila").forEach(function (x, k) { x.classList.toggle("activa", k === i); });
         et.textContent = "Etapa " + (i + 1) + " de " + fases.length + " · " + f[0]; et.classList.add("on");
+        f[3].forEach(function (cl) { $$("." + cl, casaSvg).forEach(function (g) { g.classList.remove("visible"); }); });
         f[2].forEach(function (cl) { $$("." + cl, casaSvg).forEach(function (g) { g.classList.add("visible"); }); });
-        $$("[data-solo]", casaSvg).forEach(function (g) { if (i > 0) g.classList.remove("visible"); });
-        if (i > 1) $$(".f-varillas", casaSvg).forEach(function (g) { g.style.opacity = 0; });
-        if (f[2].indexOf("f-estructura") > -1) $$(".estructura line, .estructura path", casaSvg).forEach(function (l, k) {
+        if (f[2].indexOf("f-instalaciones") > -1) $$(".f-instalaciones path", casaSvg).forEach(function (l, k) {
           var L = l.getTotalLength ? l.getTotalLength() : 100;
           l.style.strokeDasharray = L; l.style.strokeDashoffset = L;
-          l.style.transition = "stroke-dashoffset .8s cubic-bezier(.22,1,.36,1) " + (k * 0.012) + "s";
+          l.style.transition = "stroke-dashoffset .9s cubic-bezier(.22,1,.36,1) " + (k * 0.06) + "s";
           requestAnimationFrame(function () { requestAnimationFrame(function () { l.style.strokeDashoffset = 0; }); });
         });
       }, 250 + i * paso));
@@ -353,22 +380,20 @@
     reloj.push(setTimeout(function () {
       casaSvg.classList.remove("construyendo");
       escena.classList.add("noche");
-      $$(".ventanal", casaSvg).forEach(function (v, k) { setTimeout(function () { v.classList.add("luz"); }, k * 90); });
       et.textContent = "¡Obra entregada!";
       $$(".crono-fila").forEach(function (x) { x.classList.add("activa"); });
-      reloj.push(setTimeout(function () { pararConstruccion(); }, 2600));
+      reloj.push(setTimeout(function () { pararConstruccion(); escena.classList.remove("noche"); }, 2800));
     }, 250 + fases.length * paso));
   });
   var visitaDeObra = null;
   $("#quiero-obra").addEventListener("click", function () {
-    var t = TIPOS[obra.tipo];
-    visitaDeObra = t.n + " · " + obra.area + " m² · " + obra.pisos + (obra.pisos > 1 ? " pisos" : " piso");
-    elegirTipoVisita("Visita de obra");
+    visitaDeObra = "Remodelación de " + TIPOS[obra.tipo].n.toLowerCase() + " · " + obra.area + " m²";
+    elegirTipoVisita("Medición en su casa");
   });
 
   /* ─────────── Agenda ─────────── */
   var HORAS = [[8, 0], [9, 30], [11, 0], [14, 0], [15, 30], [17, 0]];
-  var hoy = P.hoy, selDia = null, selHora = null, tipoVisita = "Medición de mueble";
+  var hoy = P.hoy, selDia = null, selHora = null, tipoVisita = "Medición en su casa";
   function claveDia(d) { return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(); }
   function ocupada(d, h) {
     var k = claveDia(d) * 7 + h[0] * 3 + h[1], x = Math.sin(k) * 10000; x = x - Math.floor(x);
@@ -411,13 +436,13 @@
     $("#agendar-texto").textContent = ok ? "Agendar el " + selDia.toLocaleDateString("es-CO", { weekday: "long", day: "numeric" }) + " a las " + textoHora(selHora) : "Escoja día y hora";
   }
   function elegirTipoVisita(t) { tipoVisita = t; $$("#tipo-visita button").forEach(function (b) { b.classList.toggle("on", b.dataset.v === t); }); }
-  $$("#tipo-visita button").forEach(function (b) { b.addEventListener("click", function () { elegirTipoVisita(b.dataset.v); if (b.dataset.v !== "Visita de obra") visitaDeObra = null; }); });
+  $$("#tipo-visita button").forEach(function (b) { b.addEventListener("click", function () { elegirTipoVisita(b.dataset.v); if (b.dataset.v !== "Medición en su casa") visitaDeObra = null; }); });
   $("#agenda-form").addEventListener("submit", function (e) {
     e.preventDefault();
     if (!selDia || !selHora) return;
     var nombre = $("#a-nombre").value.trim() || "Cliente de la demostración", cel = $("#a-cel").value.trim() || "300 000 0000", dir = $("#a-dir").value.trim() || "Dirección de ejemplo, Chía";
     var f = new Date(selDia); f.setHours(selHora[0], selHora[1], 0, 0);
-    P.agregarVisita({ cliente: nombre, cel: cel, dir: dir, tipo: tipoVisita, fecha: f, nota: tipoVisita === "Visita de obra" ? visitaDeObra : null });
+    P.agregarVisita({ cliente: nombre, cel: cel, dir: dir, tipo: tipoVisita, fecha: f, nota: visitaDeObra });
     $("#al-mes").textContent = f.toLocaleDateString("es-CO", { month: "short" }).replace(".", "").toUpperCase();
     $("#al-dia").textContent = f.getDate();
     $("#al-hora").textContent = textoHora(selHora);
@@ -434,25 +459,25 @@
   var seg = $("#seguimiento"), segHecho = false;
   function proximoSabado() { var d = new Date(hoy); d.setDate(d.getDate() + ((6 - d.getDay() + 7) % 7 || 7)); d.setHours(10, 0); return d; }
   function pintarSeguimiento() {
-    var inicio = P.dia(-118), check = '<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
+    var check = '<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
     var ET = [
-      ["Diseño y licencias", "terminado · " + fechaCorta(P.dia(-118)), "hecha"],
-      ["Cimientos", "terminado · " + fechaCorta(P.dia(-86)), "hecha", "obra-cimientos"],
-      ["Estructura en madera", "terminado · " + fechaCorta(P.dia(-31)), "hecha", "obra-estructura"],
-      ["Techo", "en curso · 70 %", "ahora", "obra-techo"],
-      ["Instalaciones", "empieza en 2 semanas", ""],
-      ["Acabados", "", ""],
-      ["Entrega", "estimada: " + fechaCorta(P.dia(74)), ""]
+      ["Diseño aprobado", "terminado · " + fechaCorta(P.dia(-38)), "hecha"],
+      ["Demolición", "terminado · " + fechaCorta(P.dia(-31)), "hecha", "obra-demolicion"],
+      ["Tuberías y cables", "terminado · " + fechaCorta(P.dia(-17)), "hecha", "obra-instalaciones"],
+      ["Enchapes", "en curso · 70 %", "ahora", "obra-enchape"],
+      ["Muebles a la medida", "se están haciendo en el taller", "", "muebles-taller"],
+      ["Instalación de muebles", "", ""],
+      ["Entrega", "estimada: " + fechaCorta(P.dia(19)), ""]
     ];
     seg.innerHTML = '<div class="seg"><svg width="0" height="0" style="position:absolute"><defs><linearGradient id="grad-anillo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2b41b"/><stop offset="1" stop-color="#f2b41b"/></linearGradient></defs></svg>' +
       '<div class="seg-cab"><span>Mi obra</span><b>GY-2417</b></div>' +
-      "<h4>Casa Familia Rojas</h4><span class=\"lugar\">Vereda Meusa, Sopó · 160 m² · 2 pisos</span>" +
-      '<div class="anillo-avance"><svg viewBox="0 0 86 86"><circle class="fondo-anillo" cx="43" cy="43" r="36"/><circle class="valor-anillo" cx="43" cy="43" r="36"/></svg><div><span class="num">62%</span><small>Semana 17 de 28<br>Vamos a tiempo</small></div></div>' +
+      "<h4>Apartamento Familia Rojas</h4><span class=\"lugar\">Cedritos, Bogotá · cocina y 2 baños</span>" +
+      '<div class="anillo-avance"><svg viewBox="0 0 86 86"><circle class="fondo-anillo" cx="43" cy="43" r="36"/><circle class="valor-anillo" cx="43" cy="43" r="36"/></svg><div><span class="num">62%</span><small>Semana 6 de 9<br>Vamos a tiempo</small></div></div>' +
       '<ul class="etapas">' + ET.map(function (e, i) {
         return '<li class="etapa ' + e[2] + '" style="transition-delay:' + (0.15 + i * 0.07) + 's"><span class="bolita">' + (e[2] === "hecha" ? check : "") + "</span><span><b>" + e[0] + "</b><span>" + e[1] + "</span></span>" + (e[3] ? '<img src="' + IMG + e[3] + '-800.webp" alt="">' : "<i></i>") + "</li>";
       }).join("") + "</ul>" +
-      '<div class="novedad"><img src="' + IMG + 'obra-techo-800.webp" alt="Cerchas del techo instaladas"><div><b>HOY · ING. CAMILA DUARTE, RESIDENTE DE OBRA</b>Terminamos de montar las cerchas del techo del ala norte. Mañana empieza la teja. ¡Vamos a tiempo!</div></div>' +
-      '<div class="prox"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Su próxima visita a la obra: <b>' + P.fechaLarga(proximoSabado()) + ", 10:00 a. m.</b></span></div>" +
+      '<div class="novedad"><img src="' + IMG + 'obra-enchape-800.webp" alt="Enchape del baño principal"><div><b>Hoy · Ing. Camila Duarte, residente de obra</b>Terminamos el enchape del baño principal. Mañana seguimos con la cocina, y los muebles ya están en el taller. ¡Vamos a tiempo!</div></div>' +
+      '<div class="prox"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Su próxima visita para revisar el avance: <b>' + P.fechaLarga(proximoSabado()) + ", 10:00 a. m.</b></span></div>" +
       "</div>";
     requestAnimationFrame(function () { requestAnimationFrame(function () {
       $(".seg", seg).classList.add("lista");
@@ -489,14 +514,14 @@
 
   /* ─────────── Proyectos ─────────── */
   var PROY = [
-    ["casa-sabana", "Casa", "Casa de campo de dos pisos", "Tabio · 180 m² · estructura en madera"],
-    ["cocina", "Cocina", "Cocina abierta en roble", "Sopó · roble y cuarzo · 5 semanas"],
-    ["cabana", "Cabaña", "Cabaña en el bosque", "San Francisco · pino inmunizado"],
-    ["cama-nogal", "Alcoba", "Alcoba principal en nogal", "Bogotá · nogal · 3 semanas"],
-    ["sala", "Mueble", "Biblioteca de pared", "Chicó · roble · 3 semanas"],
-    ["deck", "Exterior", "Deck y pérgola", "Tabio · teca · 4 semanas"],
-    ["escalera", "Escalera", "Escalera flotante", "Cajicá · roble macizo"],
-    ["comedor", "Comedor", "Comedor de borde natural", "Chía · cedro · 3 semanas"]
+    ["cocina-2", "Cocina", "Cocina con isla", "Cedritos · roble y cuarzo · 5 semanas"],
+    ["bano-1", "Baño", "Baño principal", "Chía · porcelanato y roble · 3 semanas"],
+    ["vestier", "Vestier", "Vestier a la medida", "Cajicá · roble con luz · 3 semanas"],
+    ["puertas", "Puertas", "Puertas interiores", "Bogotá · 7 puertas en roble · 2 semanas"],
+    ["mueble-tv", "Mueble", "Mueble de TV con listones", "Chicó · roble · 2 semanas"],
+    ["bano-2", "Baño", "Baño social", "Usaquén · nogal y terrazo · 2 semanas"],
+    ["sala-remodelada", "Remodelación", "Sala y comedor", "Chía · piso de madera y biblioteca · 4 semanas"],
+    ["cama-nogal", "Alcoba", "Alcoba principal en nogal", "Bogotá · nogal · 3 semanas"]
   ];
   var pf = $("#portafolio");
   pf.innerHTML = PROY.map(function (p) { return '<article class="proyecto"><img src="' + IMG + p[0] + '-800.webp" srcset="' + IMG + p[0] + "-800.webp 800w, " + IMG + p[0] + '-1600.webp 1600w" sizes="520px" alt="' + p[2] + '" loading="lazy" draggable="false"><div class="dentro"><span>' + p[1] + "</span><h3>" + p[2] + "</h3><p>" + p[3] + "</p></div></article>"; }).join("");

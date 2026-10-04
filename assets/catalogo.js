@@ -31,7 +31,7 @@
       rasgos: [{ mas: "Todo lo del nivel 2, y además:" }, "Cotizador automático", "Agenda de citas o visitas",
                { b: "Panel para ver todo lo que entra" }, "Base de datos de clientes"],
       prueba: ["Diseña un mueble: cambia la madera y mira el precio moverse.",
-               "Calcula una casa y oprime «Ver cómo se construye».",
+               "Calcula una remodelación y oprime «Ver cómo se remodela».",
                "Agenda una visita de medición.",
                "Abre el panel del dueño: ahí está todo lo que acabas de hacer."],
       url: "demos/nivel-3-con-sistema.html", dominio: "guayacan.com.co", panel: true

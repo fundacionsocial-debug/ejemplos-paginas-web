@@ -27,23 +27,23 @@
     cot: [
       { cliente: "Marcela Rodríguez", cel: "310 000 0000", item: "Cocina integral · 3,6 m · roble", valor: 14850000, fecha: dia(0, 7, 42), estado: "nueva" },
       { cliente: "Andrea Gómez", cel: "312 000 0000", item: "Closet · 2,4 m · cedro", valor: 4310000, fecha: dia(-1, 21, 10), estado: "nueva" },
-      { cliente: "Hernán Castillo", cel: "315 000 0000", item: "Casa nueva · 140 m² · 2 pisos", valor: 294000000, fecha: dia(-2, 18, 5), estado: "visita" },
+      { cliente: "Hernán Castillo", cel: "315 000 0000", item: "Remodelación de cocina · 14 m² · estándar", valor: 38500000, fecha: dia(-2, 18, 5), estado: "visita" },
       { cliente: "Jorge Buitrago", cel: "320 000 0000", item: "Comedor 8 puestos · nogal", valor: 6420000, fecha: dia(-4, 10, 30), estado: "aprobada" },
       { cliente: "Luz Patricia Mena", cel: "301 000 0000", item: "Cama queen · guayacán", valor: 5880000, fecha: dia(-6, 15, 20), estado: "visita" },
-      { cliente: "Camilo Arango", cel: "316 000 0000", item: "Deck y pérgola · 36 m²", valor: 18900000, fecha: dia(-9, 9, 0), estado: "aprobada" },
+      { cliente: "Camilo Arango", cel: "316 000 0000", item: "Puertas interiores × 6 · roble", valor: 7920000, fecha: dia(-9, 9, 0), estado: "aprobada" },
       { cliente: "Sofía Lozano", cel: "318 000 0000", item: "Biblioteca de pared · roble", valor: 7250000, fecha: dia(-11, 12, 45), estado: "taller" },
-      { cliente: "Diego Ramírez", cel: "311 000 0000", item: "Segundo piso · 70 m²", valor: 136500000, fecha: dia(-13, 17, 15), estado: "taller" }
+      { cliente: "Diego Ramírez", cel: "311 000 0000", item: "Remodelación de baño principal · 6 m²", valor: 18480000, fecha: dia(-13, 17, 15), estado: "taller" }
     ],
     vis: [
-      { cliente: "Marcela Rodríguez", cel: "310 000 0000", dir: "Calle 00 # 00-00, Chía", tipo: "Medición de mueble", fecha: dia(1, 9, 30) },
-      { cliente: "Hernán Castillo", cel: "315 000 0000", dir: "Vereda Fusca, Chía", tipo: "Visita de obra", fecha: dia(2, 14, 0) },
-      { cliente: "Andrea Gómez", cel: "312 000 0000", dir: "Carrera 00 # 00-00, Cajicá", tipo: "Medición de mueble", fecha: dia(3, 11, 0) },
-      { cliente: "Familia Rojas", cel: "314 000 0000", dir: "Obra GY-2417, Sopó", tipo: "Visita de obra", fecha: dia(5, 10, 0) }
+      { cliente: "Marcela Rodríguez", cel: "310 000 0000", dir: "Calle 00 # 00-00, Chía", tipo: "Medición en su casa", fecha: dia(1, 9, 30) },
+      { cliente: "Hernán Castillo", cel: "315 000 0000", dir: "Carrera 00 # 00-00, Chía", tipo: "Asesoría de diseño", fecha: dia(2, 14, 0) },
+      { cliente: "Andrea Gómez", cel: "312 000 0000", dir: "Carrera 00 # 00-00, Cajicá", tipo: "Medición en su casa", fecha: dia(3, 11, 0) },
+      { cliente: "Familia Rojas", cel: "314 000 0000", dir: "Obra GY-2417, Cedritos", tipo: "Revisión de avance", fecha: dia(5, 10, 0) }
     ],
     obras: [
-      { codigo: "GY-2417", nombre: "Casa Familia Rojas", lugar: "Sopó", avance: 62, etapa: "Techo", img: "obra-techo" },
-      { codigo: "GY-2388", nombre: "Cabaña Los Arango", lugar: "San Francisco", avance: 86, etapa: "Acabados", img: "cabana" },
-      { codigo: "GY-2431", nombre: "Segundo piso Ramírez", lugar: "Cajicá", avance: 21, etapa: "Estructura", img: "obra-estructura" }
+      { codigo: "GY-2417", nombre: "Apto Familia Rojas · cocina y 2 baños", lugar: "Cedritos", avance: 62, etapa: "Enchapes", img: "obra-enchape" },
+      { codigo: "GY-2388", nombre: "Casa Arango · vestier y puertas", lugar: "Chía", avance: 86, etapa: "Instalación", img: "muebles-taller" },
+      { codigo: "GY-2431", nombre: "Apto Ramírez · baño principal", lugar: "Cajicá", avance: 21, etapa: "Demolición", img: "obra-demolicion" }
     ],
     meses: [14, 19, 17, 23, 26]   // cotizaciones de los cinco meses anteriores
   };
