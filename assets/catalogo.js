@@ -501,10 +501,10 @@
   /* Computador o celular, dentro del visor. */
   function ponerCelular(l, animar) {
     var vw = window.innerWidth, vh = window.innerHeight;
-    var cs = Math.min(1, (vh - 96) / 844, (vw - 40) / 390);
+    var cs = Math.min(1, (vh - 104) / 844, (vw - 40) / 390);
     l.el.style.setProperty("--cs", cs);
     l.el.style.setProperty("--cx", ((vw - 390 * cs) / 2) + "px");
-    l.el.style.setProperty("--cy", Math.max(70, (vh - 844 * cs) / 2 + 26) + "px");
+    l.el.style.setProperty("--cy", Math.max(18, (vh - 844 * cs) / 2 - 30) + "px");
     if (animar) l.el.classList.add("cambiando-tamano");
     l.el.classList.add("celular");
   }

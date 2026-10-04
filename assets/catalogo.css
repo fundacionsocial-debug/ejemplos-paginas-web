@@ -284,13 +284,13 @@ html.visor-on .marco { background: transparent; border-color: transparent; box-s
 .marco-hueco.on { display: block; }
 
 .visor-barra {
-  position: fixed; z-index: 160; left: 50%; top: 12px; transform: translate(-50%, -140%);
+  position: fixed; z-index: 160; left: 50%; bottom: 14px; transform: translate(-50%, 140%);
   display: flex; align-items: center; gap: 6px; padding: 6px; border-radius: 18px;
   background: rgb(16 13 10 / .78); border: 1px solid var(--linea-fuerte); backdrop-filter: blur(18px) saturate(1.3);
   box-shadow: 0 20px 50px -18px #000; transition: transform .7s var(--rebote); max-width: calc(100vw - 20px);
 }
 .visor-barra.on { transform: translate(-50%, 0); }
-.visor-barra.escondida { transform: translate(-50%, calc(-100% - 12px)); }
+.visor-barra.escondida { transform: translate(-50%, calc(100% + 14px)); }
 .visor-barra .vb { display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 13px; border-radius: 12px; font-weight: 700; font-size: .9rem; color: var(--crema); white-space: nowrap; transition: background .25s, color .25s; }
 .visor-barra .vb:hover { background: rgb(255 255 255 / .07); }
 .visor-barra .vb svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
@@ -304,7 +304,7 @@ html.visor-on .marco { background: transparent; border-color: transparent; box-s
 .visor-barra .vb.panel .globo.on { transform: scale(1); }
 .visor-barra .vb.panel.pulso { animation: pulso-panel 1.2s 2; }
 @keyframes pulso-panel { 0%, 100% { box-shadow: 0 0 0 0 rgb(245 213 138 / .7); } 50% { box-shadow: 0 0 0 10px rgb(245 213 138 / 0); } }
-.visor-asa { position: fixed; z-index: 159; left: 50%; top: 0; transform: translate(-50%, -100%); padding: 4px 16px 6px; border-radius: 0 0 12px 12px; background: rgb(16 13 10 / .85); border: 1px solid var(--linea-fuerte); border-top: 0; color: var(--oro-hondo); font-size: .76rem; font-weight: 700; transition: transform .5s var(--rebote); }
+.visor-asa { position: fixed; z-index: 159; left: 50%; bottom: 0; transform: translate(-50%, 100%); padding: 6px 16px 5px; border-radius: 12px 12px 0 0; background: rgb(16 13 10 / .85); border: 1px solid var(--linea-fuerte); border-bottom: 0; color: var(--oro-hondo); font-size: .76rem; font-weight: 700; transition: transform .5s var(--rebote); }
 .visor-asa.on { transform: translate(-50%, 0); }
 .visor-asa svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.4; vertical-align: -2px; }
 .solo-ancho { display: inline-flex; }
